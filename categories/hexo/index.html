@@ -558,12 +558,6 @@ cnpm -v
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
-			<div class="col s12 m8 l8 copy-right">
-			    <span id="sitetime"></span> <br>
-			    本站由&copy;<a href="https://gongchenghuigch.github.io/" target="_blank">gongchenghui</a>基于
-			    <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-			    <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-			</div>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
                 class="white-color">350</span>&nbsp;字
@@ -627,7 +621,7 @@ cnpm -v
                             " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
                     }
                 }
-                setInterval(siteTime, 1000);
+                siteTime();
             </script>
             
             <br>
