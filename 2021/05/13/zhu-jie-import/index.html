@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="springboot之@@Import, ciyaduxingxia,github">
+    <meta name="keywords" content="springboot之@Import, ciyaduxingxia,github">
     <meta name="description" content="北冥有鱼，其名为鲲，鲲之大，不知其几千里也； 化而为鸟，其名为鹏.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>springboot之@@Import | 肖相杰的博客</title>
+    <title>springboot之@Import | 肖相杰的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -315,7 +315,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">springboot之@@Import</h1>
+                    <h1 class="description center-align post-title">springboot之@Import</h1>
                 </div>
             </div>
         </div>
@@ -735,24 +735,16 @@
 <h4 id="4-2-processImports方法"><a href="#4-2-processImports方法" class="headerlink" title="4.2 processImports方法"></a>4.2 processImports方法</h4><p>processImports 这个方法 的代码逻辑也很清晰，流程图如下：</p>
 <p><img src="https://img-blog.csdnimg.cn/20200604105229956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21hbWFtYWx1bHVsdTAwMDAwMDAw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>大致的流程如下:</p>
-<pre><code>1.判断 importCandidates 是否为空，为空 退出
-
-2.判断isChainedImportOnStack ，如果为true ,加入 problemReporter 里面的error ，并退出
-
-3.把当前的 configClass 加入到 ImportStack里面，ImportStack 是继承了 ArrayDeque // TODO 和实现了 ImportRegistry// TODO
-
-4.对 getImports 里面获取到的 需要import 的类 进行遍历 处理
-
-    4.1 如果是 ImportSelector 类型，首先实例一个 ImportSelector 对象，然后 对其进行 Aware 扩展(如果 实现了 Aware 接口)
-
-    4.1.2 进一步判断 是否 是 DeferredImportSelector 类型，如果是 ，加入到 deferredImportSelectors 里面，最后处理 ，这里可以看一下 方法parse(Set configCandidates)， 里面最后一行才调用,这也就是 有的时候，如果想最后注入，就可以定义为deferredImportSelectors 类型
-
-    4.1.2 如果 不是 DeferredImportSelector 类型 ，那就 调用 selectImports 方法，获取到所有的需要 注入的类，这时 再次调用 processImports 方法，这里调用processImports 方法，其实 是把 这些需要注入的类当成普通的 @Configuration 处理
-
-5.如果是 ImportBeanDefinitionRegistrar 类型，这里也是 先实例一个对象，然后加入到 importBeanDefinitionRegistrars 里面，后续 会在 ConfigurationClassBeanDefinitionReader 这个类里面 的 loadBeanDefinitionsFromRegistrars 方法处理的
-6.如果上面两种类型都不是，那就是当初普通的 带有@Configuration 的类进行处理了
-</code></pre>
-<p>？</p>
+<p>1.判断 importCandidates 是否为空，为空 退出</p>
+<p>2.判断isChainedImportOnStack ，如果为true ,加入 problemReporter 里面的error ，并退出</p>
+<p>3.把当前的 configClass 加入到 ImportStack里面，ImportStack 是继承了 ArrayDeque // TODO 和实现了 ImportRegistry// TODO</p>
+<p>4.对 getImports 里面获取到的 需要import 的类 进行遍历 处理</p>
+<blockquote>
+<p>4.1 如果是 ImportSelector 类型，首先实例一个 ImportSelector 对象，然后 对其进行 Aware 扩展(如果 实现了 Aware 接口)</p>
+<p>4.1.2 进一步判断 是否 是 DeferredImportSelector 类型，如果是 ，加入到 deferredImportSelectors 里面，最后处理 ，这里可以看一下 方法parse(Set configCandidates)， 里面最后一行才调用,这也就是 有的时候，如果想最后注入，就可以定义为deferredImportSelectors 类型</p>
+<p>4.1.2 如果 不是 DeferredImportSelector 类型 ，那就 调用 selectImports 方法，获取到所有的需要 注入的类，这时 再次调用 processImports 方法，这里调用processImports 方法，其实 是把 这些需要注入的类当成普通的 @Configuration 处理</p>
+</blockquote>
+<p>5.如果是 ImportBeanDefinitionRegistrar 类型，这里也是 先实例一个对象，然后加入到 importBeanDefinitionRegistrars 里面，后续 会在 ConfigurationClassBeanDefinitionReader 这个类里面 的 loadBeanDefinitionsFromRegistrars 方法处理的<br>6.如果上面两种类型都不是，那就是当初普通的 带有@Configuration 的类进行处理了</p>
 
                 
             </div>
