@@ -529,11 +529,11 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在lib中就会有以下结构的包</p>
-<p><img src="C:\Users\肖相杰\AppData\Roaming\Typora\typora-user-images\image-20210513200125846.png" alt="image-20210513200125846"></p>
+<p><img src="/.io//MyBlog\source_posts\springboot之静态资源导入\1.png" alt="webjars结构图及对应关系"></p>
 <p>通过访问localhost:8080/webjars/jquery/3.6.0/jquery.js即可访问静态资源，但是一般不这么用</p>
 <p>第二种方法：放在”classpath:/resources/“, “classpath:/static/“, “classpath:/public/“这三个路径下</p>
 <p>目录结构如下</p>
-<p><img src="C:\Users\肖相杰\AppData\Roaming\Typora\typora-user-images\image-20210513200933300.png" alt="image-20210513200933300"></p>
+<p><img src="/.io//MyBlog\source_posts\springboot之静态资源导入\2.png" alt="静态资源存储路径"></p>
 <p>访问路径为:localhost:8080/1.js</p>
 <p>其中访问优先度为resources&gt;static&gt;public</p>
 
