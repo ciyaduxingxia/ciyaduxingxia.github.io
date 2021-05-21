@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="微服务, ciyaduxingxia,github">
+    <meta name="keywords" content="分布式系统, ciyaduxingxia,github">
     <meta name="description" content="北冥有鱼，其名为鲲，鲲之大，不知其几千里也；化而为鸟，其名为鹏.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>微服务 | 肖相杰的博客</title>
+    <title>分布式系统 | 肖相杰的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">微服务</h1>
+                    <h1 class="description center-align post-title">分布式系统</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
-                                <span class="chip bg-color">微服务</span>
+                            <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
+                                <span class="chip bg-color">分布式</span>
+                            </a>
+                        
+                            <a href="/tags/RPC/">
+                                <span class="chip bg-color">RPC</span>
+                            </a>
+                        
+                            <a href="/tags/Dubbo/">
+                                <span class="chip bg-color">Dubbo</span>
                             </a>
                         
                     </div>
@@ -443,8 +451,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                微服务
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" class="post-category">
+                                分布式
                             </a>
                         
                     </div>
@@ -456,7 +464,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-13
+                    2021-05-21
                 </div>
                 
 
@@ -465,14 +473,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    6.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    24 分
                 </div>
                 
 
@@ -495,85 +503,256 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="什么是微服务"><a href="#什么是微服务" class="headerlink" title="什么是微服务"></a>什么是微服务</h2><blockquote>
-<p>简而言之，微服务架构风格是一种将单个应用程序开发为一套小型服务的方法，每个小型服务都在自己的进程中运行，并以轻量级机制（通常是 HTTP  资源  API）进行通信。</p>
-<p>这些服务围绕业务功能构建，可通过全自动部署机制来独立部署。这些服务共用一个最小型的集中式管理，它们可以使用不同的编程语言编写，并使用不同的数据存储技术。</p>
-</blockquote>
-<p>单体(monolithic)（all in one）风格:</p>
-<blockquote>
-<p>单体应用程序被构建为单一单元。企业应用程序通常由三个部分构成：客户端用户界面（由用户机器上的浏览器中运行的 HTML 页面和 JS组成）、数据库（由许多表组成，通常是在关系型数据库中管理）系统、服务器端应用程序。服务器端应用程序处理 HTTP  请求，执行一些逻辑处理，从数据库检索和更新数据，选择数据并填充到要发送到浏览器的 HTML  视图中。这个服务器端应用程序是一个整体——那么发生任何更改都会影响到应用程序的构建和部署</p>
-<p>优点：易于开发和测试，方便部署，当需要扩展的时候只需要把war包复制多份，然后放在多个服务器上，再做个负载均衡即可</p>
-<p>缺点：在将更多应用程序部署到云的时候。变更周期被捆绑在一起——即使只是对应用程序的一小部分进行了更改，也需要重建和部署整个单体应用。随着时间的推移，通常很难保持良好的模块化结构。对系统进行扩展时，不得不扩展整个应用系统。</p>
-</blockquote>
-<p>微服务原文可见：<a target="_blank" rel="noopener" href="https://www.martinfowler.com/articles/microservices.html">https://www.martinfowler.com/articles/microservices.html</a></p>
-<p>微服务风格并不是新颖的或创新的，其根源至少可以追溯到 Unix 的设计原则</p>
-<p><img src="https://doocs.gitee.io/advanced-java/docs/micro-services/images/sketch.png" alt="微服务设计原理"></p>
-<h2 id="从单体式架构到微服务架构"><a href="#从单体式架构到微服务架构" class="headerlink" title="从单体式架构到微服务架构"></a>从单体式架构到微服务架构</h2><h3 id="迁移到微服务综述"><a href="#迁移到微服务综述" class="headerlink" title="迁移到微服务综述"></a>迁移到微服务综述</h3><p>迁移单体式应用到微服务架构意味着一系列现代化过程，有点像这几代开发者一直在做的事情，实时上，当迁移时，我们可以重用一些想法。</p>
-<p>一个策略是：不要大规模（big bang）重写代码（只有当你承担重建一套全新基于微服务的应用时候可以采用重写这种方法）。重写代码听起来很不错，但实际上充满了风险最终可能会失败，就如 Martin Fowler 所说：</p>
-<blockquote>
-<p>“the only thing a Big Bang rewrite guarantees is a Big Bang!”</p>
-</blockquote>
-<p>相反，应该采取逐步迁移单体式应用的策略，通过逐步生成微服务新应用，与旧的单体式应用集成，随着时间推移，单体式应用在整个架构中比例逐渐下降直到消失或者成为微服务架构一部分。这个策略有点像在高速路上限速到 70 迈对车做维护，尽管有挑战，但是比起重写的风险小很多。</p>
-<p>Martin Fowler  将这种现代化策略成为绞杀（Strangler）应用，名字来源于雨林中的绞杀藤（strangler vine），也叫绞杀榕 (strangler  fig)。绞杀藤为了爬到森林顶端都要缠绕着大树生长，一段时间后，树死了，留下树形藤。这种应用也使用同一种模式，围绕着传统应用开发了新型微服务应用，传统应用会渐渐退出舞台。</p>
-<p>我们来看看其他可行策略。</p>
-<h3 id="策略-1——停止挖掘"><a href="#策略-1——停止挖掘" class="headerlink" title="策略 1——停止挖掘"></a>策略 1——停止挖掘</h3><p>Law of Holes 是说当自己进洞就应该停止挖掘。对于单体式应用不可管理时这是最佳建议。换句话说，应该停止让单体式应用继续变大，也就是说当开发新功能时不应该为旧单体应用添加新代码，最佳方法应该是将新功能开发成独立微服务。如下图所示：</p>
-<p><img src="https://doocs.gitee.io/advanced-java/docs/micro-services/images/Law-of-Holes.png" alt="停止挖掘流程"></p>
-<p>除了新服务和传统应用，还有两个模块，其一是请求路由器，负责处理入口（http）请求，有点像之前提到的 API 网关。路由器将新功能请求发送给新开发的服务，而将传统请求还发给单体式应用。</p>
-<p>另外一个是胶水代码（glue code），将微服务和单体应用集成起来，微服务很少能独立存在，经常会访问单体应用的数据。胶水代码，可能在单体应用或者为服务或者二者兼而有之，负责数据整合。微服务通过胶水代码从单体应用中读写数据。</p>
-<p>微服务有三种方式访问单体应用数据：</p>
+                <h1 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h1><h2 id="1-相关理论"><a href="#1-相关理论" class="headerlink" title="1. 相关理论"></a>1. 相关理论</h2><h3 id="A-CAP理论"><a href="#A-CAP理论" class="headerlink" title="A. CAP理论"></a>A. CAP理论</h3><blockquote>
 <ul>
-<li>换气单体应用提供的远程 API</li>
-<li>直接访问单体应用数据库</li>
-<li>自己维护一份从单体应用中同步的数据</li>
+<li>一致性（Consistency）:所有节点访问同一份最新的数据副本</li>
+<li>可用性（Availability）:非故障的节点在合理的时间内返回合理的响应（不是错误或者超时的响应）</li>
+<li>分区容错性（网络分区）Partition tolerance:分布式系统出现网络分区的时候，仍然能够对外提供服务</li>
 </ul>
-<p>胶水代码也被称为容灾层（anti-corruption layer），这是因为胶水代码保护微服务全新域模型免受传统单体应用域模型污染。胶水代码在这两种模型间提供翻译功能。术语  anti-corruption layer 第一次出现在 Eric Evans 撰写的必读书 _Domain Driven  Design_，随后就被提炼为一篇白皮书。开发容灾层可能有点不是很重要，但却是避免单体式泥潭的必要部分。</p>
-<p>将新功能以轻量级微服务方式实现由很多优点，例如可以阻止单体应用变的更加无法管理。微服务本身可以开发、部署和独立扩展。采用微服务架构会给开发者带来不同的切身感受。</p>
-<p>然而，这方法并不解决任何单体式本身问题，为了解决单体式本身问题必须深入单体应用  做出改变。我们来看看这么做的策略。</p>
-<h3 id="策略-2——将前端和后端分离"><a href="#策略-2——将前端和后端分离" class="headerlink" title="策略 2——将前端和后端分离"></a>策略 2——将前端和后端分离</h3><p>减小单体式应用复杂度的策略是讲表现层和业务逻辑、数据访问层分开。典型的企业应用至少有三个不同元素构成：</p>
-<ol>
-<li>表现层——处理 HTTP 请求，要么响应一个 RESTAPI 请求，要么是提供一个基于 HTML 的图形接口。对于一个复杂用户接口应用，表现层经常是代码重要的部分。</li>
-<li>业务逻辑层——完成业务逻辑的应用核心。</li>
-<li>数据访问层——访问基础元素，例如数据库和消息代理。</li>
-</ol>
-<p>在表现层与业务数据访问层之间有清晰的隔离。业务层有由若干方面组成的粗粒度（coarse-grained）的 API，内部包含了业务逻辑元素。API  是可以将单体业务分割成两个更小应用的天然边界，其中一个应用是表现层，另外一个是业务和数据访问逻辑。分割后，表现逻辑应用远程调用业务逻辑应用，下图表示迁移前后架构不同：</p>
-<p><img src="https://doocs.gitee.io/advanced-java/docs/micro-services/images/Before-and-after-migration.png" alt="迁移前后的架构"></p>
-<p>单体应用这么分割有两个好处，其一使得应用两部分开发、部署和扩展各自独立，特别地，允许表现层开发者在用户界面上快速选择，进行 A/B 测试；其二，使得一些远程 API 可以被微服务调用。</p>
-<p>然而，这种策略只是部分的解决方案。很可能应用的两部分之一或者全部都是不可管理的，因此需要使用第三种策略来消除剩余的单体架构。</p>
-<h3 id="策略-3——抽出服务"><a href="#策略-3——抽出服务" class="headerlink" title="策略 3——抽出服务"></a>策略 3——抽出服务</h3><p>第三种迁移策略就是从单体应用中抽取出某些模块成为独立微服务。每当抽取一个模块变成微服务，单体应用就变简单一些；一旦转换足够多的模块，单体应用本身已经不成为问题了，要么消失了，要么简单到成为一个服务。</p>
-<h4 id="排序那个模块应该被转成微服务"><a href="#排序那个模块应该被转成微服务" class="headerlink" title="排序那个模块应该被转成微服务"></a>排序那个模块应该被转成微服务</h4><p>一个巨大的复杂单体应用由成十上百个模块构成，每个都是被抽取对象。决定第一个被抽取模块一般都是挑战，一般最好是从最容易抽取的模块开始，这会让开发者积累足够经验，这些经验可以为后续模块化工作带来巨大好处。</p>
-<p>转换模块成为微服务一般很耗费时间，一般可以根据获益程度来排序，一般从经常变化模块开始会获益最大。一旦转换一个模块为微服务，就可以将其开发部署成独立模块，从而加速开发进程。</p>
-<p>将资源消耗大户先抽取出来也是排序标准之一。例如，将内存数据库抽取出来成为一个微服务会非常有用，可以将其部署在大内存主机上。同样的，将对计算资源很敏感的算法应用抽取出来也是非常有益的，这种服务可以被部署在有很多 CPU 的主机上。通过将资源消耗模块转换成微服务，可以使得应用易于扩展。</p>
-<p>查找现有粗粒度边界来决定哪个模块应该被抽取，也是很有益的，这使得移植工作更容易和简单。例如，只与其他应用异步同步消息的模块就是一个明显边界，可以很简单容易地将其转换为微服务。</p>
-<h4 id="如何抽取模块"><a href="#如何抽取模块" class="headerlink" title="如何抽取模块"></a>如何抽取模块</h4><p>抽取模块第一步就是定义好模块和单体应用之间粗粒度接口，由于单体应用需要微服务的数据，反之亦然，因此更像是一个双向 API。因为必须在负责依赖关系和细粒度接口模式之间做好平衡，因此开发这种 API  很有挑战性，尤其对使用域模型模式的业务逻辑层来说更具有挑战，因此经常需要改变代码来解决依赖性问题，如图所示：</p>
-<p>一旦完成粗粒度接口，也就将此模块转换成独立微服务。为了实现，必须写代码使得单体应用和微服务之间通过使用进程间通信（IPC）机制的 API 来交换信息。如图所示迁移前后对比：</p>
-<p><img src="https://doocs.gitee.io/advanced-java/docs/micro-services/images/30103116_ZCcM.png" alt="迁移前后对比"></p>
-<p>此例中，正在使用 Y 模块的 Z 模块是备选抽取模块，其元素正在被 X 模块使用，迁移第一步就是定义一套粗粒度 APIs，第一个接口应该是被 X 模块使用的内部接口，用于激活 Z 模块；第二个接口是被 Z 模块使用的外部接口，用于激活 Y 模块。</p>
-<p>迁移第二步就是将模块转换成独立服务。内部和外部接口都使用基于 IPC 机制的代码，一般都会将 Z 模块整合成一个微服务基础框架，来出来割接过程中的问题，例如服务发现。</p>
-<p>抽取完模块，也就可以开发、部署和扩展另外一个服务，此服务独立于单体应用和其它服务。可以从头写代码实现服务；这种情况下，将服务和单体应用整合的 API  代码成为容灾层，在两种域模型之间进行翻译工作。每抽取一个服务，就朝着微服务方向前进一步。随着时间推移，单体应用将会越来越简单，用户就可以增加更多独立的微服务。 将现有应用迁移成微服务架构的现代化应用，不应该通过从头重写代码方式实现，相反，应该通过逐步迁移的方式。有三种策略可以考虑：将新功能以微服务方式实现；将表现层与业务数据访问层分离；将现存模块抽取变成微服务。随着时间推移，微服务数量会增加，开发团队的弹性和效率将会大大增加。</p>
-<h2 id="微服务四大问题"><a href="#微服务四大问题" class="headerlink" title="微服务四大问题"></a>微服务四大问题</h2><blockquote>
-<p>微服务架构问题</p>
-<p>​    分布式架构会遇到的核心问题</p>
-<pre><code>1. 这么多服务，客户端如何去访问（服务路由）
-2. 这么多服务，服务之间如何通信（异步调用）
-3. 这么多服务，如何治理（高可用）
-4. 服务挂了怎么办
-</code></pre>
 </blockquote>
-<h3 id="常见的两套解决方案"><a href="#常见的两套解决方案" class="headerlink" title="常见的两套解决方案"></a>常见的两套解决方案</h3><p><code>Spring Cloud</code>是一套生态，就是用来解决以上四个问题</p>
-<ol>
-<li><p><code>Spring Cloud Netflix</code> 第一套解决方案</p>
-<p>针对第一个问题：API网关=》zuul组件</p>
-<p>针对第二个问题：Feign=》HttpClient=》HTTP通信方式，同步并阻塞</p>
-<p>针对第三个问题：服务注册与发现=》Eureka</p>
-<p>针对第四个问题：熔断机制=》Hystrix</p>
+<p>​    <strong>什么是网络分区？</strong></p>
+<blockquote>
+<p>分布式系统中，多个节点之前的网络本来是连通的，但是因为某些故障（比如部分节点网络出了问题）某些节点之间不连通了，整个网络就分成了几块区域，这就叫网络分区。</p>
+</blockquote>
+<p><img src="https://img-blog.csdn.net/20180729210031417?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p><code>CAP的三选二的原理:</code></p>
+<blockquote>
+<p><strong>当发生网络分区的时候，如果我们要继续服务，那么强一致性和可用性只能 2 选 1。也就是说当网络分区之后 P 是前提，决定了 P 之后才有 C 和 A 的选择。也就是说分区容错性（Partition tolerance）我们是必须要实现的。</strong></p>
+<p>简而言之就是：CAP 理论中分区容错性 P 是一定要满足的，在此基础上，只能满足可用性 A 或者一致性 C。</p>
+</blockquote>
+<blockquote>
+<p>AP(放弃C)：放弃强一致性，用最终一致性来保证。</p>
+<p>CP(放弃A)：一旦系统遇见故障，受到影响的服务器需要等待一段时间，在恢复期间无法对外提供服务。</p>
+</blockquote>
+<blockquote>
+<p><strong>为啥无同时保证 CA 呢？</strong></p>
+<p>举个例子：若系统出现“分区”，系统中的某个节点在进行写操作。为了保证 C， 必须要禁止其他节点的读写操作，这就和 A 发生冲突了。如果为了保证 A，其他节点的读写操作正常的话，那就和 C 发生冲突了。</p>
+<p><strong>选择的关键在于当前的业务场景，没有定论，比如对于需要确保强一致性的场景如银行一般会选择保证 CP 。</strong></p>
+</blockquote>
+<p><strong>分布式事务是指会涉及到操作多个数据库的事务,在分布式系统中，各个节点之间在物理上相互独 立，通过网络进行沟通和协调。XA 就是 X/Open DTP 定义的交易中间件与数据库之间的接口规范（即接口函数），交易中间件 用它来通知数据库事务的开始、结束以及提交、回滚等。 XA 接口函数由数据库厂商提供。</strong></p>
+<h3 id="B-2P理论-二段提交"><a href="#B-2P理论-二段提交" class="headerlink" title="B. 2P理论(二段提交)"></a>B. 2P理论(二段提交)</h3><p><strong><code>二阶段提交(Two-phase Commit)是指，在计算机网络以及数据库领域内，为了使基于分布式系统 架构下的所有节点在进行事务提交时保持一致性而设计的一种算法(Algorithm)。</code></strong></p>
+<p>二段提交（RDBMS(传统关系型数据库)经常就这种机制，<em><strong>保证强一致性</strong></em>）</p>
+<blockquote>
+<p>提交步骤：</p>
+<p>阶段1：提交事务请求（投票阶段，任何一个结点失败，不能继续进行提交）</p>
+<p><img src="https://img-blog.csdn.net/20180729211305744?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>阶段2：执行事务提交（commit、rollback。任何一个结点失败 rollback）</p>
+<p><img src="https://img-blog.csdn.net/20180729211352487?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+</blockquote>
+<ul>
+<li><p>缺点：</p>
+<blockquote>
+<p><strong>同步阻塞问题</strong></p>
+<p>​         1、执行过程中，所有参与节点都是事务阻塞型的</p>
+<p>**单点故障 **</p>
+<p>​        2、由于协调者的重要性，一旦协调者发生故障。参与者会一直阻塞下去。</p>
+<p>​                解决：<strong>协调者故障，通过选举得到新协调者</strong>（弊端：假如协调者和第一个参与者都挂了；<strong>每个参与者自身的状态只有自己和协调者知道</strong>，因此新协调者无法通过在场的参与者的状态推断出挂了的参与者是什么情况。）                </p>
+<p><strong>数据不一致（脑裂问题）</strong></p>
+<p>​         3、在二阶段提交的阶段二中，当协调者向参与者发送 commit 请求之后，发生了局部网络异 常或者在发送 commit 请求过程中协调者发生了故障，导致只有一部分参与者接受到了 commit 请求。于是整个分布式系统便出现了数据部一致性的现象(脑裂现象)。</p>
+<p><strong>二阶段无法解决的问题（数据状态不确定）</strong></p>
+<p>​         4、协调者再发出 commit 消息之后宕机，<code>而唯一接收到这条消息的参与者同时也宕机了</code>。那 么即使协调者通过选举协议产生了新的协调者，<code>这条事务的状态也是不确定的，没人知道 事务是否被已经提交</code>。</p>
+</blockquote>
 </li>
-<li><p><code>Apache Dubbo+Zookeeper</code> 第二套解决方案</p>
-<p>针对第一个问题：API网关=》没有</p>
-<p>针对第二个问题：Dubbo=》Java实现的高效RPC框架</p>
-<p>针对第三个问题：服务注册与发现=》Zookeeper</p>
-<p>针对第四个问题：熔断机制=》没有=&gt;借助Hystrix</p>
+</ul>
+<p><strong>解决方案：</strong></p>
+<blockquote>
+<p><strong>1.XA三阶段提交</strong></p>
+<p>XA三阶段提交在两阶段提交的基础上增加了CanCommit阶段，并且引入了超时机制。一旦事物参与者迟迟没有接到协调者的commit请求，会自动进行本地commit。这样有效解决了协调者单点故障的问题。但是性能问题和不一致的问题仍然没有根本解决。</p>
+<p><strong>2.MQ事务</strong></p>
+<p>利用消息中间件来异步完成事务的后一半更新，实现系统的最终一致性。这个方式避免了像XA协议那样的性能问题。</p>
+<p><strong>3.TCC事务</strong></p>
+<p>TCC事务是Try、Commit、Cancel三种指令的缩写，其逻辑模式类似于XA两阶段提交，但是实现方式是在代码层面来人为实现。</p>
+</blockquote>
+<h3 id="C-3P理论-三段提交-一般不用"><a href="#C-3P理论-三段提交-一般不用" class="headerlink" title="C. 3P理论(三段提交)(一般不用)"></a>C. 3P理论(三段提交)(一般不用)</h3><p><strong>与两阶段提交不同的是，三阶段提交有两个改动点。</strong> </p>
+<p>​        1、引入超时机制。同时在协调者和参与者中都引入超时机制。 </p>
+<p>​        2、在第一阶段和第二阶段中插入一个准备阶段。保证了在最后提交阶段之前各参与节点的状态是 一致的。首先<strong>准备阶段的变更成不会直接执行事务</strong>，而是会先去询问此时的参与者是否有条件接这个事务，因此<strong>不会一来就干活直接锁资源</strong>，使得在某些资源不可用的情况下所有参与者都阻塞着。而<strong>预提交阶段的引入起到了一个统一状态的作用</strong>，它像一道栅栏，表明在预提交阶段前所有参与者其实还未都回应，在预处理阶段表明所有参与者都已经回应了。</p>
+<blockquote>
+<p>阶段1：是否可以进行事务提交</p>
+<p><img src="https://img-blog.csdn.net/20180729211432145?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>阶段2： 提交事务请求</p>
+<p><img src="https://img-blog.csdn.net/20180729211455148?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>阶段3：执行事务提交</p>
+<p><img src="https://img-blog.csdn.net/20180729211520312?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+</blockquote>
+<h3 id="D-BASE理论"><a href="#D-BASE理论" class="headerlink" title="D. BASE理论"></a>D. BASE理论</h3><p><strong>BASE 理论，它是在 CAP 理论的基 础之上的延伸。</strong>包括 :</p>
+<blockquote>
+<p>基本可用（Basically Available）:在分布式系统出现，允许损失部分可用性（服务降级、页面降级）v</p>
+<p>柔性状态（Soft State）:允许分布式系统出现中间状态。而且中间状态不影响系统的可用性。</p>
+<p>最终一致性 （Eventual Consistency）:data replications经过一段时间达到一致性。</p>
+</blockquote>
+<h2 id="2-一致性算法"><a href="#2-一致性算法" class="headerlink" title="2. 一致性算法"></a>2. 一致性算法</h2><h3 id="A-paxos一致性算法"><a href="#A-paxos一致性算法" class="headerlink" title="A. paxos一致性算法"></a>A. paxos一致性算法</h3><p>​        paxos算法是莱斯利·兰伯特于1990年提出的一种基于消息传递且具有高度容错特性的一致性算法。Google Chubby的作者Mike Burrows说过这个世界上只有一种一致性算法，那就是paxos，其它的算法都是残次品。</p>
+<p><strong><code>基于拜占庭将军问题解析：</code></strong></p>
+<p>分为以下两种角色：</p>
+<ul>
+<li>proposer：参谋1，参谋2（提交者）</li>
+<li>acceptor： 将军1，将军2，将军3（决策者）</li>
+</ul>
+<blockquote>
+<p><strong>1、先后提议的场景</strong></p>
+<p><img src="https://img-blog.csdn.net/20180729212212421?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<ul>
+<li>参谋1发起提议，派通信兵带信给3个将军，内容为（编号1）</li>
+<li>3个将军收到参谋1的提议，由于之前还没有保存任何编号，因此把（编号1）保存下来，避免遗忘；同时让通信兵带信回去，内容为（ok）</li>
+<li>参谋1收到至少2个将军的回复，再次派通信兵带信给3个将军，内容为（编号1，进攻时间1）</li>
+<li>3个将军收到参谋1的时间，把（编号1，进攻时间1）保存下来，避免遗忘；同时让通信兵带信回去，内容为（Accepted）</li>
+<li>参谋1收到至少2个将军的（Accepted）内容，确认进攻时间已经被大家接收；</li>
+<li>参谋2发起提议，派通信兵带信给3个将军，内容为（编号2）</li>
+<li>3个将军收到参谋2的提议，由于（编号2）比（编号1）大，因此把（编号2）保存下来，避免遗忘；又由</li>
+<li>之前已经接受参谋1的提议，因此让通信兵带信回去，内容为（编号1，进攻时间1）</li>
+<li>参谋2收到至少2个将军的回复，由于回复中带来了已接受的参谋1的提议内容，参谋2因此不再提出新的进攻时间，接受参谋1提出的时间</li>
+</ul>
+<p><strong>2、交叉提交场景</strong></p>
+<p><img src="https://img-blog.csdn.net/20180729212438459?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<ul>
+<li>参谋1发起提议，派通信兵带信给3个将军，内容为（编号1）；</li>
+<li>3个将军的情况如下:<ul>
+<li>将军1和将军2收到参谋1的提议，将军1和将军2把（编号1）记录下来，如果有其他参谋提出更小的编号，将被拒绝；同时让通信兵带信回去，内容为（ok）</li>
+<li>负责通知将军3的通信兵被抓，因此将军3没收到参谋1的提议</li>
+</ul>
 </li>
-</ol>
+<li>参谋2在同一时间也发起了提议，派通信兵带信给3个将军，内容为（编号2）</li>
+<li>3个将军的情况如下<ul>
+<li>将军2和将军3收到参谋2的提议，将军2和将军3把（编号2）记录下来，如果有其他参谋提出更小的编号，将被拒绝；同时让通信兵带信回去，内容为（ok）</li>
+<li>负责通知将军1的通信兵被抓，因此将军1没收到参谋2的提议</li>
+</ul>
+</li>
+<li>参谋1收到至少2个将军的回复，再次派通信兵带信给有答复的2个将军，内容为（编号1，进攻时间1）</li>
+<li>2个将军的情况如下<ul>
+<li>将军1收到了（编号1，进攻时间1），和自己保存的编号相同，因此把（编号1，进攻时间1）保存下来；同时让通信兵带信回去，内容为（Accepted）</li>
+<li>将军2收到了（编号1，进攻时间1），由于（编号1）小于已经保存的（编号2），因此让通信兵带信回去，内容为（Rejected，编号2）</li>
+</ul>
+</li>
+<li>参谋2收到至少2个将军的回复，再次派通信兵带信给有答复的2个将军，内容为（编号2，进攻时间2）</li>
+<li>将军2和将军3收到了（编号2，进攻时间2），和自己保存的编号相同，因此把（编号2，进攻时间2）保存下来，同时让通信兵带信回去，内容为（Accepted）</li>
+<li>参谋2收到至少2个将军的（Accepted）内容，确认进攻时间已经被多数派接受</li>
+<li>参谋1只收到了1个将军的（Accepted）内容，同时收到一个（Rejected，编号2）;参谋1重新发起提议，派通信兵带信给3个将军，内容为（编号3）</li>
+<li>3个将军的情况如下<ul>
+<li>将军1收到参谋1的提议，由于（编号3）大于之前保存的（编号1），因此把（编号3）保存下来；由于将军1已经接受参谋1前一次的提议，因此让通信兵带信回去，内容为（编号1，进攻时间1）</li>
+<li>将军2收到参谋1的提议，由于（编号3）大于之前保存的（编号2），因此把（编号3）保存下来；由于将军2已经接受参谋2的提议，因此让通信兵带信回去，内容为（编号2，进攻时间2）</li>
+<li>负责通知将军3的通信兵被抓，因此将军3没收到参谋1的提议</li>
+</ul>
+</li>
+<li>参谋1收到了至少2个将军的回复，比较两个回复的编号大小，选择大编号对应的进攻时间作为最新的提议；参谋1再次派通信兵带信给有答复的2个将军，内容为（编号3，进攻时间2）</li>
+<li>将军1和将军2收到了（编号3，进攻时间2），和自己保存的编号相同，因此保存（编号3，进攻时间2），同时让通信兵带信回去，内容为（Accepted）</li>
+<li>参谋1收到了至少2个将军的（accepted）内容，确认进攻时间已经被多数派接受。</li>
+</ul>
+</blockquote>
+<h3 id="B-raft一致性算法"><a href="#B-raft一致性算法" class="headerlink" title="B. raft一致性算法"></a>B. raft一致性算法</h3><h2 id="3-一致性Hash算法"><a href="#3-一致性Hash算法" class="headerlink" title="3. 一致性Hash算法"></a>3. 一致性Hash算法</h2><p><em><strong>参考：</strong></em><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/98030096">一致性hash算法详解</a></p>
+<h3 id="A-普通Hash算法在分布式应用中的不足"><a href="#A-普通Hash算法在分布式应用中的不足" class="headerlink" title="A. 普通Hash算法在分布式应用中的不足"></a>A. 普通Hash算法在分布式应用中的不足</h3><blockquote>
+<p>比如，在分布式的存储系统中，要将数据存储到具体的节点上，如果我们采用普通的hash算法进行路由，将数据映射到具体的节点上，如key%N，key是数据的key，N是机器节点数，如果有一个机器加入或退出这个集群，则所有的数据映射都无效了，如果是持久化存储则要做数据迁移，如果是分布式缓存，则其他缓存就失效了。</p>
+</blockquote>
+<h3 id="B-一致性Hash算法"><a href="#B-一致性Hash算法" class="headerlink" title="B. 一致性Hash算法"></a>B. 一致性Hash算法</h3><blockquote>
+<p>一致性哈希提出了在动态变化的Cache环境中，哈希算法应该满足的4个适应条件(from 百度百科)：</p>
+<p>A:均衡性(Balance)</p>
+<p>平衡性是指哈希的结果能够尽可能分布到所有的缓冲中去，这样可以使得所有的缓冲空间都得到利用。很多哈希算法都能够满足这一条件。</p>
+<p>B:单调性(Monotonicity)</p>
+<p>单调性是指如果已经有一些内容通过哈希分派到了相应的缓冲中，又有新的缓冲区加入到系统中，那么哈希的结果应能够保证原有已分配的内容可以被映射到新的缓冲区中去，而不会被映射到旧的缓冲集合中的其他缓冲区。（这段翻译信息有负面价值的，当缓冲区大小变化时一致性哈希(Consistent hashing)尽量保护已分配的内容不会被重新映射到新缓冲区。）</p>
+<p>C:分散性(Spread)</p>
+<p>在分布式环境中，终端有可能看不到所有的缓冲，而是只能看到其中的一部分。当终端希望通过哈希过程将内容映射到缓冲上时，由于不同终端所见的缓冲范围有可能不同，从而导致哈希的结果不一致，最终的结果是相同的内容被不同的终端映射到不同的缓冲区中。这种情况显然是应该避免的，因为它导致相同内容被存储到不同缓冲中去，降低了系统存储的效率。分散性的定义就是上述情况发生的严重程度。好的哈希算法应能够尽量避免不一致的情况发生，也就是尽量降低分散性。</p>
+<p>D:负载(Load)</p>
+<p>负载问题实际上是从另一个角度看待分散性问题。既然不同的终端可能将相同的内容映射到不同的缓冲区中，那么对于一个特定的缓冲区而言，也可能被不同的用户映射为不同的内容。与分散性一样，这种情况也是应当避免的，因此好的哈希算法应能够尽量降低缓冲的负荷。</p>
+</blockquote>
+<h5 id="B-1-环形hash空间"><a href="#B-1-环形hash空间" class="headerlink" title="B.1 环形hash空间"></a>B.1 环形hash空间</h5><p>​        <em>按照常用的hash算法来将对应的key哈希到一个具有2^32次方个节点的空间中，即0 ~ (2^32)-1的数字空间中。现在我们可以将这些数字头尾相连，想象成一个闭合的环形。</em>整个hash环我们可以用TreeMap来实现，因为treeMap是排序的，我们刚好可以利用上。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-0a21bff27b5f037748292aa338965d65_720w.jpg" alt="img"></p>
+<h5 id="B-2-映射服务器节点"><a href="#B-2-映射服务器节点" class="headerlink" title="B.2 映射服务器节点"></a>B.2 映射服务器节点</h5><p>​        <em>将各个服务器使用Hash进行一个哈希，具体可以选择服务器的ip或唯一主机名作为关键字进行哈希，这样每台机器就能确定其在哈希环上的位置。假设我们将四台服务器使用ip地址哈希后在环空间的位置如下：</em></p>
+<p><img src="https://pic4.zhimg.com/80/v2-252cc4ed5bbb07e5e1e3b27c5eda0d23_720w.jpg" alt="img"></p>
+<h5 id="B-3-映射数据"><a href="#B-3-映射数据" class="headerlink" title="B.3 映射数据"></a>B.3 映射数据</h5><p>​        <em>现在我们将objectA、objectB、objectC、objectD四个对象通过特定的Hash函数计算出对应的key值，然后散列到Hash环上,然后从数据所在位置沿环顺时针“行走”，第一台遇到的服务器就是其应该定位到的服务器。</em></p>
+<p><img src="https://pic3.zhimg.com/80/v2-0fb33fe30c7a05eee2abe3784a42f98a_720w.jpg" alt="img"></p>
+<h5 id="B-4-服务器的删除与添加"><a href="#B-4-服务器的删除与添加" class="headerlink" title="B.4 服务器的删除与添加"></a>B.4 服务器的删除与添加</h5><blockquote>
+<ul>
+<li>如果此时NodeC宕机了，此时Object A、B、D不会受到影响，只有Object C会重新分配到Node D上面去，而其他数据对象不会发生变化</li>
+<li>如果在环境中新增一台服务器Node X，通过hash算法将Node X映射到环中，通过按顺时针迁移的规则，那么Object C被迁移到了Node X中，其它对象还保持这原有的存储位置。通过对节点的添加和删除的分析，一致性哈希算法在保持了单调性的同时，还是数据的迁移达到了最小，这样的算法对分布式集群来说是非常合适的，避免了大量数据迁移，减小了服务器的的压力。</li>
+</ul>
+</blockquote>
+<p><img src="https://pic4.zhimg.com/80/v2-bf7daae4aa145478dd55fc339ee57ec7_720w.jpg" alt="img"></p>
+<h5 id="B-5-虚拟节点"><a href="#B-5-虚拟节点" class="headerlink" title="B.5 虚拟节点"></a>B.5 虚拟节点</h5><p>​        <em>到目前为止一致性hash也可以算做完成了，但是有一个问题还需要解决，那就是<strong>平衡性</strong>。当服务器节点比较少的时候，会出现一个问题，就是此时必然造成大量数据集中到一个节点上面，极少数数据集中到另外的节点上面。</em></p>
+<p><img src="https://pic4.zhimg.com/80/v2-0ce62cf40bcc5f980cafe285dafe0633_720w.jpg" alt="img"></p>
+<p>​        <em>为了解决这种数据倾斜问题，一致性哈希算法引入了虚拟节点机制，即对每一个服务节点计算多个哈希，每个计算结果位置都放置一个此服务节点，称为虚拟节点。具体做法可以先确定每个物理节点关联的虚拟节点数量，然后在ip或者主机名后面增加编号。</em></p>
+<p><img src="https://pic1.zhimg.com/80/v2-5d9cdea01cb4b44162aa41980345e8ac_720w.jpg" alt="img"></p>
+<h2 id="4-分布式ID"><a href="#4-分布式ID" class="headerlink" title="4. 分布式ID"></a>4. 分布式ID</h2><blockquote>
+<p>ID是数据的唯一标识，传统的做法是利用UUID和数据库的自增ID，在互联网企业中，大部分公司使用的都是Mysql，并且因为需要事务支持，所以通常会使用Innodb存储引擎，UUID太长以及无序，所以并不适合在Innodb中来作为主键，自增ID比较合适，但是随着公司的业务发展，数据量将越来越大，需要对数据进行分表，而分表后，每个表中的数据都会按自己的节奏进行自增，很有可能出现ID冲突。这时就需要一个单独的机制来负责生成唯一ID，生成出来的ID也可以叫做<strong>分布式ID</strong>，或<strong>全局ID</strong>。下面来分析各个生成分布式ID的机制。</p>
+</blockquote>
+<h2 id="5-Dubbo"><a href="#5-Dubbo" class="headerlink" title="5. Dubbo"></a>5. Dubbo</h2><p>Dubbo的学习一定要看官网，这里粘一下关于负载均衡的源代码解析，整个源代码更迭过程很有启发:<a target="_blank" rel="noopener" href="https://dubbo.apache.org/zh/docs/v2.7/dev/source/loadbalance/">https://dubbo.apache.org/zh/docs/v2.7/dev/source/loadbalance/</a></p>
+<p>随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，急需<strong>一个治理系统</strong>确保架构有条不紊的演进。</p>
+<p>在Dubbo的官网文档有这样一张图</p>
+<p><img src="https://dubbo.apache.org/imgs/user/dubbo-architecture-roadmap.jpg" alt="image"></p>
+<h4 id="1-单一应用架构-All-in-One"><a href="#1-单一应用架构-All-in-One" class="headerlink" title="1. 单一应用架构(All in One)"></a>1. 单一应用架构(All in One)</h4><p>当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshw2ITicetDcFsg41kISOhuyojGB1Z8ics61xtqnicJTXDk7Qw41dkeXK2A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>适用于小型网站，小型管理系统，将所有功能都部署到一个功能里，简单易用。</p>
+<p><strong>缺点：</strong></p>
+<p>1、性能扩展比较难</p>
+<p>2、协同开发问题</p>
+<p>3、不利于升级维护</p>
+<h4 id="2-垂直应用架构-Vertical-Application"><a href="#2-垂直应用架构-Vertical-Application" class="headerlink" title="2. 垂直应用架构(Vertical Application)"></a>2. 垂直应用架构(Vertical Application)</h4><p>当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshG4FicWRMjbfStG0Ojr1H9cL1jQ1SbZ0s7rsbsc7w8f3usmdSJog7pHA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>通过切分业务来实现各个模块独立部署，降低了维护和部署的难度，团队各司其职更易管理，性能扩展也更方便，更有针对性。</p>
+<p>缺点：公用模块无法重复利用，开发性的浪费</p>
+<h4 id="3-分布式服务架构-Distributed-Service"><a href="#3-分布式服务架构-Distributed-Service" class="headerlink" title="3. 分布式服务架构(Distributed Service)"></a>3. 分布式服务架构(Distributed Service)</h4><p>当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的**分布式服务框架(RPC)**是关键。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshwIkic8EicmCwYGRibdWohmDazEDhonhTeJfVx0dfBNlW4dGGxvOMOk0Gg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h4 id="4-弹性计算架构-Elastic-Computing"><a href="#4-弹性计算架构-Elastic-Computing" class="headerlink" title="4. 弹性计算架构(Elastic Computing)"></a>4. 弹性计算架构(Elastic Computing)</h4><p>当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于<strong>提高机器利用率的资源调度和治理中心</strong>(SOA)[ Service Oriented Architecture]是关键。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshxoCosFhoMzIcbBzjCt6ia9Gr7atHlwNHhL0po4YhyE8WkHXnnpN8Ddg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h2 id="6-RPC和HTTP"><a href="#6-RPC和HTTP" class="headerlink" title="6. RPC和HTTP"></a>6. RPC和HTTP</h2><p>无论是微服务还是分布式服务（都是SOA，都是面向服务编程），都面临着服务间的远程调用。那么服务间的远程调用方式有哪些呢？</p>
+<p>常见的远程调用方式有以下几种：</p>
+<ul>
+<li><p>RPC：是指远程过程调用，是一种进程间通信方式，他是一种技术的思想，而不是规范。它允许程序调用另一个地址空间（通常是共享网络的另一台机器上）的过程或函数，而不用程序员显式编码这个远程调用的细节。即程序员无论是调用本地的还是远程的函数，本质上编写的调用代码基本相同。，类似的还有RMI（Remote Methods Invoke  远程方法调用，是JAVA中的概念，是JAVA十三大技术之一）。自定义数据格式，基于原生TCP通信，速度快，效率高。早期的webservice，现在热门的dubbo，都是RPC的典型</p>
+</li>
+<li><ul>
+<li>RPC的框架：webservie(cxf)、dubbo(阿里巴巴开源的基于 Java 的高性能 RPC)</li>
+<li>RMI的框架：hessian</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Http：http其实是一种网络传输协议，基于TCP，规定了数据传输的格式。现在客户端浏览器与服务端通信基本都是采用Http协议。也可以用来进行远程服务调用。缺点是消息封装臃肿。<br>现在热门的Rest风格，就可以通过http协议来实现。</p>
+</li>
+<li><ul>
+<li>http的实现技术：HttpClient</li>
+</ul>
+</li>
+</ul>
+<p><strong>RPC基本原理</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshVx3xhf4RyUVtia7Tvo4BBs70SFKRonhrPrNsiap2rEAQCn4IWUoS3HZA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>步骤解析：</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshDCibUnIYkolqibQRy7Qlpm9vNibK9IDaFibJoLpIM5pWLe7Yqly7PheYsg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>RPC两个核心模块：通讯，序列化。</p>
+<p><strong>要实现一个RPC不算难，难的是实现一个高性能高可靠的RPC框架。</strong></p>
+<p>比如，既然是分布式了，那么一个服务可能有多个实例，你在调用时，要如何获取这些实例的地址呢？</p>
+<p>这时候就需要一个服务注册中心，比如在Dubbo里头，就可以使用Zookeeper作为注册中心，在调用时，从Zookeeper获取服务的实例列表，再从中选择一个进行调用。</p>
+<p>那么选哪个调用好呢？这时候就需要负载均衡了，于是你又得考虑如何实现复杂均衡，比如Dubbo就提供了好几种负载均衡策略。</p>
+<p>这还没完，总不能每次调用时都去注册中心查询实例列表吧，这样效率多低呀，于是又有了缓存，有了缓存，就要考虑缓存的更新问题，blablabla……</p>
+<p>你以为就这样结束了，没呢，还有这些：</p>
+<ul>
+<li>客户端总不能每次调用完都干等着服务端返回数据吧，于是就要支持异步调用；</li>
+<li>服务端的接口修改了，老的接口还有人在用，怎么办？总不能让他们都改了吧？这就需要版本控制了；</li>
+<li>服务端总不能每次接到请求都马上启动一个线程去处理吧？于是就需要线程池；</li>
+<li>服务端关闭时，还没处理完的请求怎么办？是直接结束呢，还是等全部请求处理完再关闭呢？</li>
+<li>……</li>
+</ul>
+<h3 id="RPC和HTTP认知误区勘误"><a href="#RPC和HTTP认知误区勘误" class="headerlink" title="RPC和HTTP认知误区勘误"></a>RPC和HTTP认知误区勘误</h3><p>rpc是远端过程调用，其调用协议通常包含传输协议和序列化协议。</p>
+<p>传输协议包含: 如著名的gRPC 使用的 http2 协议，也有如dubbo一类的自定义报文的tcp协议。</p>
+<p>序列化协议包含: 如基于文本编码的 xml json，也有二进制编码的 protobuf hessian等。</p>
+<p><strong>为什么要使用自定义 tcp 协议的 rpc 做后端进程通信？</strong></p>
+<p>要解决这个问题就应该搞清楚 http 使用的 tcp 协议，和我们自定义的 tcp 协议在报文上的区别。</p>
+<p>首先要否认一点 http 协议相较于自定义tcp报文协议，增加的开销在于连接的建立与断开。http协议是支持连接池复用的，也就是建立一定数量的连接不断开，并不会频繁的创建和销毁连接。二一要说的是http也可以使用protobuf这种二进制编码协议对内容进行编码，因此二者最大的区别还是在传输协议上。</p>
+<p>通用定义的http1.1协议的tcp报文包含太多废信息，一个POST协议的格式大致如下</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">HTTP/1.0 200 OK 
+Content-Type: text/plain
+Content-Length: 137582
+Expires: Thu, 05 Dec 1997 16:00:00 GMT
+Last-Modified: Wed, 5 August 1996 15:55:28 GMT
+Server: Apache 0.84
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Hello World<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>即使编码协议也就是body是使用二进制编码协议，报文元数据也就是header头的键值对却用了文本编码，非常占字节数。如上图所使用的报文中有效字节数仅仅占约 30%，也就是70%的时间用于传输元数据废编码。当然实际情况下报文内容可能会比这个长，但是报头所占的比例也是非常可观的。</p>
+<p>那么假如我们使用自定义tcp协议的报文如下</p>
+<p><img src="https://pic4.zhimg.com/50/v2-89c905b0806577471aa7789a25ac0d44_hd.jpg?source=1940ef5c" alt="img"></p>
+<p>报头占用的字节数也就只有16个byte，极大地精简了传输内容。</p>
+<p>这也就是为什么后端进程间通常会采用自定义tcp协议的rpc来进行通信的原因。</p>
+<p>但是现在越来越少使用RPC了，是因为RPC所谓的效率优势是针对http1.1协议来讲的，http2.0协议已经优化编码效率问题，像grpc这种rpc库使用的就是http2.0协议。</p>
+<p>所以说成熟的rpc库相对http容器，更多的是封装了“服务发现”，”负载均衡”，“熔断降级”一类面向服务的高级特性。可以这么理解，rpc框架是面向服务的更高级的封装。如果把一个http servlet容器上封装一层服务发现和函数代理调用，那它就已经可以做一个rpc框架了。因此良好的rpc调用是面向服务的封装，针对服务的可用性和效率等都做了优化。单纯使用http调用则缺少了这些特性。</p>
 
                 
             </div>
@@ -600,7 +779,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ciyaduxingxia.github.io/2021/05/13/wei-fu-wu/">https://ciyaduxingxia.github.io/2021/05/13/wei-fu-wu/</a>
+                    <a href="https://ciyaduxingxia.github.io/2021/05/21/fen-bu-shi-xi-tong/">https://ciyaduxingxia.github.io/2021/05/21/fen-bu-shi-xi-tong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -638,8 +817,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
-                                    <span class="chip bg-color">微服务</span>
+                                <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
+                                    <span class="chip bg-color">分布式</span>
+                                </a>
+                            
+                                <a href="/tags/RPC/">
+                                    <span class="chip bg-color">RPC</span>
+                                </a>
+                            
+                                <a href="/tags/Dubbo/">
+                                    <span class="chip bg-color">Dubbo</span>
                                 </a>
                             
                         </div>
@@ -809,17 +996,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/13/springboot-zhi-jing-tai-zi-yuan-dao-ru/">
+                <a href="/2021/05/21/fen-bu-shi-xi-tong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="spingboot之静态资源导出原理">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="分布式系统">
                         
-                        <span class="card-title">spingboot之静态资源导出原理</span>
+                        <span class="card-title">分布式系统</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -829,26 +1017,35 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/springboot/" class="post-category">
-                                    springboot
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" class="post-category">
+                                    分布式
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springboot/">
-                        <span class="chip bg-color">springboot</span>
+                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
+                        <span class="chip bg-color">分布式</span>
+                    </a>
+                    
+                    <a href="/tags/RPC/">
+                        <span class="chip bg-color">RPC</span>
+                    </a>
+                    
+                    <a href="/tags/Dubbo/">
+                        <span class="chip bg-color">Dubbo</span>
                     </a>
                     
                 </div>
@@ -862,13 +1059,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/13/zhu-jie-springbootapplication/">
+                <a href="/2021/05/21/springboot-zhi-cron-biao-da-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="springboot之@SpringBootApplication">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="springboot之cron表达式">
                         
-                        <span class="card-title">springboot之@SpringBootApplication</span>
+                        <span class="card-title">springboot之cron表达式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -879,7 +1076,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
                             </span>
                         <span class="publish-author">
                             
@@ -887,10 +1084,6 @@
                             
                             <a href="/categories/springboot/" class="post-category">
                                     springboot
-                                </a>
-                            
-                            <a href="/categories/springboot/%E6%B3%A8%E8%A7%A3/" class="post-category">
-                                    注解
                                 </a>
                             
                             
@@ -904,8 +1097,8 @@
                         <span class="chip bg-color">springboot</span>
                     </a>
                     
-                    <a href="/tags/%E6%B3%A8%E8%A7%A3/">
-                        <span class="chip bg-color">注解</span>
+                    <a href="/tags/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                        <span class="chip bg-color">cron表达式</span>
                     </a>
                     
                 </div>

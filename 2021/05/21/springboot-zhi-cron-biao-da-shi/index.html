@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="微服务, ciyaduxingxia,github">
+    <meta name="keywords" content="springboot之cron表达式, ciyaduxingxia,github">
     <meta name="description" content="北冥有鱼，其名为鲲，鲲之大，不知其几千里也；化而为鸟，其名为鹏.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>微服务 | 肖相杰的博客</title>
+    <title>springboot之cron表达式 | 肖相杰的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">微服务</h1>
+                    <h1 class="description center-align post-title">springboot之cron表达式</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
-                                <span class="chip bg-color">微服务</span>
+                            <a href="/tags/springboot/">
+                                <span class="chip bg-color">springboot</span>
+                            </a>
+                        
+                            <a href="/tags/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                                <span class="chip bg-color">cron表达式</span>
                             </a>
                         
                     </div>
@@ -443,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                微服务
+                            <a href="/categories/springboot/" class="post-category">
+                                springboot
                             </a>
                         
                     </div>
@@ -456,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-13
+                    2021-05-21
                 </div>
                 
 
@@ -465,14 +469,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    6 分
                 </div>
                 
 
@@ -495,85 +499,123 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="什么是微服务"><a href="#什么是微服务" class="headerlink" title="什么是微服务"></a>什么是微服务</h2><blockquote>
-<p>简而言之，微服务架构风格是一种将单个应用程序开发为一套小型服务的方法，每个小型服务都在自己的进程中运行，并以轻量级机制（通常是 HTTP  资源  API）进行通信。</p>
-<p>这些服务围绕业务功能构建，可通过全自动部署机制来独立部署。这些服务共用一个最小型的集中式管理，它们可以使用不同的编程语言编写，并使用不同的数据存储技术。</p>
-</blockquote>
-<p>单体(monolithic)（all in one）风格:</p>
-<blockquote>
-<p>单体应用程序被构建为单一单元。企业应用程序通常由三个部分构成：客户端用户界面（由用户机器上的浏览器中运行的 HTML 页面和 JS组成）、数据库（由许多表组成，通常是在关系型数据库中管理）系统、服务器端应用程序。服务器端应用程序处理 HTTP  请求，执行一些逻辑处理，从数据库检索和更新数据，选择数据并填充到要发送到浏览器的 HTML  视图中。这个服务器端应用程序是一个整体——那么发生任何更改都会影响到应用程序的构建和部署</p>
-<p>优点：易于开发和测试，方便部署，当需要扩展的时候只需要把war包复制多份，然后放在多个服务器上，再做个负载均衡即可</p>
-<p>缺点：在将更多应用程序部署到云的时候。变更周期被捆绑在一起——即使只是对应用程序的一小部分进行了更改，也需要重建和部署整个单体应用。随着时间的推移，通常很难保持良好的模块化结构。对系统进行扩展时，不得不扩展整个应用系统。</p>
-</blockquote>
-<p>微服务原文可见：<a target="_blank" rel="noopener" href="https://www.martinfowler.com/articles/microservices.html">https://www.martinfowler.com/articles/microservices.html</a></p>
-<p>微服务风格并不是新颖的或创新的，其根源至少可以追溯到 Unix 的设计原则</p>
-<p><img src="https://doocs.gitee.io/advanced-java/docs/micro-services/images/sketch.png" alt="微服务设计原理"></p>
-<h2 id="从单体式架构到微服务架构"><a href="#从单体式架构到微服务架构" class="headerlink" title="从单体式架构到微服务架构"></a>从单体式架构到微服务架构</h2><h3 id="迁移到微服务综述"><a href="#迁移到微服务综述" class="headerlink" title="迁移到微服务综述"></a>迁移到微服务综述</h3><p>迁移单体式应用到微服务架构意味着一系列现代化过程，有点像这几代开发者一直在做的事情，实时上，当迁移时，我们可以重用一些想法。</p>
-<p>一个策略是：不要大规模（big bang）重写代码（只有当你承担重建一套全新基于微服务的应用时候可以采用重写这种方法）。重写代码听起来很不错，但实际上充满了风险最终可能会失败，就如 Martin Fowler 所说：</p>
-<blockquote>
-<p>“the only thing a Big Bang rewrite guarantees is a Big Bang!”</p>
-</blockquote>
-<p>相反，应该采取逐步迁移单体式应用的策略，通过逐步生成微服务新应用，与旧的单体式应用集成，随着时间推移，单体式应用在整个架构中比例逐渐下降直到消失或者成为微服务架构一部分。这个策略有点像在高速路上限速到 70 迈对车做维护，尽管有挑战，但是比起重写的风险小很多。</p>
-<p>Martin Fowler  将这种现代化策略成为绞杀（Strangler）应用，名字来源于雨林中的绞杀藤（strangler vine），也叫绞杀榕 (strangler  fig)。绞杀藤为了爬到森林顶端都要缠绕着大树生长，一段时间后，树死了，留下树形藤。这种应用也使用同一种模式，围绕着传统应用开发了新型微服务应用，传统应用会渐渐退出舞台。</p>
-<p>我们来看看其他可行策略。</p>
-<h3 id="策略-1——停止挖掘"><a href="#策略-1——停止挖掘" class="headerlink" title="策略 1——停止挖掘"></a>策略 1——停止挖掘</h3><p>Law of Holes 是说当自己进洞就应该停止挖掘。对于单体式应用不可管理时这是最佳建议。换句话说，应该停止让单体式应用继续变大，也就是说当开发新功能时不应该为旧单体应用添加新代码，最佳方法应该是将新功能开发成独立微服务。如下图所示：</p>
-<p><img src="https://doocs.gitee.io/advanced-java/docs/micro-services/images/Law-of-Holes.png" alt="停止挖掘流程"></p>
-<p>除了新服务和传统应用，还有两个模块，其一是请求路由器，负责处理入口（http）请求，有点像之前提到的 API 网关。路由器将新功能请求发送给新开发的服务，而将传统请求还发给单体式应用。</p>
-<p>另外一个是胶水代码（glue code），将微服务和单体应用集成起来，微服务很少能独立存在，经常会访问单体应用的数据。胶水代码，可能在单体应用或者为服务或者二者兼而有之，负责数据整合。微服务通过胶水代码从单体应用中读写数据。</p>
-<p>微服务有三种方式访问单体应用数据：</p>
-<ul>
-<li>换气单体应用提供的远程 API</li>
-<li>直接访问单体应用数据库</li>
-<li>自己维护一份从单体应用中同步的数据</li>
+                <h2 id="springboot之cron表达式"><a href="#springboot之cron表达式" class="headerlink" title="springboot之cron表达式"></a>springboot之cron表达式</h2><h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p>在学习springboot的定时任务时，在方法上的<code>@Scheduled(cron = &quot;0 * * * * 0-7&quot;)</code>注解可以用cron表达式来表示定时的时间，这个博客来详细讲下cron表达式</p>
+<h3 id="2-Cron详解"><a href="#2-Cron详解" class="headerlink" title="2.Cron详解"></a>2.Cron详解</h3><h4 id="字段释义"><a href="#字段释义" class="headerlink" title="字段释义"></a>字段释义</h4><pre class="line-numbers language-none"><code class="language-none">0 0&#x2F;5 * * * ？
+秒    分    时    天(月)    月    天(周)    年份(一般省略)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="符号释义"><a href="#符号释义" class="headerlink" title="符号释义"></a>符号释义</h4><p><code>*</code>：表示所有可能的值</p>
+<p><code>/</code>：表示数值的增量，简单来说，比如分写上<code>0/5</code>表示从0分开始，每隔5分钟</p>
+<p><code>?</code>：仅用在天(月)和天(周)，表示不指定值，当其中一个有值时，另外一个需要设为`?</p>
+<h4 id="字段允许字符"><a href="#字段允许字符" class="headerlink" title="字段允许字符"></a>字段允许字符</h4><h5 id="秒：0-59"><a href="#秒：0-59" class="headerlink" title="秒：0-59 , - * /"></a>秒：<code>0-59</code> <code>,</code> <code>-</code> <code>*</code> <code>/</code></h5><ul>
+<li>26：表示第26秒</li>
+<li>5,16,27：表示第5秒、第16秒和第27秒</li>
+<li>1-5：表示从1秒到5秒，就是1 2  3  4 5 秒</li>
+<li>*：表示每一秒</li>
+<li>2/15：表示从第2秒开始，每隔15秒，就是2 17 32 47 秒</li>
 </ul>
-<p>胶水代码也被称为容灾层（anti-corruption layer），这是因为胶水代码保护微服务全新域模型免受传统单体应用域模型污染。胶水代码在这两种模型间提供翻译功能。术语  anti-corruption layer 第一次出现在 Eric Evans 撰写的必读书 _Domain Driven  Design_，随后就被提炼为一篇白皮书。开发容灾层可能有点不是很重要，但却是避免单体式泥潭的必要部分。</p>
-<p>将新功能以轻量级微服务方式实现由很多优点，例如可以阻止单体应用变的更加无法管理。微服务本身可以开发、部署和独立扩展。采用微服务架构会给开发者带来不同的切身感受。</p>
-<p>然而，这方法并不解决任何单体式本身问题，为了解决单体式本身问题必须深入单体应用  做出改变。我们来看看这么做的策略。</p>
-<h3 id="策略-2——将前端和后端分离"><a href="#策略-2——将前端和后端分离" class="headerlink" title="策略 2——将前端和后端分离"></a>策略 2——将前端和后端分离</h3><p>减小单体式应用复杂度的策略是讲表现层和业务逻辑、数据访问层分开。典型的企业应用至少有三个不同元素构成：</p>
-<ol>
-<li>表现层——处理 HTTP 请求，要么响应一个 RESTAPI 请求，要么是提供一个基于 HTML 的图形接口。对于一个复杂用户接口应用，表现层经常是代码重要的部分。</li>
-<li>业务逻辑层——完成业务逻辑的应用核心。</li>
-<li>数据访问层——访问基础元素，例如数据库和消息代理。</li>
-</ol>
-<p>在表现层与业务数据访问层之间有清晰的隔离。业务层有由若干方面组成的粗粒度（coarse-grained）的 API，内部包含了业务逻辑元素。API  是可以将单体业务分割成两个更小应用的天然边界，其中一个应用是表现层，另外一个是业务和数据访问逻辑。分割后，表现逻辑应用远程调用业务逻辑应用，下图表示迁移前后架构不同：</p>
-<p><img src="https://doocs.gitee.io/advanced-java/docs/micro-services/images/Before-and-after-migration.png" alt="迁移前后的架构"></p>
-<p>单体应用这么分割有两个好处，其一使得应用两部分开发、部署和扩展各自独立，特别地，允许表现层开发者在用户界面上快速选择，进行 A/B 测试；其二，使得一些远程 API 可以被微服务调用。</p>
-<p>然而，这种策略只是部分的解决方案。很可能应用的两部分之一或者全部都是不可管理的，因此需要使用第三种策略来消除剩余的单体架构。</p>
-<h3 id="策略-3——抽出服务"><a href="#策略-3——抽出服务" class="headerlink" title="策略 3——抽出服务"></a>策略 3——抽出服务</h3><p>第三种迁移策略就是从单体应用中抽取出某些模块成为独立微服务。每当抽取一个模块变成微服务，单体应用就变简单一些；一旦转换足够多的模块，单体应用本身已经不成为问题了，要么消失了，要么简单到成为一个服务。</p>
-<h4 id="排序那个模块应该被转成微服务"><a href="#排序那个模块应该被转成微服务" class="headerlink" title="排序那个模块应该被转成微服务"></a>排序那个模块应该被转成微服务</h4><p>一个巨大的复杂单体应用由成十上百个模块构成，每个都是被抽取对象。决定第一个被抽取模块一般都是挑战，一般最好是从最容易抽取的模块开始，这会让开发者积累足够经验，这些经验可以为后续模块化工作带来巨大好处。</p>
-<p>转换模块成为微服务一般很耗费时间，一般可以根据获益程度来排序，一般从经常变化模块开始会获益最大。一旦转换一个模块为微服务，就可以将其开发部署成独立模块，从而加速开发进程。</p>
-<p>将资源消耗大户先抽取出来也是排序标准之一。例如，将内存数据库抽取出来成为一个微服务会非常有用，可以将其部署在大内存主机上。同样的，将对计算资源很敏感的算法应用抽取出来也是非常有益的，这种服务可以被部署在有很多 CPU 的主机上。通过将资源消耗模块转换成微服务，可以使得应用易于扩展。</p>
-<p>查找现有粗粒度边界来决定哪个模块应该被抽取，也是很有益的，这使得移植工作更容易和简单。例如，只与其他应用异步同步消息的模块就是一个明显边界，可以很简单容易地将其转换为微服务。</p>
-<h4 id="如何抽取模块"><a href="#如何抽取模块" class="headerlink" title="如何抽取模块"></a>如何抽取模块</h4><p>抽取模块第一步就是定义好模块和单体应用之间粗粒度接口，由于单体应用需要微服务的数据，反之亦然，因此更像是一个双向 API。因为必须在负责依赖关系和细粒度接口模式之间做好平衡，因此开发这种 API  很有挑战性，尤其对使用域模型模式的业务逻辑层来说更具有挑战，因此经常需要改变代码来解决依赖性问题，如图所示：</p>
-<p>一旦完成粗粒度接口，也就将此模块转换成独立微服务。为了实现，必须写代码使得单体应用和微服务之间通过使用进程间通信（IPC）机制的 API 来交换信息。如图所示迁移前后对比：</p>
-<p><img src="https://doocs.gitee.io/advanced-java/docs/micro-services/images/30103116_ZCcM.png" alt="迁移前后对比"></p>
-<p>此例中，正在使用 Y 模块的 Z 模块是备选抽取模块，其元素正在被 X 模块使用，迁移第一步就是定义一套粗粒度 APIs，第一个接口应该是被 X 模块使用的内部接口，用于激活 Z 模块；第二个接口是被 Z 模块使用的外部接口，用于激活 Y 模块。</p>
-<p>迁移第二步就是将模块转换成独立服务。内部和外部接口都使用基于 IPC 机制的代码，一般都会将 Z 模块整合成一个微服务基础框架，来出来割接过程中的问题，例如服务发现。</p>
-<p>抽取完模块，也就可以开发、部署和扩展另外一个服务，此服务独立于单体应用和其它服务。可以从头写代码实现服务；这种情况下，将服务和单体应用整合的 API  代码成为容灾层，在两种域模型之间进行翻译工作。每抽取一个服务，就朝着微服务方向前进一步。随着时间推移，单体应用将会越来越简单，用户就可以增加更多独立的微服务。 将现有应用迁移成微服务架构的现代化应用，不应该通过从头重写代码方式实现，相反，应该通过逐步迁移的方式。有三种策略可以考虑：将新功能以微服务方式实现；将表现层与业务数据访问层分离；将现存模块抽取变成微服务。随着时间推移，微服务数量会增加，开发团队的弹性和效率将会大大增加。</p>
-<h2 id="微服务四大问题"><a href="#微服务四大问题" class="headerlink" title="微服务四大问题"></a>微服务四大问题</h2><blockquote>
-<p>微服务架构问题</p>
-<p>​    分布式架构会遇到的核心问题</p>
-<pre><code>1. 这么多服务，客户端如何去访问（服务路由）
-2. 这么多服务，服务之间如何通信（异步调用）
-3. 这么多服务，如何治理（高可用）
-4. 服务挂了怎么办
-</code></pre>
-</blockquote>
-<h3 id="常见的两套解决方案"><a href="#常见的两套解决方案" class="headerlink" title="常见的两套解决方案"></a>常见的两套解决方案</h3><p><code>Spring Cloud</code>是一套生态，就是用来解决以上四个问题</p>
-<ol>
-<li><p><code>Spring Cloud Netflix</code> 第一套解决方案</p>
-<p>针对第一个问题：API网关=》zuul组件</p>
-<p>针对第二个问题：Feign=》HttpClient=》HTTP通信方式，同步并阻塞</p>
-<p>针对第三个问题：服务注册与发现=》Eureka</p>
-<p>针对第四个问题：熔断机制=》Hystrix</p>
-</li>
-<li><p><code>Apache Dubbo+Zookeeper</code> 第二套解决方案</p>
-<p>针对第一个问题：API网关=》没有</p>
-<p>针对第二个问题：Dubbo=》Java实现的高效RPC框架</p>
-<p>针对第三个问题：服务注册与发现=》Zookeeper</p>
-<p>针对第四个问题：熔断机制=》没有=&gt;借助Hystrix</p>
-</li>
-</ol>
+<h5 id="分：0-59"><a href="#分：0-59" class="headerlink" title="分：0-59 , - * /"></a>分：<code>0-59</code> <code>,</code> <code>-</code> <code>*</code> <code>/</code></h5><p>根据上述的秒，同理可得</p>
+<ul>
+<li>26：表示第26分钟</li>
+<li>5,16,27：表示第5分钟、第16分钟和第27分钟</li>
+<li>1-5：表示从1秒到5分，就是第1 2  3  4 5 分钟</li>
+<li>*：表示每一分钟</li>
+<li>2/15：表示从第2分钟开始，每隔15分钟，就是2 17 32 47 分钟</li>
+</ul>
+<h5 id="时：0-23"><a href="#时：0-23" class="headerlink" title="时：0-23 , - * /"></a>时：<code>0-23</code> <code>,</code> <code>-</code> <code>*</code> <code>/</code></h5><ul>
+<li>10：表示早上10点</li>
+<li>22：表示晚上10点</li>
+<li>2,8,18,23：表示凌晨2点，早上8点，傍晚6点和晚上11点</li>
+<li>9-17：表示朝九晚五，就是9 10 11 12 13 14 15 16 17 点</li>
+<li>*：表示每小时</li>
+<li>10/2：表示从早上10点开始，每隔2小时</li>
+</ul>
+<h5 id="天（月）：1-31-L-W-C"><a href="#天（月）：1-31-L-W-C" class="headerlink" title="天（月）：1-31 , - * / ? L W C"></a>天（月）：<code>1-31</code> <code>,</code> <code>-</code> <code>*</code> <code>/</code> <code>?</code> <code>L</code> <code>W</code> <code>C</code></h5><ul>
+<li>31：表示31号（注意有的月份是没有31号的）</li>
+<li>5,10,15：表示5号、10号和15号</li>
+<li>8-17：表示8号到17号</li>
+<li>*：表示所有可能的值（当指定为星号时，天（周）需指定为?）</li>
+<li>5/9：表示从5号开始，每隔9天</li>
+<li>？：当天（周）指定任意值的时候，天（月）需要设置为?</li>
+<li>L：表示一个月中的最后一天</li>
+<li>6L：表示倒数第6天</li>
+<li>15W：W指工作日，如果15号不是周六日，则表示15号当天；如果15号是周六，则表示14号；如果15号是周日，则表示16号；如果31W是周日，则31W表示29号（周五），不会跨月</li>
+<li>LW：指最后一个工作日</li>
+<li>15C：表示第15天（不是很明白这个，使用15和15C貌似效果相同？）</li>
+</ul>
+<h5 id="月：1-12"><a href="#月：1-12" class="headerlink" title="月：1-12 , - * /"></a>月：<code>1-12</code> <code>,</code> <code>-</code> <code>*</code> <code>/</code></h5><ul>
+<li>10：表示10月份</li>
+<li>5,10,11：表示5月份、10月份和11月份</li>
+<li>4-8：表示4月份到8月份</li>
+<li>*：表示所有可能的值</li>
+<li>5/2：表示从5月份开始，每隔2个月，（就是5 7 9 11 次年5 次年7 次年9……）</li>
+<li>1-12：也可以用JAN-DEC表示</li>
+</ul>
+<h5 id="天（周）：MON-SAT-L-C"><a href="#天（周）：MON-SAT-L-C" class="headerlink" title="天（周）：MON-SAT  , - * / ? L C #"></a>天（周）：<code>MON-SAT</code>  <code>,</code> <code>-</code> <code>*</code> <code>/</code> <code>?</code> <code>L</code> <code>C</code> <code>#</code></h5><ul>
+<li>MON：表示周一</li>
+<li>MON,TUE,FRI：表示周一，周二和周五</li>
+<li>MON-FRI：表示从周一到周五</li>
+<li>MON-WED,SAT：表示从周一到周三，和周六（就是周一、周二、周三和周六）</li>
+<li>mon,tue,wed,thu,fri,sat,sun：表示周一到周日（大小写均可，取星期英文前三个字母，注意星期四是thu，而不是thur）</li>
+<li>7L：表示最后一个周六（效果等同于SATL）（L表示last最后的意思，7表示周六，6表示周五，类推，1表示周日）</li>
+<li>6C：表示周五以及之后包含周五的日期（感觉效果FRI一样，具体还没深究）</li>
+<li>7#2：表示第二个周六（#前面的数字表示星期，1表示周日，2表示周一，以此类推；#后面的数字表示第几个）</li>
+</ul>
+<h5 id="年：留空-2020-2099"><a href="#年：留空-2020-2099" class="headerlink" title="年：留空  2020-2099 , - * /"></a>年：<code>留空</code>  <code>2020-2099</code> <code>,</code> <code>-</code> <code>*</code> <code>/</code></h5><ul>
+<li>2050：表示2050年</li>
+<li>2020,2030,2040：表示2020年、2030年和2040年</li>
+<li>2020-2030：表示2020年到2030年</li>
+<li>*：表示所有可能的值</li>
+<li>2020/10：表示从2020年开始，每隔10年，（就是2020,2030,2040……）</li>
+</ul>
+<h3 id="3-例子"><a href="#3-例子" class="headerlink" title="3.例子"></a>3.例子</h3><ul>
+<li><p>每隔5分钟执行一次（从0分开始）</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">0</span> <span class="token number">0</span><span class="token operator">/</span><span class="token number">5</span> <span class="token operator">*</span> <span class="token operator">*</span> <span class="token operator">*</span> ？<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>从0时开始，每小时执行一次</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">0</span> <span class="token number">0</span> <span class="token number">0</span><span class="token operator">/</span><span class="token number">1</span> <span class="token operator">*</span> <span class="token operator">*</span> <span class="token operator">?</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>每天的7点30分</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">0</span> <span class="token number">30</span> <span class="token number">7</span> <span class="token operator">*</span> <span class="token operator">*</span> <span class="token operator">?</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>工作日的早上6点30分（即是周一到周五，每天早上的6点30分）</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">0</span> <span class="token number">30</span> <span class="token number">6</span> <span class="token operator">?</span> <span class="token operator">*</span> MON<span class="token operator">-</span>FRI<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>每个月的最后一天早上的10点整</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">0</span> <span class="token number">0</span> <span class="token number">10</span> <span class="token class-name">L</span> <span class="token operator">*</span>　<span class="token operator">?</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>每个月的最后一个工作日的晚上6点30分（18:30）</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">0</span> <span class="token number">30</span> <span class="token number">18</span> LW <span class="token operator">*</span> <span class="token operator">?</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>朝九晚五，每小时</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">0</span> <span class="token number">0</span> <span class="token number">9</span><span class="token operator">-</span><span class="token number">17</span> <span class="token operator">*</span> <span class="token operator">*</span> <span class="token operator">?</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>2020年的8月份每个星期六和星期日早上10点28分28秒</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">28</span> <span class="token number">28</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token number">8</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">7</span> <span class="token number">2020</span>
+<span class="token number">1</span><span class="token punctuation">,</span><span class="token number">7</span>中，<span class="token number">1</span>表示周日，<span class="token number">7</span>表示周六<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>每个月的倒数第二天的早上8点整</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">0</span> <span class="token number">0</span> <span class="token number">8</span> <span class="token class-name">L</span><span class="token operator">-</span><span class="token number">1</span> <span class="token operator">*</span> <span class="token operator">?</span>
+<span class="token class-name">L</span>表示最后一天（倒数第一天），<span class="token class-name">L</span><span class="token operator">-</span><span class="token number">1</span>则表示倒数第二天，以此类推<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>下面是网上一些例子，我直接拿过来了</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token string">"0 0 12 * * ?"</span> 每天中午<span class="token number">12</span>点触发 
+<span class="token string">"0 15 10 ? * *"</span> 每天上午<span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span>触发 
+<span class="token string">"0 15 10 * * ?"</span> 每天上午<span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span>触发 
+<span class="token string">"0 15 10 * * ? *"</span> 每天上午<span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span>触发 
+<span class="token string">"0 15 10 * * ? 2005"</span> <span class="token number">2005</span>年的每天上午<span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span>触发 
+<span class="token string">"0 * 14 * * ?"</span> 在每天下午<span class="token number">2</span>点到下午<span class="token number">2</span><span class="token operator">:</span><span class="token number">59</span>期间的每<span class="token number">1</span>分钟触发 
+<span class="token string">"0 0/5 14 * * ?"</span> 在每天下午<span class="token number">2</span>点到下午<span class="token number">2</span><span class="token operator">:</span><span class="token number">55</span>期间的每<span class="token number">5</span>分钟触发 
+<span class="token string">"0 0/5 14,18 * * ?"</span> 在每天下午<span class="token number">2</span>点到<span class="token number">2</span><span class="token operator">:</span><span class="token number">55</span>期间和下午<span class="token number">6</span>点到<span class="token number">6</span><span class="token operator">:</span><span class="token number">55</span>期间的每<span class="token number">5</span>分钟触发 
+<span class="token string">"0 0-5 14 * * ?"</span> 在每天下午<span class="token number">2</span>点到下午<span class="token number">2</span><span class="token operator">:</span><span class="token number">05</span>期间的每<span class="token number">1</span>分钟触发 
+<span class="token string">"0 10,44 14 ? 3 WED"</span> 每年三月的星期三的下午<span class="token number">2</span><span class="token operator">:</span><span class="token number">10</span>和<span class="token number">2</span><span class="token operator">:</span><span class="token number">44</span>触发 
+<span class="token string">"0 15 10 ? * MON-FRI"</span> 周一至周五的上午<span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span>触发 
+<span class="token string">"0 15 10 15 * ?"</span> 每月<span class="token number">15</span>日上午<span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span>触发 
+<span class="token string">"0 15 10 L * ?"</span> 每月最后一日的上午<span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span>触发 
+<span class="token string">"0 15 10 ? * 6L"</span> 每月的最后一个星期五上午<span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span>触发 
+<span class="token string">"0 15 10 ? * 6L 2002-2005"</span> <span class="token number">2002</span>年至<span class="token number">2005</span>年的每月的最后一个星期五上午<span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span>触发 
+<span class="token string">"0 15 10 ? * 6#3"</span> 每月的第三个星期五上午<span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span>触发 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="4-要点"><a href="#4-要点" class="headerlink" title="4.要点"></a>4.要点</h3><ul>
+<li>一般是有6个位置，分别表示 <strong>分 秒 时 天(月) 月 天(周)</strong>   第7个位置是年，一般省略</li>
+<li>6个位置中的 <strong>天(月)</strong> 表示一个月中的第几天，即是几月几号中的几号；<strong>天(周)</strong> 表示一周中的第几天，周日为第一天，周六为第七天</li>
+<li>**天(月)<strong>和</strong>天(周)**不能同时指定，其中必定有一个是 <strong>?</strong></li>
+<li><strong>?</strong> 只能用在 <strong>天(月)<strong>和</strong>天(周)</strong></li>
+<li>2-10：符号  <strong>-</strong>  表示范围区间</li>
+<li>2/10：符号  <strong>/</strong>  表示频率，从2开始，每隔10，即2，12，22……类推</li>
+<li>2,10：符号  <strong>,</strong>  表示和，<code>2,10</code>表示2和10</li>
+<li>L：last的缩写，表示最后，只能用在<strong>天(月)<strong>和</strong>天(周)<strong>，一般和数字搭配使用，如L在天(月)中表示一个月中的最后一天，</strong>L-1</strong>则表示<strong>每个月的倒数第二天</strong>；3L在天(周)中则表示最后一个星期二</li>
+</ul>
 
                 
             </div>
@@ -600,7 +642,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ciyaduxingxia.github.io/2021/05/13/wei-fu-wu/">https://ciyaduxingxia.github.io/2021/05/13/wei-fu-wu/</a>
+                    <a href="https://ciyaduxingxia.github.io/2021/05/21/springboot-zhi-cron-biao-da-shi/">https://ciyaduxingxia.github.io/2021/05/21/springboot-zhi-cron-biao-da-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -638,8 +680,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
-                                    <span class="chip bg-color">微服务</span>
+                                <a href="/tags/springboot/">
+                                    <span class="chip bg-color">springboot</span>
+                                </a>
+                            
+                                <a href="/tags/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                                    <span class="chip bg-color">cron表达式</span>
                                 </a>
                             
                         </div>
@@ -813,13 +859,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/05/13/springboot-zhi-jing-tai-zi-yuan-dao-ru/">
+                <a href="/2021/05/21/fen-bu-shi-xi-tong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="spingboot之静态资源导出原理">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="分布式系统">
                         
-                        <span class="card-title">spingboot之静态资源导出原理</span>
+                        <span class="card-title">分布式系统</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -830,14 +876,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-13
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/springboot/" class="post-category">
-                                    springboot
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" class="post-category">
+                                    分布式
                                 </a>
                             
                             
@@ -847,8 +893,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springboot/">
-                        <span class="chip bg-color">springboot</span>
+                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
+                        <span class="chip bg-color">分布式</span>
+                    </a>
+                    
+                    <a href="/tags/RPC/">
+                        <span class="chip bg-color">RPC</span>
+                    </a>
+                    
+                    <a href="/tags/Dubbo/">
+                        <span class="chip bg-color">Dubbo</span>
                     </a>
                     
                 </div>
@@ -862,13 +916,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/13/zhu-jie-springbootapplication/">
+                <a href="/2021/05/21/springboot-zhi-shi-tu-jie-xi-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="springboot之@SpringBootApplication">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="springboot之视图解析器">
                         
-                        <span class="card-title">springboot之@SpringBootApplication</span>
+                        <span class="card-title">springboot之视图解析器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -879,7 +933,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
                             </span>
                         <span class="publish-author">
                             
@@ -887,10 +941,6 @@
                             
                             <a href="/categories/springboot/" class="post-category">
                                     springboot
-                                </a>
-                            
-                            <a href="/categories/springboot/%E6%B3%A8%E8%A7%A3/" class="post-category">
-                                    注解
                                 </a>
                             
                             
@@ -904,8 +954,8 @@
                         <span class="chip bg-color">springboot</span>
                     </a>
                     
-                    <a href="/tags/%E6%B3%A8%E8%A7%A3/">
-                        <span class="chip bg-color">注解</span>
+                    <a href="/tags/%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90%E5%99%A8/">
+                        <span class="chip bg-color">视图解析器</span>
                     </a>
                     
                 </div>
