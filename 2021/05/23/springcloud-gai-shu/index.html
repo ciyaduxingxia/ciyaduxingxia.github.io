@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="springboot之首页配置, ciyaduxingxia,github">
+    <meta name="keywords" content="springcloud概述, ciyaduxingxia,github">
     <meta name="description" content="北冥有鱼，其名为鲲，鲲之大，不知其几千里也；化而为鸟，其名为鹏.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>springboot之首页配置 | 肖相杰的博客</title>
+    <title>springcloud概述 | 肖相杰的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">springboot之首页配置</h1>
+                    <h1 class="description center-align post-title">springcloud概述</h1>
                 </div>
             </div>
         </div>
@@ -431,12 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/springboot/">
-                                <span class="chip bg-color">springboot</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%A6%96%E9%A1%B5/">
-                                <span class="chip bg-color">首页</span>
+                            <a href="/tags/springcloud/">
+                                <span class="chip bg-color">springcloud</span>
                             </a>
                         
                     </div>
@@ -447,8 +443,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/springboot/" class="post-category">
-                                springboot
+                            <a href="/categories/springcloud/" class="post-category">
+                                springcloud
                             </a>
                         
                     </div>
@@ -460,7 +456,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-21
+                    2021-05-23
                 </div>
                 
 
@@ -469,14 +465,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    198
+                    802
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -499,56 +495,183 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="springboot之首页配置"><a href="#springboot之首页配置" class="headerlink" title="springboot之首页配置"></a>springboot之首页配置</h2><p>在<code>WebMvcAutoConfiguration</code>中有如下方法有关首页配置</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
-<span class="token keyword">public</span> <span class="token class-name">WelcomePageHandlerMapping</span> <span class="token function">welcomePageHandlerMapping</span><span class="token punctuation">(</span><span class="token class-name">ApplicationContext</span> applicationContext<span class="token punctuation">,</span> <span class="token class-name">FormattingConversionService</span> mvcConversionService<span class="token punctuation">,</span> <span class="token class-name">ResourceUrlProvider</span> mvcResourceUrlProvider<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">//重点在于this.getWelcomePage()</span>
-    <span class="token class-name">WelcomePageHandlerMapping</span> welcomePageHandlerMapping <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WelcomePageHandlerMapping</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TemplateAvailabilityProviders</span><span class="token punctuation">(</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">,</span> applicationContext<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getWelcomePage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>mvcProperties<span class="token punctuation">.</span><span class="token function">getStaticPathPattern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    welcomePageHandlerMapping<span class="token punctuation">.</span><span class="token function">setInterceptors</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getInterceptors</span><span class="token punctuation">(</span>mvcConversionService<span class="token punctuation">,</span> mvcResourceUrlProvider<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    welcomePageHandlerMapping<span class="token punctuation">.</span><span class="token function">setCorsConfigurations</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getCorsConfigurations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> welcomePageHandlerMapping<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><code>this.getWelcomePage()</code>方法如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token class-name">Resource</span> <span class="token function">getWelcomePage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> var1 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>resourceProperties<span class="token punctuation">.</span><span class="token function">getStaticLocations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> var2 <span class="token operator">=</span> var1<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> var3 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> var3 <span class="token operator">&lt;</span> var2<span class="token punctuation">;</span> <span class="token operator">++</span>var3<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">String</span> location <span class="token operator">=</span> var1<span class="token punctuation">[</span>var3<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token comment">//获取首页</span>
-        <span class="token class-name">Resource</span> indexHtml <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getIndexHtml</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>indexHtml <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> indexHtml<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token class-name">ServletContext</span> servletContext <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>servletContext <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getIndexHtml</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">Resource</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ServletContextResource</span><span class="token punctuation">(</span>servletContext<span class="token punctuation">,</span> <span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token comment">//根据首页位置获取首页</span>
-<span class="token keyword">private</span> <span class="token class-name">Resource</span> <span class="token function">getIndexHtml</span><span class="token punctuation">(</span><span class="token class-name">String</span> location<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getIndexHtml</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>resourceLoader<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">private</span> <span class="token class-name">Resource</span> <span class="token function">getIndexHtml</span><span class="token punctuation">(</span><span class="token class-name">Resource</span> location<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">//首页url为/index.html</span>
-        <span class="token class-name">Resource</span> resource <span class="token operator">=</span> location<span class="token punctuation">.</span><span class="token function">createRelative</span><span class="token punctuation">(</span><span class="token string">"index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>resource<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> resource<span class="token punctuation">.</span><span class="token function">getURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> resource<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> var3<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+                <h2 id="SpringCloud概述"><a href="#SpringCloud概述" class="headerlink" title="SpringCloud概述"></a>SpringCloud概述</h2><h3 id="1-微服务技术栈"><a href="#1-微服务技术栈" class="headerlink" title="1.微服务技术栈"></a>1.微服务技术栈</h3><table>
+<thead>
+<tr>
+<th>微服务条目</th>
+<th>落地技术</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务开发</td>
+<td>SpringBoot,Spring,SpringMV</td>
+</tr>
+<tr>
+<td>服务配置与管理</td>
+<td>NetFlix公司的Archaius、阿里的Diamond</td>
+</tr>
+<tr>
+<td>服务注册与发现</td>
+<td>Eureka、Consul、Zookeeper</td>
+</tr>
+<tr>
+<td>服务调用</td>
+<td>Rest、RPC、gRPC</td>
+</tr>
+<tr>
+<td>服务熔断器</td>
+<td>Hystrix、Envoy等</td>
+</tr>
+<tr>
+<td>负载均衡</td>
+<td>Ribbon、Nginx等</td>
+</tr>
+<tr>
+<td>服务接口调用（客户端调用服务的简化工具）</td>
+<td>Feign等</td>
+</tr>
+<tr>
+<td>消息队列</td>
+<td>Kafka、RabbitMQ、ActiveMQ</td>
+</tr>
+<tr>
+<td>服务配置中心管理</td>
+<td>SpringCloudConfig、Chef等</td>
+</tr>
+<tr>
+<td>服务路由（API网关）</td>
+<td>Zuul</td>
+</tr>
+<tr>
+<td>服务监控</td>
+<td>Zabbix、Nagios、Metrics、Specatator</td>
+</tr>
+<tr>
+<td>全链路追踪</td>
+<td>Zipkin、Brave、Dapper</td>
+</tr>
+<tr>
+<td>服务部署</td>
+<td>Docker、OpenStack、Kubernetes等</td>
+</tr>
+<tr>
+<td>数据流操作开发包</td>
+<td>SpringCloud Stream（封装与Redis，Rabbit，Kafka等发送接收消息）</td>
+</tr>
+<tr>
+<td>时间消息总线</td>
+<td>SpringCloud Bus</td>
+</tr>
+</tbody></table>
+<h3 id="2-SpringCloud入门"><a href="#2-SpringCloud入门" class="headerlink" title="2.SpringCloud入门"></a>2.SpringCloud入门</h3><h4 id="2-1-什么是SpringCloud"><a href="#2-1-什么是SpringCloud" class="headerlink" title="2.1 什么是SpringCloud"></a>2.1 什么是SpringCloud</h4><blockquote>
+<p>官方说法：<br>构建分布式系统不需要复杂和容易出错。Spring Cloud  为最常见的分布式系统模式提供了一种简单且易于接受的编程模型，帮助开发人员构建有弹性的、可靠的、协调的应用程序。Spring Cloud 构建于  Spring Boot 之上，使得开发者很容易入手并快速应用于生产中。</p>
+</blockquote>
+<p>简单来说：<code>Spring Cloud</code> 就是微服务系统架构的一站式解决方案，在平时我们构建微服务的过程中需要做如 <strong>服务发现注册</strong> 、<strong>配置中心</strong> 、<strong>消息总线</strong> 、<strong>负载均衡</strong> 、<strong>断路器</strong> 、<strong>数据监控</strong> 等操作，而 Spring Cloud 为我们提供了一套简易的编程模型，使我们能在 Spring Boot 的基础上轻松地实现微服务项目的构建。</p>
+<h4 id="2-2-SpringCloud的版本"><a href="#2-2-SpringCloud的版本" class="headerlink" title="2.2 SpringCloud的版本"></a>2.2 SpringCloud的版本</h4><p><code>Spring Cloud</code> 的版本号并不是我们通常见的数字版本号，而是一些很奇怪的单词。这些单词均为英国伦敦地铁站的站名。同时根据字母表的顺序来对应版本时间顺序，比如：最早 的 <code>Release</code> 版本 <code>Angel</code>，第二个 <code>Release</code> 版本 <code>Brixton</code>（英国地名），然后是 <code>Camden</code>、 <code>Dalston</code>、<code>Edgware</code>、<code>Finchley</code>、<code>Greenwich</code>、<code>Hoxton</code>。</p>
+<h4 id="2-3-为什么选择SpringCloud"><a href="#2-3-为什么选择SpringCloud" class="headerlink" title="2.3 为什么选择SpringCloud"></a>2.3 为什么选择SpringCloud</h4><p><strong>选型依据</strong></p>
+<ul>
+<li>整体式解决方案，成熟的框架</li>
+<li>高热度社区</li>
+<li>可维护性强</li>
+</ul>
+<p><strong>大公司的微服务架构</strong></p>
+<ul>
+<li>阿里：dubbo + HFS</li>
+<li>京东：JSF</li>
+<li>新浪：Motan</li>
+<li>当当网：DubboX</li>
+<li>…</li>
+</ul>
+<p><strong>框架对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th align="center">Netflix/SpringCloud</th>
+<th>Motan</th>
+<th>gRPC</th>
+<th>Thrift</th>
+<th>Dubbo/DubboX</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>功能定位</td>
+<td align="center">完整的微服务框架</td>
+<td>RPC框架，但是整合了ZK或Consul，实现了集群环境的基本服务注册/发现</td>
+<td>RPC框架</td>
+<td>RPC框架</td>
+<td>服务框架</td>
+</tr>
+<tr>
+<td>支持Rest</td>
+<td align="center">是，Ribbon支持多种可插拔的序列化选择</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>支持RPC</td>
+<td align="center">否</td>
+<td>是（Hession2）</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>支持多语言</td>
+<td align="center">是（Rest形式）</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>负载均衡</td>
+<td align="center">是（服务端zuul+客户端Ribbon），zuul服务，动态路由，云端负载均衡Eureka（针对中间层服务器）</td>
+<td>是（客户端）</td>
+<td>否</td>
+<td>否</td>
+<td>是（客户端）</td>
+</tr>
+<tr>
+<td>配置服务</td>
+<td align="center">Netflix Archaius，SpringCloud Config Server集中配置</td>
+<td>是（Zookeeper提供）</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>服务调用链监控</td>
+<td align="center">是（zuul），zuul提供边缘服务，API网关</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>高可用/容错</td>
+<td align="center">是（服务端Hystrix+客户端Ribbon）</td>
+<td>是（客户端）</td>
+<td>否</td>
+<td>否</td>
+<td>是（客户端）</td>
+</tr>
+<tr>
+<td>典型应用案例</td>
+<td align="center">Netflix</td>
+<td>Sina</td>
+<td>Google</td>
+<td>Facebook</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="2-4-SpringCloud官方链接"><a href="#2-4-SpringCloud官方链接" class="headerlink" title="2.4 SpringCloud官方链接"></a>2.4 SpringCloud官方链接</h4><p><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud/#learn">SpringCloud官方</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.springcloud.cc/spring-cloud-netflix.html">SpringCloud Netflix</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.springcloud.cc/spring-cloud-dalston.html">SpringCloud中文API文档</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.springcloud.cn/">SpringCloud中文社区</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.springcloud.cc/">SpringCloud技术栈</a></p>
 
                 
             </div>
@@ -575,7 +698,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ciyaduxingxia.github.io/2021/05/21/springboot-zhi-shou-ye/">https://ciyaduxingxia.github.io/2021/05/21/springboot-zhi-shou-ye/</a>
+                    <a href="https://ciyaduxingxia.github.io/2021/05/23/springcloud-gai-shu/">https://ciyaduxingxia.github.io/2021/05/23/springcloud-gai-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -613,12 +736,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/springboot/">
-                                    <span class="chip bg-color">springboot</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%A6%96%E9%A1%B5/">
-                                    <span class="chip bg-color">首页</span>
+                                <a href="/tags/springcloud/">
+                                    <span class="chip bg-color">springcloud</span>
                                 </a>
                             
                         </div>
@@ -788,17 +907,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/21/springboot-zhi-shi-tu-jie-xi-qi/">
+                <a href="/2021/05/23/springcloud-gai-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="springboot之视图解析器">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="springcloud概述">
                         
-                        <span class="card-title">springboot之视图解析器</span>
+                        <span class="card-title">springcloud概述</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -808,30 +928,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/springboot/" class="post-category">
-                                    springboot
+                            <a href="/categories/springcloud/" class="post-category">
+                                    springcloud
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springboot/">
-                        <span class="chip bg-color">springboot</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90%E5%99%A8/">
-                        <span class="chip bg-color">视图解析器</span>
+                    <a href="/tags/springcloud/">
+                        <span class="chip bg-color">springcloud</span>
                     </a>
                     
                 </div>
@@ -845,13 +962,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/13/springboot-zhi-jing-tai-zi-yuan-dao-ru/">
+                <a href="/2021/05/21/fen-bu-shi-xi-tong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="spingboot之静态资源导出原理">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="分布式系统">
                         
-                        <span class="card-title">spingboot之静态资源导出原理</span>
+                        <span class="card-title">分布式系统</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -862,14 +979,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/springboot/" class="post-category">
-                                    springboot
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" class="post-category">
+                                    分布式
                                 </a>
                             
                             
@@ -879,8 +996,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springboot/">
-                        <span class="chip bg-color">springboot</span>
+                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
+                        <span class="chip bg-color">分布式</span>
+                    </a>
+                    
+                    <a href="/tags/RPC/">
+                        <span class="chip bg-color">RPC</span>
+                    </a>
+                    
+                    <a href="/tags/Dubbo/">
+                        <span class="chip bg-color">Dubbo</span>
                     </a>
                     
                 </div>
