@@ -518,11 +518,11 @@
 <p>99.9930 = 99.7% uptime<br>0.3% of 1 billion requests = 3,000,000 failures<br>2+ hours downtime/month even if all dependencies have excellent uptime.</p>
 </blockquote>
 <p>完好情况下，请求流如下：</p>
-<p><img src="/.io//1.png" alt="分布式架构请求图"></p>
+<p><img src="/2021/05/27/springcloud-zhi-hystrix/1.png" alt="分布式架构请求图"></p>
 <p>当一个依赖的节点坏掉时，将阻塞整个的用户请求：</p>
-<p><img src="/.io//2.png" alt="微服务节点down掉"></p>
+<p><img src="/2021/05/27/springcloud-zhi-hystrix/2.png" alt="微服务节点down掉"></p>
 <p>流量高峰时，一个单节点的宕机或延迟，会迅速导致所有服务负载达到饱和。应用中任何一个可能通过网络访问其他服务的节点，都有可能成为造成潜在故障的来源。更严重的是，还可能导致服务之间的延迟增加，占用队列、线程等系统资源，从而导致多系统之间的级联故障（雪崩）。</p>
-<p><img src="/.io//3.png" alt="雪崩"></p>
+<p><img src="/2021/05/27/springcloud-zhi-hystrix/3.png" alt="雪崩"></p>
 <p>更严重的是，当网络请求是通过第三方的一个黑盒客户端来发起时，实现细节都被隐藏起来了，而且还可能频繁变动，这样发生问题时就很难监控和改动。如果这个第三方还是通过传递依赖的，主应用程序中根本没有显示地写出调用的代码，那就更难了。</p>
 <p>网络连接失败或者有延迟，服务将会产生故障或者响应变慢，最终反应成为一个 bug。</p>
 <p>所有上述表现出来的故障或延迟，都需要一套管理机制，将节点变得相对独立，这样任何一个单节点故障，都至少不会拖垮整个系统的可用性。</p>
@@ -546,9 +546,9 @@
 <li>实时监控配置与属性的变更</li>
 </ul>
 <p>当你启用 Hystrix 封装了原有的远程调用请求后，整个流程图变为下图所示。</p>
-<p><img src="/.io//4.png" alt="Hystrix封装"></p>
+<p><img src="/2021/05/27/springcloud-zhi-hystrix/4.png" alt="Hystrix封装"></p>
 <h4 id="1-6Hystrix是怎么工作的"><a href="#1-6Hystrix是怎么工作的" class="headerlink" title="1.6Hystrix是怎么工作的"></a>1.6Hystrix是怎么工作的</h4><p>下图显示通过Hystrix向服务依赖关系发出请求时会发生什么：</p>
-<p><img src="/.io//1" alt="Hystrix工作流程"></p>
+<p><img src="/2021/05/27/springcloud-zhi-hystrix/1" alt="Hystrix工作流程"></p>
 <p>具体将从以下几个方面进行描述：</p>
 <h5 id="1-构建一个HystrixCommand或者HystrixObservableCommand-对象。"><a href="#1-构建一个HystrixCommand或者HystrixObservableCommand-对象。" class="headerlink" title="1.构建一个HystrixCommand或者HystrixObservableCommand 对象。"></a>1.构建一个HystrixCommand或者HystrixObservableCommand 对象。</h5><p>第一步是构建一个<code>HystrixCommand</code>或<code>HystrixObservableCommand</code>对象来表示你对依赖关系的请求。 其中构造函数需要和请求时的参数一致。</p>
 <p>构造<code>HystrixCommand</code>对象，如果依赖关系预期返回单个响应。 可以这样写：</p>
@@ -587,7 +587,7 @@
 <h5 id="8-获取Fallback"><a href="#8-获取Fallback" class="headerlink" title="8.获取Fallback"></a>8.获取Fallback</h5><p>当命令执行失败时，Hystrix试图恢复到你的回退：当construct（）或run（）（6）抛出异常时，当命令由于电路断开而短路时（4），当 命令的线程池和队列或信号量处于容量（5.），或者当命令超过其超时长度时。</p>
 <p>编写Fallback ,它不一依赖于任何的网络依赖，从内存中获取获取通过其他的静态逻辑。如果你非要通过网络去获取Fallback,你可能需要些在获取服务的接口的逻辑上写一个HystrixCommand。</p>
 <h5 id="9-返回成功的响应"><a href="#9-返回成功的响应" class="headerlink" title="9.返回成功的响应"></a>9.返回成功的响应</h5><p>如果 Hystrix command成功，如果Hystrix命令成功，它将以Observable的形式返回对呼叫者的响应。 根据在上述步骤2中调用命令的方式，此Observable可能会在返回给您之前进行转换：</p>
-<p><img src="/.io//2" alt="返回成功响应"></p>
+<p><img src="/2021/05/27/springcloud-zhi-hystrix/2" alt="返回成功响应"></p>
 <ul>
 <li>execute（） - 以与.queue（）相同的方式获取Future，然后在此Future上调用get（）来获取Observable发出的单个值</li>
 <li>queue（） - 将Observable转换为BlockingObservable，以便将其转换为Future，然后返回此未来</li>
