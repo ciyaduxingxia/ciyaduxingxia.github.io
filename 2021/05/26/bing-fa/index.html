@@ -1025,7 +1025,8 @@
 <h4 id="前戏：-JMM-Java-内存模型"><a href="#前戏：-JMM-Java-内存模型" class="headerlink" title="前戏： JMM(Java 内存模型)"></a>前戏： JMM(Java 内存模型)</h4><blockquote>
 <p>在 JDK1.2 之前，Java 的内存模型实现总是从<strong>主存</strong>（即共享内存）读取变量，是不需要进行特别的注意的。而在当前的 Java 内存模型下，线程可以把变量保存<strong>本地内存</strong>（比如机器的寄存器）中，而不是直接在主存中进行读写。这就可能造成一个线程在主存中修改了一个变量的值，而另外一个线程还继续使用它在寄存器中的变量值的拷贝，造成<strong>数据的不一致</strong>。</p>
 </blockquote>
-<p><img src="/2021/05/26/bing-fa/1" alt="线程读取主内存数据"></p>
+<img src="/2021/05/26/bing-fa/1" class title="线程读取主内存数据">
+
 <p>要解决这个问题，就需要把变量声明为**<code>volatile</code>**，这就指示 JVM，这个变量是共享且不稳定的，每次使用它都到主存中进行读取。</p>
 <p>所以，**<code>volatile</code> 关键字 除了防止 JVM 的指令重排 ，还有一个重要的作用就是保证变量的可见性。**</p>
 <h4 id="并发编程的三个重要特性"><a href="#并发编程的三个重要特性" class="headerlink" title="并发编程的三个重要特性"></a>并发编程的三个重要特性</h4><ol>
@@ -1365,18 +1366,22 @@
 <h3 id="Fork-Join"><a href="#Fork-Join" class="headerlink" title="Fork/Join"></a>Fork/Join</h3><ol>
 <li>什么是Fork/Join</li>
 </ol>
-<p><img src="/2021/05/26/bing-fa/1.png" alt="Fork/Join"></p>
+<img src="/2021/05/26/bing-fa/1.png" class title="Fork&#x2F;Join">
+
 <ol start="2">
 <li>Fork/Join的运行流程</li>
 </ol>
-<p><img src="/2021/05/26/bing-fa/2.png" alt="Fork/Join的运行流程图"></p>
-<p><img src="/2021/05/26/bing-fa/3.png" alt="伪代码"></p>
+<img src="/2021/05/26/bing-fa/2.png" class title="Fork&#x2F;Join的运行流程图">
+
+<img src="/2021/05/26/bing-fa/3.png" class title="伪代码">
+
 <ol start="3">
 <li>工作窃取算法</li>
 </ol>
 <p>工作窃取算法指的是在多线程执行不同任务队列的过程，某个线程执行完自己队列的任务后从其他线程的任务队列里窃取任务来执行。</p>
 <p>工作窃取流程如下图所示：</p>
-<p><img src="/2021/05/26/bing-fa/4.png" alt="工作窃取流程"></p>
+<img src="/2021/05/26/bing-fa/4.png" class title="工作窃取流程">
+
 <p>值得注意的是，当一个线程窃取另一个线程的时候，为了减少两个任务线程之间竞争，我们通常使用<strong>双端队列</strong>来存储任务。被窃取的任务线程都从双端队列的头部拿任务执行，而窃取其他任务的线程从双端队列的尾部执行任务。</p>
 <p>另外，当一个线程在窃取任务时要是没有其他可用的任务了，这个线程会进入阻塞状态以等待再次工作。</p>
 <ol start="4">
@@ -1385,11 +1390,14 @@
 <p>前面我们说Fork/Join框架简单来讲就是对任务的分割与子任务的合并，所以要实现这个框架，先要有任务。在Fork/Join框架里提供了抽象类ForkJoinTask来实现任务。</p>
 <p>ForkJoinTask是一个类似普通线程的实体，但是比普通线程轻量的多。</p>
 <p><strong>fork()方法：</strong>使用线程池中的空闲线程异步提交任务</p>
-<p><img src="/2021/05/26/bing-fa/5.png" alt="fork()方法"></p>
+<img src="/2021/05/26/bing-fa/5.png" class title="fork()方法">
+
 <p>其实fork()只做了一件事，那就是把任务推入当前工作线程的工作队列里。</p>
 <p><strong>join()方法：</strong>等待处理任务的线程处理完毕，获取返回值。</p>
-<p><img src="/2021/05/26/bing-fa/6.png" alt="join()方法"></p>
-<p><img src="/2021/05/26/bing-fa/7.png" alt="doJoin()方法"></p>
+<img src="/2021/05/26/bing-fa/6.png" class title="join()方法">
+
+<img src="/2021/05/26/bing-fa/7.png" class title="doJoin()方法">
+
 <blockquote>
 <p>Thread.join()会使线程阻塞，而ForkJoinPool.join()会使线程免于阻塞，下面是ForkJoinPool.join()的流程图</p>
 </blockquote>
@@ -1404,7 +1412,8 @@
 <p>两个子类都有执行主要计算的方法Compute()</p>
 <p>4.2. ForkJoinPool</p>
 <p>ForkJoinPool是用于ForkJoinTask任务执行的线程池。ForkJoinPool管理着执行池中的线程和任务队列，此外，执行池是否还接受任务，显示线程的运行状态也是在这里处理。</p>
-<p><img src="/2021/05/26/bing-fa/9.png" alt="ForkJoinPool"></p>
+<img src="/2021/05/26/bing-fa/9.png" class title="ForkJoinPool">
+
 <p>4.3. WorkQueue</p>
 <p>双端队列，ForkJoinTask存放在这里。</p>
 <p>ForkJoinPool与传统线程池最显著的区别就是它维护了一个工作队列数组（volatile WorkQueue[] workQueues，ForkJoinPool中每个工作线程都维护着一个工作队列）。</p>
