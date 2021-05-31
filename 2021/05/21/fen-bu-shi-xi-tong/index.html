@@ -514,7 +514,8 @@
 <blockquote>
 <p>分布式系统中，多个节点之前的网络本来是连通的，但是因为某些故障（比如部分节点网络出了问题）某些节点之间不连通了，整个网络就分成了几块区域，这就叫网络分区。</p>
 </blockquote>
-<p><img src="https://img-blog.csdn.net/20180729210031417?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/1" class title="CAP理论图示">
+
 <p><code>CAP的三选二的原理:</code></p>
 <blockquote>
 <p><strong>当发生网络分区的时候，如果我们要继续服务，那么强一致性和可用性只能 2 选 1。也就是说当网络分区之后 P 是前提，决定了 P 之后才有 C 和 A 的选择。也就是说分区容错性（Partition tolerance）我们是必须要实现的。</strong></p>
@@ -535,9 +536,10 @@
 <blockquote>
 <p>提交步骤：</p>
 <p>阶段1：提交事务请求（投票阶段，任何一个结点失败，不能继续进行提交）</p>
-<p><img src="https://img-blog.csdn.net/20180729211305744?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/2" class title="二阶段提交之第一阶段">
+
 <p>阶段2：执行事务提交（commit、rollback。任何一个结点失败 rollback）</p>
-<p><img src="https://img-blog.csdn.net/20180729211352487?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/3" class title="二阶段提交之第二阶段">
 </blockquote>
 <ul>
 <li><p>缺点：</p>
@@ -568,11 +570,13 @@
 <p>​        2、在第一阶段和第二阶段中插入一个准备阶段。保证了在最后提交阶段之前各参与节点的状态是 一致的。首先<strong>准备阶段的变更成不会直接执行事务</strong>，而是会先去询问此时的参与者是否有条件接这个事务，因此<strong>不会一来就干活直接锁资源</strong>，使得在某些资源不可用的情况下所有参与者都阻塞着。而<strong>预提交阶段的引入起到了一个统一状态的作用</strong>，它像一道栅栏，表明在预提交阶段前所有参与者其实还未都回应，在预处理阶段表明所有参与者都已经回应了。</p>
 <blockquote>
 <p>阶段1：是否可以进行事务提交</p>
-<p><img src="https://img-blog.csdn.net/20180729211432145?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/4" class title="三阶段提交之第一阶段">
+
 <p>阶段2： 提交事务请求</p>
-<p><img src="https://img-blog.csdn.net/20180729211455148?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/5" class title="三阶段提交之第二阶段">
+
 <p>阶段3：执行事务提交</p>
-<p><img src="https://img-blog.csdn.net/20180729211520312?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/6" class title="三阶段提交之第三阶段">
 </blockquote>
 <h3 id="D-BASE理论"><a href="#D-BASE理论" class="headerlink" title="D. BASE理论"></a>D. BASE理论</h3><p><strong>BASE 理论，它是在 CAP 理论的基 础之上的延伸。</strong>包括 :</p>
 <blockquote>
@@ -589,7 +593,8 @@
 </ul>
 <blockquote>
 <p><strong>1、先后提议的场景</strong></p>
-<p><img src="https://img-blog.csdn.net/20180729212212421?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/7" class title="先后提议的场景">
+
 <ul>
 <li>参谋1发起提议，派通信兵带信给3个将军，内容为（编号1）</li>
 <li>3个将军收到参谋1的提议，由于之前还没有保存任何编号，因此把（编号1）保存下来，避免遗忘；同时让通信兵带信回去，内容为（ok）</li>
@@ -602,7 +607,8 @@
 <li>参谋2收到至少2个将军的回复，由于回复中带来了已接受的参谋1的提议内容，参谋2因此不再提出新的进攻时间，接受参谋1提出的时间</li>
 </ul>
 <p><strong>2、交叉提交场景</strong></p>
-<p><img src="https://img-blog.csdn.net/20180729212438459?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1eGlhbnM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/8" class title="交叉提交的场景">
+
 <ul>
 <li>参谋1发起提议，派通信兵带信给3个将军，内容为（编号1）；</li>
 <li>3个将军的情况如下:<ul>
@@ -653,44 +659,64 @@
 <p>负载问题实际上是从另一个角度看待分散性问题。既然不同的终端可能将相同的内容映射到不同的缓冲区中，那么对于一个特定的缓冲区而言，也可能被不同的用户映射为不同的内容。与分散性一样，这种情况也是应当避免的，因此好的哈希算法应能够尽量降低缓冲的负荷。</p>
 </blockquote>
 <h5 id="B-1-环形hash空间"><a href="#B-1-环形hash空间" class="headerlink" title="B.1 环形hash空间"></a>B.1 环形hash空间</h5><p>​        <em>按照常用的hash算法来将对应的key哈希到一个具有2^32次方个节点的空间中，即0 ~ (2^32)-1的数字空间中。现在我们可以将这些数字头尾相连，想象成一个闭合的环形。</em>整个hash环我们可以用TreeMap来实现，因为treeMap是排序的，我们刚好可以利用上。</p>
-<p><img src="https://pic2.zhimg.com/80/v2-0a21bff27b5f037748292aa338965d65_720w.jpg" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/1.jpg" class title="环形节点">
+
+
+
 <h5 id="B-2-映射服务器节点"><a href="#B-2-映射服务器节点" class="headerlink" title="B.2 映射服务器节点"></a>B.2 映射服务器节点</h5><p>​        <em>将各个服务器使用Hash进行一个哈希，具体可以选择服务器的ip或唯一主机名作为关键字进行哈希，这样每台机器就能确定其在哈希环上的位置。假设我们将四台服务器使用ip地址哈希后在环空间的位置如下：</em></p>
-<p><img src="https://pic4.zhimg.com/80/v2-252cc4ed5bbb07e5e1e3b27c5eda0d23_720w.jpg" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/2.jpg" class title="映射服务器节点">
+
 <h5 id="B-3-映射数据"><a href="#B-3-映射数据" class="headerlink" title="B.3 映射数据"></a>B.3 映射数据</h5><p>​        <em>现在我们将objectA、objectB、objectC、objectD四个对象通过特定的Hash函数计算出对应的key值，然后散列到Hash环上,然后从数据所在位置沿环顺时针“行走”，第一台遇到的服务器就是其应该定位到的服务器。</em></p>
-<p><img src="https://pic3.zhimg.com/80/v2-0fb33fe30c7a05eee2abe3784a42f98a_720w.jpg" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/3.jpg" class title="映射数据">
+
 <h5 id="B-4-服务器的删除与添加"><a href="#B-4-服务器的删除与添加" class="headerlink" title="B.4 服务器的删除与添加"></a>B.4 服务器的删除与添加</h5><blockquote>
 <ul>
 <li>如果此时NodeC宕机了，此时Object A、B、D不会受到影响，只有Object C会重新分配到Node D上面去，而其他数据对象不会发生变化</li>
 <li>如果在环境中新增一台服务器Node X，通过hash算法将Node X映射到环中，通过按顺时针迁移的规则，那么Object C被迁移到了Node X中，其它对象还保持这原有的存储位置。通过对节点的添加和删除的分析，一致性哈希算法在保持了单调性的同时，还是数据的迁移达到了最小，这样的算法对分布式集群来说是非常合适的，避免了大量数据迁移，减小了服务器的的压力。</li>
 </ul>
 </blockquote>
-<p><img src="https://pic4.zhimg.com/80/v2-bf7daae4aa145478dd55fc339ee57ec7_720w.jpg" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/4.jpg" class title="服务器的删除与添加">
+
 <h5 id="B-5-虚拟节点"><a href="#B-5-虚拟节点" class="headerlink" title="B.5 虚拟节点"></a>B.5 虚拟节点</h5><p>​        <em>到目前为止一致性hash也可以算做完成了，但是有一个问题还需要解决，那就是<strong>平衡性</strong>。当服务器节点比较少的时候，会出现一个问题，就是此时必然造成大量数据集中到一个节点上面，极少数数据集中到另外的节点上面。</em></p>
-<p><img src="https://pic4.zhimg.com/80/v2-0ce62cf40bcc5f980cafe285dafe0633_720w.jpg" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/5.jpg" class title="映射虚拟节点之前">
+
 <p>​        <em>为了解决这种数据倾斜问题，一致性哈希算法引入了虚拟节点机制，即对每一个服务节点计算多个哈希，每个计算结果位置都放置一个此服务节点，称为虚拟节点。具体做法可以先确定每个物理节点关联的虚拟节点数量，然后在ip或者主机名后面增加编号。</em></p>
-<p><img src="https://pic1.zhimg.com/80/v2-5d9cdea01cb4b44162aa41980345e8ac_720w.jpg" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/6.jpg" class title="映射虚拟节点之后">
+
+
+
+
+
 <h2 id="4-分布式ID"><a href="#4-分布式ID" class="headerlink" title="4. 分布式ID"></a>4. 分布式ID</h2><blockquote>
 <p>ID是数据的唯一标识，传统的做法是利用UUID和数据库的自增ID，在互联网企业中，大部分公司使用的都是Mysql，并且因为需要事务支持，所以通常会使用Innodb存储引擎，UUID太长以及无序，所以并不适合在Innodb中来作为主键，自增ID比较合适，但是随着公司的业务发展，数据量将越来越大，需要对数据进行分表，而分表后，每个表中的数据都会按自己的节奏进行自增，很有可能出现ID冲突。这时就需要一个单独的机制来负责生成唯一ID，生成出来的ID也可以叫做<strong>分布式ID</strong>，或<strong>全局ID</strong>。下面来分析各个生成分布式ID的机制。</p>
 </blockquote>
 <h2 id="5-Dubbo"><a href="#5-Dubbo" class="headerlink" title="5. Dubbo"></a>5. Dubbo</h2><p>Dubbo的学习一定要看官网，这里粘一下关于负载均衡的源代码解析，整个源代码更迭过程很有启发:<a target="_blank" rel="noopener" href="https://dubbo.apache.org/zh/docs/v2.7/dev/source/loadbalance/">https://dubbo.apache.org/zh/docs/v2.7/dev/source/loadbalance/</a></p>
 <p>随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，急需<strong>一个治理系统</strong>确保架构有条不紊的演进。</p>
 <p>在Dubbo的官网文档有这样一张图</p>
-<p><img src="https://dubbo.apache.org/imgs/user/dubbo-architecture-roadmap.jpg" alt="image"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/7.jpg" class title="dubbo架构演变">
+
 <h4 id="1-单一应用架构-All-in-One"><a href="#1-单一应用架构-All-in-One" class="headerlink" title="1. 单一应用架构(All in One)"></a>1. 单一应用架构(All in One)</h4><p>当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshw2ITicetDcFsg41kISOhuyojGB1Z8ics61xtqnicJTXDk7Qw41dkeXK2A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/9" class title="单一应用架构">
+
 <p>适用于小型网站，小型管理系统，将所有功能都部署到一个功能里，简单易用。</p>
 <p><strong>缺点：</strong></p>
 <p>1、性能扩展比较难</p>
 <p>2、协同开发问题</p>
 <p>3、不利于升级维护</p>
 <h4 id="2-垂直应用架构-Vertical-Application"><a href="#2-垂直应用架构-Vertical-Application" class="headerlink" title="2. 垂直应用架构(Vertical Application)"></a>2. 垂直应用架构(Vertical Application)</h4><p>当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshG4FicWRMjbfStG0Ojr1H9cL1jQ1SbZ0s7rsbsc7w8f3usmdSJog7pHA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/10" class title="垂直应用架构">
+
 <p>通过切分业务来实现各个模块独立部署，降低了维护和部署的难度，团队各司其职更易管理，性能扩展也更方便，更有针对性。</p>
 <p>缺点：公用模块无法重复利用，开发性的浪费</p>
 <h4 id="3-分布式服务架构-Distributed-Service"><a href="#3-分布式服务架构-Distributed-Service" class="headerlink" title="3. 分布式服务架构(Distributed Service)"></a>3. 分布式服务架构(Distributed Service)</h4><p>当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的**分布式服务框架(RPC)**是关键。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshwIkic8EicmCwYGRibdWohmDazEDhonhTeJfVx0dfBNlW4dGGxvOMOk0Gg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/11" class title="分布式服务架构">
+
 <h4 id="4-弹性计算架构-Elastic-Computing"><a href="#4-弹性计算架构-Elastic-Computing" class="headerlink" title="4. 弹性计算架构(Elastic Computing)"></a>4. 弹性计算架构(Elastic Computing)</h4><p>当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于<strong>提高机器利用率的资源调度和治理中心</strong>(SOA)[ Service Oriented Architecture]是关键。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshxoCosFhoMzIcbBzjCt6ia9Gr7atHlwNHhL0po4YhyE8WkHXnnpN8Ddg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/12" class title="弹性计算架构">
+
+
+
+
 <h2 id="6-RPC和HTTP"><a href="#6-RPC和HTTP" class="headerlink" title="6. RPC和HTTP"></a>6. RPC和HTTP</h2><p>无论是微服务还是分布式服务（都是SOA，都是面向服务编程），都面临着服务间的远程调用。那么服务间的远程调用方式有哪些呢？</p>
 <p>常见的远程调用方式有以下几种：</p>
 <ul>
@@ -711,9 +737,11 @@
 </li>
 </ul>
 <p><strong>RPC基本原理</strong></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshVx3xhf4RyUVtia7Tvo4BBs70SFKRonhrPrNsiap2rEAQCn4IWUoS3HZA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/13" class title="RPC基本原理图">
+
 <p><strong>步骤解析：</strong></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7JJjARRqcZibY4ZPv60renshDCibUnIYkolqibQRy7Qlpm9vNibK9IDaFibJoLpIM5pWLe7Yqly7PheYsg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/14" class title="RPC流程图">
+
 <p>RPC两个核心模块：通讯，序列化。</p>
 <p><strong>要实现一个RPC不算难，难的是实现一个高性能高可靠的RPC框架。</strong></p>
 <p>比如，既然是分布式了，那么一个服务可能有多个实例，你在调用时，要如何获取这些实例的地址呢？</p>
@@ -748,7 +776,8 @@ Server: Apache 0.84
 
 <p>即使编码协议也就是body是使用二进制编码协议，报文元数据也就是header头的键值对却用了文本编码，非常占字节数。如上图所使用的报文中有效字节数仅仅占约 30%，也就是70%的时间用于传输元数据废编码。当然实际情况下报文内容可能会比这个长，但是报头所占的比例也是非常可观的。</p>
 <p>那么假如我们使用自定义tcp协议的报文如下</p>
-<p><img src="https://pic4.zhimg.com/50/v2-89c905b0806577471aa7789a25ac0d44_hd.jpg?source=1940ef5c" alt="img"></p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/8.jpg" class title="自定义tcp协议报文">
+
 <p>报头占用的字节数也就只有16个byte，极大地精简了传输内容。</p>
 <p>这也就是为什么后端进程间通常会采用自定义tcp协议的rpc来进行通信的原因。</p>
 <p>但是现在越来越少使用RPC了，是因为RPC所谓的效率优势是针对http1.1协议来讲的，http2.0协议已经优化编码效率问题，像grpc这种rpc库使用的就是http2.0协议。</p>
@@ -1291,7 +1320,7 @@ Server: Apache 0.84
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">90.5k</span>&nbsp;字
+                class="white-color">92.8k</span>&nbsp;字
             
             
             
