@@ -1,0 +1,1775 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="spring注解-元数据/元注解, ciyaduxingxia,github">
+    <meta name="description" content="北冥有鱼，其名为鲲，鲲之大，不知其几千里也；化而为鸟，其名为鹏.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>spring注解-元数据/元注解 | 肖相杰的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">肖相杰的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>主页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>联系</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">肖相杰的博客</div>
+        <div class="logo-desc">
+            
+            北冥有鱼，其名为鲲，鲲之大，不知其几千里也；化而为鸟，其名为鹏.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			主页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			联系
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">spring注解-元数据/元注解</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/spring/">
+                                <span class="chip bg-color">spring</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%B3%A8%E8%A7%A3/">
+                                <span class="chip bg-color">注解</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%85%83%E6%B3%A8%E8%A7%A3/">
+                                <span class="chip bg-color">元注解</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/spring/" class="post-category">
+                                spring
+                            </a>
+                        
+                            <a href="/categories/spring/%E6%B3%A8%E8%A7%A3/" class="post-category">
+                                注解
+                            </a>
+                        
+                            <a href="/categories/spring/%E6%B3%A8%E8%A7%A3/%E5%85%83%E6%B3%A8%E8%A7%A3/" class="post-category">
+                                元注解
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-06-11
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    18 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="spring注解-元数据-元注解"><a href="#spring注解-元数据-元注解" class="headerlink" title="spring注解-元数据/元注解"></a>spring注解-元数据/元注解</h2><h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p>Spring在2.0的时候就支持了基于XML Schema的扩展机制，让我们可以自定义的对xml配置文件进行扩展（四大步骤，有兴趣的可以自己学习），比如鼎鼎大名的Dubbo它就扩展了xml，用它来引入服务或者导出服务。<br>随着Spring3.0+的发展，xml慢慢的淡出了我们的视野，特别是Spring Boot的流行让xml彻底消失，所有的xml配置都使用注解的方式进行了代替。本文就着眼于比较费解的元数据(<code>Metadata</code>)和元注解(<code>meta-annotation</code>)进行分析，给深入理解注解编程铺路。</p>
+<h3 id="2-什么是元数据和元注解"><a href="#2-什么是元数据和元注解" class="headerlink" title="2.什么是元数据和元注解"></a>2.什么是元数据和元注解</h3><p><strong>什么是元数据（MetaData）</strong></p>
+<p>先直接贴一个英文解释：</p>
+<blockquote>
+<p>Metadata is simply data about data. It means it is a description and  context of the data. It helps to organize, find and understand data。</p>
+</blockquote>
+<p>上面介绍的大概意思是：元数据是关于数据的数据，元数据是数据的描述和上下文，它有助于组织，查找，理解和使用数据。比如Class就是一种元数据。<code>Metadata</code>在<code>org.springframework.core.type</code>包名下，还有用于读取的子包<code>classreading</code>也是重要知识点。此体系大致的结构树如下：</p>
+<img src="/2021/06/11/spring-zhu-jie-yuan-zhu-jie-yuan-shu-ju/Metadata.png" class title="Metadata">
+
+
+
+<img src="/2021/06/11/spring-zhu-jie-yuan-zhu-jie-yuan-shu-ju/ReadingVisitor.png" class title="ReadingVisitor">
+
+<p>可以看到顶层接口有两个：<code>ClassMetadata</code>和<code>AnnotatedTypeMetadata</code>。</p>
+<h3 id="3-ClassMetadata：对Class的抽象和适配"><a href="#3-ClassMetadata：对Class的抽象和适配" class="headerlink" title="3.ClassMetadata：对Class的抽象和适配"></a>3.ClassMetadata：对<code>Class</code>的抽象和适配</h3><p>ClassMetadata，顾名思义，就是<strong>表示 Java 中类的元数据</strong>。那么类的元数据有哪些呢，打开ClassMetadata的源代码（代码就不贴了），大致有下面这些：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ClassMetadata</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 返回类名（注意返回的是最原始的那个className）</span>
+    <span class="token class-name">String</span> <span class="token function">getClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//是否是接口</span>
+    <span class="token keyword">boolean</span> <span class="token function">isInterface</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//是否是注解</span>
+    <span class="token keyword">boolean</span> <span class="token function">isAnnotation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//是否是抽象类</span>
+    <span class="token keyword">boolean</span> <span class="token function">isAbstract</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//不是接口且不是抽象类  这里就返回true了</span>
+    <span class="token keyword">default</span> <span class="token keyword">boolean</span> <span class="token function">isConcrete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">isInterface</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">isAbstract</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+	<span class="token comment">//是否是final类：当用final修饰一个类时，表明这个类不能被继承。也就是说，如果一个类你永远不会让他被继承，就可以用final进行修饰。final类中的成员变量可以根据需要设为final，但是要注意final类中的所有成员方法都会被隐式地指定为final方法。</span>
+    <span class="token keyword">boolean</span> <span class="token function">isFinal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//是否是独立的(能够创建对象的)  比如是Class、或者内部类、静态内部类</span>
+    <span class="token keyword">boolean</span> <span class="token function">isIndependent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 是否有内部类之类的</span>
+    <span class="token keyword">default</span> <span class="token keyword">boolean</span> <span class="token function">hasEnclosingClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getEnclosingClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+	<span class="token comment">//enclosing class和Nested Class是相对的；一个为内部类，一个是定义内部类的外部类；</span>
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token class-name">String</span> <span class="token function">getEnclosingClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">default</span> <span class="token keyword">boolean</span> <span class="token function">hasSuperClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getSuperClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token class-name">String</span> <span class="token function">getSuperClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 会把实现的所有接口名称都返回  具体依赖于Class#getSuperclass</span>
+    <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getInterfaceNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//getClasses() ： 返回本类所有访问权限的内部类</span>
+    <span class="token comment">//getDeclaredClasses：返回public的内部类和父类的内部类</span>
+	<span class="token comment">// 基于：Class#getDeclaredClasses  返回类中定义的公共、私有、保护的内部类</span>
+    <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getMemberClassNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其结构图如下：</p>
+<img src="/2021/06/11/spring-zhu-jie-yuan-zhu-jie-yuan-shu-ju/1.png" class title="ClassMetadata">
+
+<p>从上面的类图中可以看出，ClassMetadata有一个实现类是StandardClassMetadata，这个类是基于反射实现获取类元数据的，这个也是类名中“Standard”的含义。</p>
+<p>查看源代码你可以发现这个类唯一的一个构造函数已经被标注@Deprecated了，所以这个类已经不建议直接使用了。</p>
+<h3 id="4-AnnotatedTypeMetadata：对注解元素的封装适配"><a href="#4-AnnotatedTypeMetadata：对注解元素的封装适配" class="headerlink" title="4.AnnotatedTypeMetadata：对注解元素的封装适配"></a>4.AnnotatedTypeMetadata：对注解元素的封装适配</h3><p>这个接口表示的是注解元素(AnnotatedElement)的元数据。那什么是注解元素呢？</p>
+<p>我们常见的Class、Method、Constructor、Parameter等等都属于它的子类都属于注解元素。简单理解：只要能在上面标注注解的元素都属于这种元素。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">AnnotatedTypeMetadata</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">MergedAnnotations</span> <span class="token function">getAnnotations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 此元素是否标注有此注解,annotationName：注解全类名</span>
+    <span class="token keyword">default</span> <span class="token keyword">boolean</span> <span class="token function">isAnnotated</span><span class="token punctuation">(</span><span class="token class-name">String</span> annotationName<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getAnnotations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span>annotationName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token keyword">default</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">getAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">String</span> annotationName<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getAnnotationAttributes</span><span class="token punctuation">(</span>annotationName<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//取得指定类型注解的所有的属性 - 值（k-v）</span>
+    <span class="token comment">// annotationName：注解全类名</span>
+    <span class="token comment">// classValuesAsString：若是true表示 Class用它的字符串的全类名来表示。这样可以避免Class被提前加载</span>
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token keyword">default</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">getAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">String</span> annotationName<span class="token punctuation">,</span> <span class="token keyword">boolean</span> classValuesAsString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 支持重复注解</span>
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token keyword">default</span> <span class="token class-name">MultiValueMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">getAllAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">String</span> annotationName<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token keyword">default</span> <span class="token class-name">MultiValueMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">getAllAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">String</span> annotationName<span class="token punctuation">,</span> <span class="token keyword">boolean</span> classValuesAsString<span class="token punctuation">)</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其结构图如下：</p>
+<img src="/2021/06/11/spring-zhu-jie-yuan-zhu-jie-yuan-shu-ju/2.png" class title="AnnotatedTypedMetadata">
+
+<p>两个子接口相应的都提供了标准实现以及基于ASM的Visitor模式实现。</p>
+<p>ASM 是一个通用的 Java 字节码操作和分析框架。它可以用于修改现有类或直接以二进制形式动态生成类。 ASM 虽然提供与其他 Java 字节码框架如 Javassist，CGLIB类似的功能，但是其设计与实现小而快，且性能足够高。</p>
+<h3 id="5-AnnotationMetadata"><a href="#5-AnnotationMetadata" class="headerlink" title="5.AnnotationMetadata"></a>5.AnnotationMetadata</h3><p>这是理解<code>Spring</code>注解编程的必备知识，它是<code>ClassMetadata</code>和<code>AnnotatedTypeMetadata</code>的子接口，具有两者共同能力，并且新增了访问注解的相关方法。可以简单理解为它是对注解的抽象。</p>
+<blockquote>
+<p>经常这么使用得到注解里面所有的属性值：<br> <code>AnnotationAttributes attributes = AnnotationConfigUtils.attributesFor(annoMetadata, annType);</code></p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">AnnotationMetadata</span> <span class="token keyword">extends</span> <span class="token class-name">ClassMetadata</span><span class="token punctuation">,</span> <span class="token class-name">AnnotatedTypeMetadata</span> <span class="token punctuation">&#123;</span>
+
+	<span class="token comment">//拿到当前类上所有的注解的全类名（注意是全类名）</span>
+	<span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getAnnotationTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 拿到指定的注解类型</span>
+	<span class="token comment">//annotationName:注解类型的全类名</span>
+	<span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getMetaAnnotationTypes</span><span class="token punctuation">(</span><span class="token class-name">String</span> annotationName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token comment">// 是否包含指定注解 （annotationName：全类名）</span>
+	<span class="token keyword">boolean</span> <span class="token function">hasAnnotation</span><span class="token punctuation">(</span><span class="token class-name">String</span> annotationName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//这个厉害了，用于判断注解类型自己是否被某个元注解类型所标注</span>
+	<span class="token comment">//依赖于AnnotatedElementUtils#hasMetaAnnotationTypes</span>
+	<span class="token keyword">boolean</span> <span class="token function">hasMetaAnnotation</span><span class="token punctuation">(</span><span class="token class-name">String</span> metaAnnotationName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token comment">// 类里面只有有一个方法标注有指定注解，就返回true</span>
+	<span class="token comment">//getDeclaredMethods获得所有方法， AnnotatedElementUtils.isAnnotated是否标注有指定注解</span>
+	<span class="token keyword">boolean</span> <span class="token function">hasAnnotatedMethods</span><span class="token punctuation">(</span><span class="token class-name">String</span> annotationName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 返回所有的标注有指定注解的方法元信息。注意返回的是MethodMetadata 原理基本同上</span>
+	<span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">MethodMetadata</span><span class="token punctuation">></span></span> <span class="token function">getAnnotatedMethods</span><span class="token punctuation">(</span><span class="token class-name">String</span> annotationName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//使用标准反射为给定类创建新的 AnnotationMetadata 实例的工厂方法。</span>
+    <span class="token keyword">static</span> <span class="token class-name">AnnotationMetadata</span> <span class="token function">introspect</span><span class="token punctuation">(</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>同样的它提供了两种实现方式。</p>
+<p>AnnotationMetadata有三个实现类:<code>SimpleAnnotationMetadata</code>，<code>StandardAnnotationMetadata</code>，<code>AnnotationMetadataReadingVisitor</code></p>
+<p>其中<code>StandardAnnotationMetadata</code>和<code>SimpleAnnotationMetadata</code>主要使用 Java 反射原理获取元数据，而 <code>AnnotationMetadataReadingVisitor</code> 使用 ASM 框架获取元数据。但是现在<code>StandardAnnotationMetadata</code>已经被弃用了，所以标准方式我们分析<code>SimpleAnnotationMetadata</code>，而ASM方式我们分析<code>AnnotationMetadataReadingVisitor</code>。</p>
+<p><strong>SimpleAnnotationMetadata</strong></p>
+<p>SimpleAnnotationMetadata继承了<code>AnnotationMetadata</code>，很明显关于<code>ClassMetadata</code>的实现部分就交给<code>ClassMetadata</code>的实现类了，自己只关注于<code>AnnotationMetadata</code>接口的实现。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">SimpleAnnotationMetadata</span> <span class="token keyword">implements</span> <span class="token class-name">AnnotationMetadata</span> <span class="token punctuation">&#123;</span>
+	
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">MethodMetadata</span><span class="token punctuation">[</span><span class="token punctuation">]</span> annotatedMethods<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">MergedAnnotations</span> annotations<span class="token punctuation">;</span>
+    
+    <span class="token comment">// 获取本Class类上的所有注解</span>
+    <span class="token comment">//调用了父类接口实现的AnnotationMetadata.super.getAnnotationTypes()方法。</span>
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">public</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getAnnotationTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> annotationTypes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>annotationTypes<span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>annotationTypes <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			annotationTypes <span class="token operator">=</span> <span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">unmodifiableSet</span><span class="token punctuation">(</span>
+					<span class="token class-name">AnnotationMetadata</span><span class="token punctuation">.</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getAnnotationTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">this</span><span class="token punctuation">.</span>annotationTypes <span class="token operator">=</span> annotationTypes<span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">return</span> annotationTypes<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">public</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">MethodMetadata</span><span class="token punctuation">></span></span> <span class="token function">getAnnotatedMethods</span><span class="token punctuation">(</span><span class="token class-name">String</span> annotationName<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">MethodMetadata</span><span class="token punctuation">></span></span> annotatedMethods <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">MethodMetadata</span> annotatedMethod <span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>annotatedMethods<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>annotatedMethod<span class="token punctuation">.</span><span class="token function">isAnnotated</span><span class="token punctuation">(</span>annotationName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>annotatedMethods <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+					annotatedMethods <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">&#125;</span>
+				annotatedMethods<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>annotatedMethod<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">return</span> annotatedMethods <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> annotatedMethods <span class="token operator">:</span> <span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">emptySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">public</span> <span class="token class-name">MergedAnnotations</span> <span class="token function">getAnnotations</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>annotations<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>AnnotationMetadataReadingVisitor</strong></p>
+<p>ASM 是一个通用的 Java 字节码操作和分析框架。它可以用于修改现有类或直接以二进制形式动态生成类。 ASM 虽然提供与其他 Java 字节码框架如 <code>Javassist</code>，<code>CGLIB  </code>类似的功能，但是其设计与实现小而快，且性能足够高。</p>
+<p>Spring 直接将 ASM 框架核心源码内嵌于 <code>Spring-core</code>中。</p>
+<p><strong>ASM 框架简单应用</strong></p>
+<p>Java 源代码经过编译器编译之后生成了 <code>.class </code> 文件。</p>
+<blockquote>
+<p>Class文件是有8个字节为基础的字节流构成的，这些字节流之间都严格按照规定的顺序排列，并且字节之间不存在任何空隙，对于超过8个字节的数据，将按  照Big-Endian的顺序存储的，也就是说高位字节存储在低的地址上面，而低位字节存储到高地址上面，其实这也是class文件要跨平台的关键，因为  PowerPC架构的处理采用Big-Endian的存储顺序，而x86系列的处理器则采用Little-Endian的存储顺序，因此为了Class文 件在各中处理器架构下保持统一的存储顺序，虚拟机规范必须对起进行统一。</p>
+</blockquote>
+<p>Class 文件中包含类的所有信息，如接口，字段属性，方法，在内部这些信息按照一定规则紧凑排序。ASM 框会以文件流的形式读取 class 文件，然后解析过程中使用观察者模式（Visitor），当解析器碰到相应的信息委托给观察者（Visitor）。</p>
+<p>使用 ASM 框架首先需要继承 <code>ClassVisitor</code>，完成解析相应信息，如解析方法，字段等。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token keyword">static</span> <span class="token namespace">jdk<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>org<span class="token punctuation">.</span>objectweb<span class="token punctuation">.</span>asm<span class="token punctuation">.</span></span><span class="token class-name">Opcodes</span><span class="token punctuation">.</span>ASM4<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ClassPrinter</span> <span class="token keyword">extends</span> <span class="token class-name">ClassVisitor</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token class-name">ClassPrinter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//传入API的值 该字段的值必须为如下几个之一：Opcodes.ASM4，ASM5，ASM6，ASM7</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>ASM4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">visit</span><span class="token punctuation">(</span><span class="token keyword">int</span> version<span class="token punctuation">,</span> <span class="token keyword">int</span> access<span class="token punctuation">,</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">String</span> signature<span class="token punctuation">,</span> <span class="token class-name">String</span> superName<span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> interfaces<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name <span class="token operator">+</span> <span class="token string">" extends "</span> <span class="token operator">+</span> superName <span class="token operator">+</span> <span class="token string">"&#123;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">AnnotationVisitor</span> <span class="token function">visitAnnotation</span><span class="token punctuation">(</span><span class="token class-name">String</span> desc<span class="token punctuation">,</span> <span class="token keyword">boolean</span> visible<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"    "</span> <span class="token operator">+</span> desc <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">FieldVisitor</span> <span class="token function">visitField</span><span class="token punctuation">(</span><span class="token keyword">int</span> access<span class="token punctuation">,</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">String</span> desc<span class="token punctuation">,</span> <span class="token class-name">String</span> signature<span class="token punctuation">,</span> <span class="token class-name">Object</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"    "</span> <span class="token operator">+</span> desc <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">"  "</span> <span class="token operator">+</span> <span class="token class-name">Type</span><span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span>desc<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">MethodVisitor</span> <span class="token function">visitMethod</span><span class="token punctuation">(</span><span class="token keyword">int</span> access<span class="token punctuation">,</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">String</span> descriptor<span class="token punctuation">,</span> <span class="token class-name">String</span> signature<span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> exceptions<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"    "</span> <span class="token operator">+</span> name <span class="token operator">+</span> descriptor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">visitEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&#125;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后使用 <code>ClassReader</code> 读取类文件，然后再使用 <code>ClassReader#accpet</code> 接受 <code>ClassVisitor</code>。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ClassDemo</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">ClassPrinter</span> classPrinter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassPrinter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ClassReader</span> classReader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassReader</span><span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        classReader<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span>classPrinter<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+控制台输出如下：
+<span class="token class-name">Person</span> <span class="token keyword">extends</span> java<span class="token operator">/</span>lang<span class="token operator">/</span><span class="token class-name">Object</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">Ljava</span><span class="token operator">/</span>lang<span class="token operator">/</span><span class="token class-name">String</span><span class="token punctuation">;</span> name  <span class="token keyword">class</span> <span class="token class-name"><span class="token namespace">jdk<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>org<span class="token punctuation">.</span>objectweb<span class="token punctuation">.</span>asm<span class="token punctuation">.</span></span>Type</span>
+    <span class="token class-name">I</span> age  <span class="token keyword">class</span> <span class="token class-name"><span class="token namespace">jdk<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>org<span class="token punctuation">.</span>objectweb<span class="token punctuation">.</span>asm<span class="token punctuation">.</span></span>Type</span>
+    <span class="token generics"><span class="token punctuation">&lt;</span>init<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">V</span>
+    <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">Ljava</span><span class="token operator">/</span>lang<span class="token operator">/</span><span class="token class-name">String</span><span class="token punctuation">;</span>
+    <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">Ljava</span><span class="token operator">/</span>lang<span class="token operator">/</span><span class="token class-name">String</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token class-name">V</span>
+    <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">I</span>
+    <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token class-name">I</span><span class="token punctuation">)</span><span class="token class-name">V</span>
+    <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">Ljava</span><span class="token operator">/</span>lang<span class="token operator">/</span><span class="token class-name">String</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可以看到 <code>ClassVisitor</code> 相应方法可以用来解析类的相关信息，这里我们主要关注解析类上注解信息。这里没有注解就没有注解信息。解析注解将会在 <code>ClassVisitor#visitAnnotation</code>完成解析。 该方法返回了一个 <code>AnnotationVisitor</code> 对象，其也是一个 Visitor 对象。后续解析器会继续调用 <code>AnnotationVisitor</code>内部方法进行再次解析。</p>
+<p>回到<code>AnnotationMetadataReadingVisitor</code>，发现是继承了<code>ClassMetadataReadingVisitor</code>，而<code>ClassMetadataReadingVisitor</code>继承ClassVisitor实现了visit的功能。但是实际上<code>AnnotationMetadataReadingVisitor</code>已经被弃用，现在都是使用<code>SimpleAnnotationMetadataReadingVisitor</code>。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AnnotationMetadataReadingVisitor</span> <span class="token keyword">extends</span> <span class="token class-name">ClassMetadataReadingVisitor</span> <span class="token keyword">implements</span> <span class="token class-name">AnnotationMetadata</span>
+    
+<span class="token keyword">class</span> <span class="token class-name">ClassMetadataReadingVisitor</span> <span class="token keyword">extends</span> <span class="token class-name">ClassVisitor</span> <span class="token keyword">implements</span> <span class="token class-name">ClassMetadata</span>
+    
+<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">SimpleAnnotationMetadataReadingVisitor</span> <span class="token keyword">extends</span> <span class="token class-name">ClassVisitor</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>现在我们需要寻找哪个类继承了reader，将visitor给accept了。</p>
+<p>我们先看看MetadataReader接口此接口是一个访问ClassMetadata等的简单门面，实现是委托给org.springframework.asm.ClassReader、ClassVisitor来处理的，它不用把Class加载进JVM就可以拿到元数据，因为它读取的是资源：Resource，这是它最大的优势所在。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MetadataReader</span> <span class="token punctuation">&#123;</span>
+	<span class="token comment">// 返回此Class文件的来源（资源）</span>
+	<span class="token class-name">Resource</span> <span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 返回此Class的元数据信息</span>
+	<span class="token class-name">ClassMetadata</span> <span class="token function">getClassMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 返回此类的注解元信息（包括方法的）</span>
+	<span class="token class-name">AnnotationMetadata</span> <span class="token function">getAnnotationMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>他的实现类是<code>SimpleMetadataReader</code>。它是基于<code>ASM</code>的<code>org.springframework.asm.ClassReader</code>的简单实现。请注意：此类是非public的，而是default包访问权限。可以看到<code>SimpleMetadataReader</code>在构造函数中accept了<code>SimpleAnnotationMetadataReadingVisitor</code>。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">SimpleMetadataReader</span> <span class="token keyword">implements</span> <span class="token class-name">MetadataReader</span> <span class="token punctuation">&#123;</span>
+	<span class="token class-name">SimpleMetadataReader</span><span class="token punctuation">(</span><span class="token class-name">Resource</span> resource<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> <span class="token class-name">ClassLoader</span> classLoader<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+		<span class="token class-name">SimpleAnnotationMetadataReadingVisitor</span> visitor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleAnnotationMetadataReadingVisitor</span><span class="token punctuation">(</span>classLoader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//在这accept</span>
+		<span class="token function">getClassReader</span><span class="token punctuation">(</span>resource<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span>visitor<span class="token punctuation">,</span> PARSING_OPTIONS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>resource <span class="token operator">=</span> resource<span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>annotationMetadata <span class="token operator">=</span> visitor<span class="token punctuation">.</span><span class="token function">getMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-MetadataReaderFactory"><a href="#6-MetadataReaderFactory" class="headerlink" title="6.MetadataReaderFactory"></a>6.MetadataReaderFactory</h3><p>MetadataReader的实现都并未public暴露出来，所以我们若想得到它的实例，就只能通过此工厂。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MetadataReaderFactory</span> <span class="token punctuation">&#123;</span>
+	<span class="token comment">//className： the class name (to be resolved to a ".class" file)</span>
+	<span class="token class-name">MetadataReader</span> <span class="token function">getMetadataReader</span><span class="token punctuation">(</span><span class="token class-name">String</span> className<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">;</span>
+	<span class="token class-name">MetadataReader</span> <span class="token function">getMetadataReader</span><span class="token punctuation">(</span><span class="token class-name">Resource</span> resource<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>继承树如下：</p>
+<img src="/2021/06/11/spring-zhu-jie-yuan-zhu-jie-yuan-shu-ju/3.png" class title="MetadataReaderFactory">
+
+<h4 id="6-1SimpleMetadataReaderFactory"><a href="#6-1SimpleMetadataReaderFactory" class="headerlink" title="6.1SimpleMetadataReaderFactory"></a>6.1SimpleMetadataReaderFactory</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SimpleMetadataReaderFactory</span> <span class="token keyword">implements</span> <span class="token class-name">MetadataReaderFactory</span> <span class="token punctuation">&#123;</span>
+	<span class="token comment">// ResourceLoader这个资源加载类应该不陌生了吧</span>
+	<span class="token comment">// 默认使用的是DefaultResourceLoader，当然你可以通过构造器指定</span>
+	<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">ResourceLoader</span> resourceLoader<span class="token punctuation">;</span>
+    
+	<span class="token keyword">public</span> <span class="token class-name">SimpleMetadataReaderFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>resourceLoader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultResourceLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token class-name">ResourceLoader</span> <span class="token function">getResourceLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>resourceLoader<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+
+	<span class="token comment">// 根据类名找到一个Resource</span>
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">public</span> <span class="token class-name">MetadataReader</span> <span class="token function">getMetadataReader</span><span class="token punctuation">(</span><span class="token class-name">String</span> className<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 把..形式换成//.class形式。使用前缀是：classpath:</span>
+			<span class="token class-name">String</span> resourcePath <span class="token operator">=</span> <span class="token class-name">ResourceLoader</span><span class="token punctuation">.</span>CLASSPATH_URL_PREFIX <span class="token operator">+</span>
+					<span class="token class-name">ClassUtils</span><span class="token punctuation">.</span><span class="token function">convertClassNameToResourcePath</span><span class="token punctuation">(</span>className<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token class-name">ClassUtils</span><span class="token punctuation">.</span>CLASS_FILE_SUFFIX<span class="token punctuation">;</span>
+			<span class="token class-name">Resource</span> resource <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>resourceLoader<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span>resourcePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> <span class="token function">getMetadataReader</span><span class="token punctuation">(</span>resource<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 调用重载方法</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">FileNotFoundException</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token comment">// 此处是兼容内部类形式，代码略</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token comment">// 默认使用的是SimpleMetadataReader</span>
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">public</span> <span class="token class-name">MetadataReader</span> <span class="token function">getMetadataReader</span><span class="token punctuation">(</span><span class="token class-name">Resource</span> resource<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">SimpleMetadataReader</span><span class="token punctuation">(</span>resource<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>resourceLoader<span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>此工厂生产的是SimpleMetadataReader。</p>
+<h4 id="6-2CachingMetadataReaderFactory"><a href="#6-2CachingMetadataReaderFactory" class="headerlink" title="6.2CachingMetadataReaderFactory"></a>6.2CachingMetadataReaderFactory</h4><p>它继承自<code>SimpleMetadataReaderFactory</code>，没有其它特殊的，就是提供了缓存能力<code>private Map&lt;Resource, MetadataReader&gt; metadataReaderCache</code>，提高访问效率。<br>因为有了它，所以<code>SimpleMetadataReaderFactory</code>就不需要被直接使用了，用它代替。Spring内自然也使用的便是效率更高的它</p>
+<h3 id="7-Spring注解编程中AnnotationMetadata的使用"><a href="#7-Spring注解编程中AnnotationMetadata的使用" class="headerlink" title="7.Spring注解编程中AnnotationMetadata的使用"></a>7.Spring注解编程中AnnotationMetadata的使用</h3><p>Spring从3.0开始就大量的使用到了注解编程模式，所以可想而知它对元数据（特别是注解元数据）的使用是非常多的，此处我只给出非常简单的总结。</p>
+<p>对于MetadataReaderFactory的应用主要体现在几个地方：</p>
+<ol>
+<li><code>ConfigurationClassPostProcessor</code>：该属性值最终会传给<code>ConfigurationClassParser</code>，用于<code>@EnableXXX / @Import</code>等注解的解析上<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 私有成员变量，默认使用的CachingMetadataReaderFactory</span>
+<span class="token keyword">private</span> <span class="token class-name">MetadataReaderFactory</span> metadataReaderFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CachingMetadataReaderFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><code>ClassPathScanningCandidateComponentProvider</code>：它用于<code>@ComponentScan</code>的时候解析，拿到元数据判断是否是<code>@Component</code>的派生注解    </li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token class-name">MetadataReaderFactory</span> <span class="token function">getMetadataReaderFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>metadataReaderFactory <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>metadataReaderFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CachingMetadataReaderFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>metadataReaderFactory<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<ol start="3">
+<li><code>Mybatis</code>的<code>SqlSessionFactoryBean</code>：它在使用上非常简单，只是为了从Resouece里拿到ClassName而已。<code>classMetadata.getClassName()</code></li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">MetadataReaderFactory</span> METADATA_READER_FACTORY <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CachingMetadataReaderFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">private</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Class</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span> <span class="token function">scanClasses</span><span class="token punctuation">(</span><span class="token class-name">String</span> packagePatterns<span class="token punctuation">,</span> <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> assignableType<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+          <span class="token class-name">ClassMetadata</span> classMetadata <span class="token operator">=</span> METADATA_READER_FACTORY<span class="token punctuation">.</span><span class="token function">getMetadataReader</span><span class="token punctuation">(</span>resource<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> clazz <span class="token operator">=</span> <span class="token class-name">Resources</span><span class="token punctuation">.</span><span class="token function">classForName</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">.</span><span class="token function">getClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li><code>SourceClass</code>：它是对source对象一个轻量级的包装，持有AnnotationMetadata 元数据，如下一般实际为一个<code>StandardAnnotationMetadata</code>，比如<code>@EnableTransactionManagement</code>用的就是它</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">SourceClass</span> <span class="token keyword">implements</span> <span class="token class-name">Ordered</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Object</span> source<span class="token punctuation">;</span>  <span class="token comment">// Class or MetadataReader</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">AnnotationMetadata</span> metadata<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">SourceClass</span><span class="token punctuation">(</span><span class="token class-name">Object</span> source<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>source <span class="token operator">=</span> source<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>source <span class="token keyword">instanceof</span> <span class="token class-name">Class</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>metadata <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StandardAnnotationMetadata</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span><span class="token punctuation">)</span> source<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>metadata <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">MetadataReader</span><span class="token punctuation">)</span> source<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAnnotationMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>说明：<code>Spring</code>的<code>@EnableXXX</code>模块注解很多都使用到了<code>ImportSelector</code>这个接口，此接口的回调方法参数第一个便是<code>AnnotationMetadata</code>代表着<code>@Import</code>所在类的注解的一些元数据们。通常我们会这样使用它：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 1、转换成AnnotationAttributes（LinkedHashMap），模糊掉注解类型（常用）</span>
+<span class="token class-name">AnnotationAttributes</span> attributes <span class="token operator">=</span> <span class="token class-name">AnnotationConfigUtils</span><span class="token punctuation">.</span><span class="token function">attributesFor</span><span class="token punctuation">(</span>importingClassMetadata<span class="token punctuation">,</span> annType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 2、拿到指定类型注解的元数据信息（也较为常用）</span>
+<span class="token class-name">AnnotationAttributes</span> attributes <span class="token operator">=</span> <span class="token class-name">AnnotationAttributes</span><span class="token punctuation">.</span><span class="token function">fromMap</span><span class="token punctuation">(</span>metadata<span class="token punctuation">.</span><span class="token function">getAnnotationAttributes</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 3、直接使用MetaData</span>
+<span class="token class-name">MultiValueMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> attributes <span class="token operator">=</span> metadata<span class="token punctuation">.</span><span class="token function">getAllAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">EnableConfigurationProperties</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="8-使用示例"><a href="#8-使用示例" class="headerlink" title="8.使用示例"></a>8.使用示例</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 准备一个Class类 作为Demo演示</span>
+<span class="token annotation punctuation">@Repository</span><span class="token punctuation">(</span><span class="token string">"repositoryName"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Service</span><span class="token punctuation">(</span><span class="token string">"serviceName"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@EnableAsync</span>
+<span class="token keyword">class</span> <span class="token class-name">MetaDemo</span> <span class="token keyword">extends</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">InnerClass</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">"demo"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">StandardAnnotationMetadata</span> metadata <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StandardAnnotationMetadata</span><span class="token punctuation">(</span><span class="token class-name">MetaDemo</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 演示ClassMetadata的效果</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==============ClassMetadata=============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">ClassMetadata</span> classMetadata <span class="token operator">=</span> metadata<span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">.</span><span class="token function">getClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">.</span><span class="token function">getEnclosingClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">arrayToCommaDelimitedString</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">.</span><span class="token function">getMemberClassNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">arrayToCommaDelimitedString</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">.</span><span class="token function">getInterfaceNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">.</span><span class="token function">hasSuperClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">.</span><span class="token function">getSuperClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">.</span><span class="token function">isAnnotation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">.</span><span class="token function">isFinal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">.</span><span class="token function">isIndependent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 演示AnnotatedTypeMetadata的效果</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==============AnnotatedTypeMetadata=============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">AnnotatedTypeMetadata</span> annotatedTypeMetadata <span class="token operator">=</span> metadata<span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotatedTypeMetadata<span class="token punctuation">.</span><span class="token function">isAnnotated</span><span class="token punctuation">(</span><span class="token class-name">Service</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotatedTypeMetadata<span class="token punctuation">.</span><span class="token function">isAnnotated</span><span class="token punctuation">(</span><span class="token class-name">Component</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotatedTypeMetadata<span class="token punctuation">.</span><span class="token function">getAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">Service</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotatedTypeMetadata<span class="token punctuation">.</span><span class="token function">getAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">Component</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotatedTypeMetadata<span class="token punctuation">.</span><span class="token function">getAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">EnableAsync</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotatedTypeMetadata<span class="token punctuation">.</span><span class="token function">getAllAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">Service</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotatedTypeMetadata<span class="token punctuation">.</span><span class="token function">getAllAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">Component</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotatedTypeMetadata<span class="token punctuation">.</span><span class="token function">getAllAnnotationAttributes</span><span class="token punctuation">(</span><span class="token class-name">EnableAsync</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 演示AnnotationMetadata子接口的效果（重要）</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==============AnnotationMetadata=============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">AnnotationMetadata</span> annotationMetadata <span class="token operator">=</span> metadata<span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">.</span><span class="token function">getAnnotationTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">.</span><span class="token function">getMetaAnnotationTypes</span><span class="token punctuation">(</span><span class="token class-name">Service</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">.</span><span class="token function">getMetaAnnotationTypes</span><span class="token punctuation">(</span><span class="token class-name">Component</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">.</span><span class="token function">hasAnnotation</span><span class="token punctuation">(</span><span class="token class-name">Service</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">.</span><span class="token function">hasAnnotation</span><span class="token punctuation">(</span><span class="token class-name">Component</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">.</span><span class="token function">hasMetaAnnotation</span><span class="token punctuation">(</span><span class="token class-name">Service</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">.</span><span class="token function">hasMetaAnnotation</span><span class="token punctuation">(</span><span class="token class-name">Component</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">.</span><span class="token function">hasAnnotatedMethods</span><span class="token punctuation">(</span><span class="token class-name">Autowired</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    annotationMetadata<span class="token punctuation">.</span><span class="token function">getAnnotatedMethods</span><span class="token punctuation">(</span><span class="token class-name">Autowired</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>methodMetadata <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>methodMetadata<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>methodMetadata<span class="token punctuation">.</span><span class="token function">getMethodName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>methodMetadata<span class="token punctuation">.</span><span class="token function">getReturnTypeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>像这些元数据，在框架设计时候很多时候我们都希望从<code>File(Resource)</code>里得到，而不是从<code>Class</code>文件里获取，所以就是<code>MetadataReader</code>和<code>MetadataReaderFactory</code>。下面我也给出使用案例：</p>
+<blockquote>
+<p>因为<code>MetadataReader</code>的实现类都是包级别的访问权限，所以它的实例只能来自工厂</p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">CachingMetadataReaderFactory</span> readerFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CachingMetadataReaderFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 下面两种初始化方式都可，效果一样</span>
+    <span class="token comment">//MetadataReader metadataReader = readerFactory.getMetadataReader(MetaDemo.class.getName());</span>
+    <span class="token class-name">MetadataReader</span> metadataReader <span class="token operator">=</span> readerFactory<span class="token punctuation">.</span><span class="token function">getMetadataReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ClassPathResource</span><span class="token punctuation">(</span><span class="token string">"com/itxxj/maintest/MetaDemo.class"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">ClassMetadata</span> classMetadata <span class="token operator">=</span> metadataReader<span class="token punctuation">.</span><span class="token function">getClassMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">AnnotationMetadata</span> annotationMetadata <span class="token operator">=</span> metadataReader<span class="token punctuation">.</span><span class="token function">getAnnotationMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Resource</span> resource <span class="token operator">=</span> metadataReader<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>classMetadata<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>resource<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="9-总结"><a href="#9-总结" class="headerlink" title="9.总结"></a>9.总结</h3><p>元数据，是框架设计中必须的一个概念，所有的流行框架里都能看到它的影子，包括且不限于Spring、SpringBoot、SpringCloud、MyBatis、Hibernate等。它的作用肯定是大大的，它能模糊掉具体的类型，能让数据输出变得统一，能解决Java抽象解决不了的问题，比如运用得最广的便是注解，因为它不能继承无法抽象，所以用元数据方式就可以完美行成统一的向上抽取让它变得与类型无关，也就是常说的模糊效果，这便是框架的核心设计思想。</p>
+<p>不管是ClassMetadata还是AnnotatedTypeMetadata都会有基于反射和基于ASM的两种解决方案，他们能使用于不同的场景：</p>
+<ul>
+<li>标准反射：它依赖于Class，优点是实现简单，缺点是使用时必须把Class加载进来。</li>
+<li>ASM：无需提前加载Class入JVM，所有特别特别适用于形如Spring应用扫描的场景（扫描所有资源，但并不是加载所有进JVM/容器~）</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">肖相杰</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ciyaduxingxia.github.io/2021/06/11/spring-zhu-jie-yuan-zhu-jie-yuan-shu-ju/">https://ciyaduxingxia.github.io/2021/06/11/spring-zhu-jie-yuan-zhu-jie-yuan-shu-ju/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">肖相杰</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/spring/">
+                                    <span class="chip bg-color">spring</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%B3%A8%E8%A7%A3/">
+                                    <span class="chip bg-color">注解</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%85%83%E6%B3%A8%E8%A7%A3/">
+                                    <span class="chip bg-color">元注解</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/06/11/spring-zhu-jie-yuan-zhu-jie-yuan-shu-ju/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="spring注解-元数据/元注解">
+                        
+                        <span class="card-title">spring注解-元数据/元注解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/spring/" class="post-category">
+                                    spring
+                                </a>
+                            
+                            <a href="/categories/spring/%E6%B3%A8%E8%A7%A3/" class="post-category">
+                                    注解
+                                </a>
+                            
+                            <a href="/categories/spring/%E6%B3%A8%E8%A7%A3/%E5%85%83%E6%B3%A8%E8%A7%A3/" class="post-category">
+                                    元注解
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/spring/">
+                        <span class="chip bg-color">spring</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B3%A8%E8%A7%A3/">
+                        <span class="chip bg-color">注解</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%85%83%E6%B3%A8%E8%A7%A3/">
+                        <span class="chip bg-color">元注解</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/06/10/java-qian-tao-lei/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="java嵌套类（Nested Classes）">
+                        
+                        <span class="card-title">java嵌套类（Nested Classes）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Nested-Classes/" class="post-category">
+                                    Nested Classes
+                                </a>
+                            
+                            <a href="/categories/Nested-Classes/java/" class="post-category">
+                                    java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/Nested-Classes/">
+                        <span class="chip bg-color">Nested Classes</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">肖相杰</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">120.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "5";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                siteTime();
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ciyaduxingxia" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:m18856966773@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1467600745" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1467600745" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
