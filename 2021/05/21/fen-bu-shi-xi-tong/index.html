@@ -443,6 +443,14 @@
                                 <span class="chip bg-color">Dubbo</span>
                             </a>
                         
+                            <a href="/tags/paxos/">
+                                <span class="chip bg-color">paxos</span>
+                            </a>
+                        
+                            <a href="/tags/raft/">
+                                <span class="chip bg-color">raft</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -473,14 +481,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.9k
+                    7.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    24 分
+                    26 分
                 </div>
                 
 
@@ -602,8 +610,7 @@
 <li>3个将军收到参谋1的时间，把（编号1，进攻时间1）保存下来，避免遗忘；同时让通信兵带信回去，内容为（Accepted）</li>
 <li>参谋1收到至少2个将军的（Accepted）内容，确认进攻时间已经被大家接收；</li>
 <li>参谋2发起提议，派通信兵带信给3个将军，内容为（编号2）</li>
-<li>3个将军收到参谋2的提议，由于（编号2）比（编号1）大，因此把（编号2）保存下来，避免遗忘；又由</li>
-<li>之前已经接受参谋1的提议，因此让通信兵带信回去，内容为（编号1，进攻时间1）</li>
+<li>3个将军收到参谋2的提议，由于（编号2）比（编号1）大，因此把（编号2）保存下来，避免遗忘；又由于之前已经接受参谋1的提议，因此让通信兵带信回去，内容为（编号1，进攻时间1）</li>
 <li>参谋2收到至少2个将军的回复，由于回复中带来了已接受的参谋1的提议内容，参谋2因此不再提出新的进攻时间，接受参谋1提出的时间</li>
 </ul>
 <p><strong>2、交叉提交场景</strong></p>
@@ -643,6 +650,34 @@
 <li>参谋1收到了至少2个将军的（accepted）内容，确认进攻时间已经被多数派接受。</li>
 </ul>
 </blockquote>
+<p><strong>看完以上两幅图有一个大概的图的印象后，建议看维基的推导过程，这样加深印象，理解更深。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Paxos%E7%AE%97%E6%B3%95">https://zh.wikipedia.org/wiki/Paxos%E7%AE%97%E6%B3%95</a></p>
+<p>算法整体流程–&gt;决议的提出和批准：</p>
+<blockquote>
+<p>通过一个决议分为两个阶段：</p>
+<ol>
+<li>prepare阶段：<ol>
+<li>proposer选择一个提案编号n并将prepare请求发送给acceptors中的一个多数派；</li>
+<li>acceptor收到prepare消息后，如果提案的编号大于它已经回复的所有prepare消息(回复消息表示接受accept)，则acceptor将自己上次接受的提案回复给proposer，并承诺不再回复小于n的提案；</li>
+</ol>
+</li>
+<li>批准阶段：<ol>
+<li>当一个proposer收到了多数acceptors对prepare的回复后，就进入批准阶段。它要向回复prepare请求的acceptors发送accept请求，包括编号n和根据P2c决定的value（如果根据P2c没有已经接受的value，那么它可以自由决定value）。</li>
+<li>在不违背自己向其他proposer的承诺的前提下，acceptor收到accept请求后即批准这个请求。</li>
+</ol>
+</li>
+</ol>
+<p>这个过程在任何时候中断都可以保证正确性。例如如果一个proposer发现已经有其他proposers提出了编号更高的提案，则有必要中断这个过程。因此为了优化，在上述prepare过程中，如果一个acceptor发现存在一个更高编号的提案，则需要通知proposer，提醒其中断这次提案。</p>
+</blockquote>
+<p>Learner学习（获取）被选定的value有如下三种方案：</p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/0.png" class title="Learner学习（获取）的三种方案">
+
+<p>保证算法活性progress：</p>
+<img src="/2021/05/21/fen-bu-shi-xi-tong/00.png" class title="保证算法活性progress">
+
+
+
+<p>“活锁”的根本原因在于两个proposer交替提案，避免“活锁”的方式为，如果一个proposer通过accpter返回的消息知道此时有更高编号的提案被提出时，该proposer静默一段时间，而不是马上提出更高的方案，静默期长短为一个提案从提出到被接受的大概时间长度即可，静默期过后，proposer重新提案。系统中之所以要有主proposer的原因在于，如果每次数据更改都用paxos，那实在是太慢了，还是通过主节点下发请求这样来的快，因为省去了不必要的paxos时间。所以选择主proposer用paxos算法，因为选主的频率要比更改数据频率低太多。但是主proposer挂了咋整，整个集群就一直处于不可用状态，所以一般都用租约的方式，如果proposer挂了，则租约会过期，其它proposer就可以再重新选主，如果不挂，则主proposer自己续租。</p>
 <h3 id="B-raft一致性算法"><a href="#B-raft一致性算法" class="headerlink" title="B. raft一致性算法"></a>B. raft一致性算法</h3><h2 id="3-一致性Hash算法"><a href="#3-一致性Hash算法" class="headerlink" title="3. 一致性Hash算法"></a>3. 一致性Hash算法</h2><p><em><strong>参考：</strong></em><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/98030096">一致性hash算法详解</a></p>
 <h3 id="A-普通Hash算法在分布式应用中的不足"><a href="#A-普通Hash算法在分布式应用中的不足" class="headerlink" title="A. 普通Hash算法在分布式应用中的不足"></a>A. 普通Hash算法在分布式应用中的不足</h3><blockquote>
 <p>比如，在分布式的存储系统中，要将数据存储到具体的节点上，如果我们采用普通的hash算法进行路由，将数据映射到具体的节点上，如key%N，key是数据的key，N是机器节点数，如果有一个机器加入或退出这个集群，则所有的数据映射都无效了，如果是持久化存储则要做数据迁移，如果是分布式缓存，则其他缓存就失效了。</p>
@@ -688,7 +723,7 @@
 
 
 <h2 id="4-分布式ID"><a href="#4-分布式ID" class="headerlink" title="4. 分布式ID"></a>4. 分布式ID</h2><blockquote>
-<p>ID是数据的唯一标识，传统的做法是利用UUID和数据库的自增ID，在互联网企业中，大部分公司使用的都是Mysql，并且因为需要事务支持，所以通常会使用Innodb存储引擎，UUID太长以及无序，所以并不适合在Innodb中来作为主键，自增ID比较合适，但是随着公司的业务发展，数据量将越来越大，需要对数据进行分表，而分表后，每个表中的数据都会按自己的节奏进行自增，很有可能出现ID冲突。这时就需要一个单独的机制来负责生成唯一ID，生成出来的ID也可以叫做<strong>分布式ID</strong>，或<strong>全局ID</strong>。下面来分析各个生成分布式ID的机制。</p>
+<p>ID是数据的唯一标识，传统的做法是利用UUID和数据库的自增ID，在互联网企业中，大部分公司使用的都是Mysql，并且因为需要事务支持，所以通常会使用Innodb存储引擎，UUID太长以及无序，所以并不适合在Innodb中来作为主键，自增ID比较合适，但是随着公司的业务发展，数据量将越来越大，需要对数据进行分表，而分表后，每个表中的数据都会按自己的节奏进行自增，很有可能出现ID冲突。这时就需要一个单独的机制来负责生成唯一ID，生成出来的ID也可以叫做<strong>分布式ID</strong>，或<strong>全局ID</strong>。</p>
 </blockquote>
 <h2 id="5-Dubbo"><a href="#5-Dubbo" class="headerlink" title="5. Dubbo"></a>5. Dubbo</h2><p>Dubbo的学习一定要看官网，这里粘一下关于负载均衡的源代码解析，整个源代码更迭过程很有启发:<a target="_blank" rel="noopener" href="https://dubbo.apache.org/zh/docs/v2.7/dev/source/loadbalance/">https://dubbo.apache.org/zh/docs/v2.7/dev/source/loadbalance/</a></p>
 <p>随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，急需<strong>一个治理系统</strong>确保架构有条不紊的演进。</p>
@@ -856,6 +891,14 @@ Server: Apache 0.84
                             
                                 <a href="/tags/Dubbo/">
                                     <span class="chip bg-color">Dubbo</span>
+                                </a>
+                            
+                                <a href="/tags/paxos/">
+                                    <span class="chip bg-color">paxos</span>
+                                </a>
+                            
+                                <a href="/tags/raft/">
+                                    <span class="chip bg-color">raft</span>
                                 </a>
                             
                         </div>
@@ -1320,7 +1363,7 @@ Server: Apache 0.84
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">137.8k</span>&nbsp;字
+                class="white-color">151.7k</span>&nbsp;字
             
             
             
