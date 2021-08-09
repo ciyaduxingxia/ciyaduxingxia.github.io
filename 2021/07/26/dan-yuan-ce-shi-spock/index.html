@@ -469,14 +469,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    3.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    15 分
                 </div>
                 
 
@@ -786,38 +786,16 @@ BigDecimal<span class="token punctuation">.</span>ZERO  <span class="token opera
 
 
 
-<h3 id="六、私有方法单测"><a href="#六、私有方法单测" class="headerlink" title="六、私有方法单测"></a>六、私有方法单测</h3><pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy"><span class="token keyword">package</span> com<span class="token punctuation">.</span>ctrip<span class="token punctuation">.</span>tourtailor<span class="token punctuation">.</span>resourceaction<span class="token punctuation">.</span>service<span class="token punctuation">.</span>resourcebase<span class="token punctuation">.</span>resourceprocess<span class="token punctuation">.</span>strategys<span class="token punctuation">.</span>impl
-
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>ctrip<span class="token punctuation">.</span>tourtailor<span class="token punctuation">.</span>core<span class="token punctuation">.</span>bean<span class="token punctuation">.</span>result<span class="token punctuation">.</span>ActionResult
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>ctrip<span class="token punctuation">.</span>tourtailor<span class="token punctuation">.</span>core<span class="token punctuation">.</span>bean<span class="token punctuation">.</span>result<span class="token punctuation">.</span>Result
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>ctrip<span class="token punctuation">.</span>tourtailor<span class="token punctuation">.</span>core<span class="token punctuation">.</span>tools<span class="token punctuation">.</span>DateTimeUtil
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>ctrip<span class="token punctuation">.</span>tourtailor<span class="token punctuation">.</span>resourceaction<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>orderpayment<span class="token punctuation">.</span>OrderPayDomain
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>ctrip<span class="token punctuation">.</span>tourtailor<span class="token punctuation">.</span>resourceaction<span class="token punctuation">.</span>qmq<span class="token punctuation">.</span>producer<span class="token punctuation">.</span>InsuranceRefundProducer
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>ctrip<span class="token punctuation">.</span>tourtailor<span class="token punctuation">.</span>resourceaction<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>ttlorderbookingdb<span class="token punctuation">.</span>TtlOrderBookingDBFactory
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>ctrip<span class="token punctuation">.</span>tourtailor<span class="token punctuation">.</span>resourceaction<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>ttlorderbookingdb<span class="token punctuation">.</span>dao<span class="token punctuation">.</span>IInsuranceorderDao
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>ctrip<span class="token punctuation">.</span>tourtailor<span class="token punctuation">.</span>resourceaction<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>ttlorderbookingdb<span class="token punctuation">.</span>dao<span class="token punctuation">.</span>OPtorderDao
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>ctrip<span class="token punctuation">.</span>tourtailor<span class="token punctuation">.</span>resourceaction<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>DateTimeUtils
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>Test
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>runner<span class="token punctuation">.</span>RunWith
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>powermock<span class="token punctuation">.</span>core<span class="token punctuation">.</span>classloader<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>PowerMockIgnore
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>powermock<span class="token punctuation">.</span>core<span class="token punctuation">.</span>classloader<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>PrepareForTest
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>powermock<span class="token punctuation">.</span>modules<span class="token punctuation">.</span>junit4<span class="token punctuation">.</span>PowerMockRunner
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>powermock<span class="token punctuation">.</span>modules<span class="token punctuation">.</span>junit4<span class="token punctuation">.</span>PowerMockRunnerDelegate
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>spockframework<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span>Sputnik
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>powermock<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Whitebox
-<span class="token keyword">import</span> spock<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Specification
-<span class="token keyword">import</span> spock<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Unroll
-
-<span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>PowerMockRunner<span class="token punctuation">)</span>
+<h3 id="六、私有方法单测"><a href="#六、私有方法单测" class="headerlink" title="六、私有方法单测"></a>六、私有方法单测</h3><pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>PowerMockRunner<span class="token punctuation">)</span>
 <span class="token annotation punctuation">@PowerMockRunnerDelegate</span><span class="token punctuation">(</span>Sputnik<span class="token punctuation">)</span>
 <span class="token annotation punctuation">@PowerMockIgnore</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string gstring">"javax.net.ssl.*"</span><span class="token punctuation">,</span> <span class="token string gstring">"javax.management.*"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@PrepareForTest</span><span class="token punctuation">(</span><span class="token punctuation">[</span>CtripInsuranceProcess<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> TtlOrderBookingDBFactory<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">class</span> <span class="token class-name">CtripInsuranceProcessTest</span> <span class="token keyword">extends</span> <span class="token class-name">Specification</span> <span class="token punctuation">&#123;</span>
+<span class="token annotation punctuation">@PrepareForTest</span><span class="token punctuation">(</span><span class="token punctuation">[</span>InsuranceProcess<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> TtlOrderBookingDBFactory<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">InsuranceProcessTest</span> <span class="token keyword">extends</span> <span class="token class-name">Specification</span> <span class="token punctuation">&#123;</span>
 
     <span class="token keyword">def</span> ttlOrderBookingDBFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TtlOrderBookingDBFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">def</span> iInsuranceorderDao <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IInsuranceorderDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">def</span> oPtorderDao <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OPtorderDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">def</span> ctripInsuranceProcess <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CtripInsuranceProcess</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> InsuranceProcess <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InsuranceProcess</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> orderPayDomain <span class="token operator">=</span> <span class="token function">Mock</span><span class="token punctuation">(</span>OrderPayDomain<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
 
@@ -825,18 +803,18 @@ BigDecimal<span class="token punctuation">.</span>ZERO  <span class="token opera
         ttlOrderBookingDBFactory<span class="token punctuation">.</span>iInsuranceorderDao <span class="token operator">=</span> iInsuranceorderDao
         ttlOrderBookingDBFactory<span class="token punctuation">.</span>oPtorderDao <span class="token operator">=</span> oPtorderDao
 
-        ctripInsuranceProcess<span class="token punctuation">.</span>orderPayDomain <span class="token operator">=</span> orderPayDomain
-        ctripInsuranceProcess<span class="token punctuation">.</span>ttlOrderBookingDBFactory <span class="token operator">=</span> ttlOrderBookingDBFactory
+        InsuranceProcess<span class="token punctuation">.</span>orderPayDomain <span class="token operator">=</span> orderPayDomain
+        InsuranceProcess<span class="token punctuation">.</span>ttlOrderBookingDBFactory <span class="token operator">=</span> ttlOrderBookingDBFactory
     <span class="token punctuation">&#125;</span>
 
     <span class="token annotation punctuation">@Unroll</span>
     <span class="token keyword">def</span> <span class="token string gstring">"insuranceRefund"</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token spock-block">given:</span>
-        ctripInsuranceProcess<span class="token punctuation">.</span>orderPayDomain<span class="token punctuation">.</span><span class="token function">createRefund</span><span class="token punctuation">(</span><span class="token number">_</span><span class="token punctuation">)</span> <span class="token operator">>></span> refundResult
+        InsuranceProcess<span class="token punctuation">.</span>orderPayDomain<span class="token punctuation">.</span><span class="token function">createRefund</span><span class="token punctuation">(</span><span class="token number">_</span><span class="token punctuation">)</span> <span class="token operator">>></span> refundResult
         <span class="token comment">//第一个参数为对象，第二个参数为该对象的私有方法名，后面的可变参数为传入的参数</span>
         <span class="token comment">//利用Whitebox.invokeMethod来反射私有方法</span>
         <span class="token spock-block">when:</span>
-        Result result <span class="token operator">=</span> Whitebox<span class="token punctuation">.</span><span class="token function">invokeMethod</span><span class="token punctuation">(</span>ctripInsuranceProcess<span class="token punctuation">,</span> <span class="token string gstring">"insuranceRefund"</span><span class="token punctuation">,</span> orderId<span class="token punctuation">,</span> resourceId<span class="token punctuation">,</span> billNo<span class="token punctuation">,</span> inquirySupplyId<span class="token punctuation">,</span> refundAmount<span class="token punctuation">)</span>
+        Result result <span class="token operator">=</span> Whitebox<span class="token punctuation">.</span><span class="token function">invokeMethod</span><span class="token punctuation">(</span>InsuranceProcess<span class="token punctuation">,</span> <span class="token string gstring">"insuranceRefund"</span><span class="token punctuation">,</span> orderId<span class="token punctuation">,</span> resourceId<span class="token punctuation">,</span> billNo<span class="token punctuation">,</span> inquirySupplyId<span class="token punctuation">,</span> refundAmount<span class="token punctuation">)</span>
 
         <span class="token spock-block">then:</span>
         <span class="token function">with</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -854,9 +832,9 @@ BigDecimal<span class="token punctuation">.</span>ZERO  <span class="token opera
     <span class="token keyword">def</span> <span class="token string gstring">"checkInsuranceExpired"</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token spock-block">when:</span>
         <span class="token comment">//利用普通的反射</span>
-        Method method <span class="token operator">=</span> ctripInsuranceProcess<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaredMethod</span><span class="token punctuation">(</span><span class="token string gstring">"checkInsuranceExpired"</span><span class="token punctuation">,</span>Calendar<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+        Method method <span class="token operator">=</span> InsuranceProcess<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaredMethod</span><span class="token punctuation">(</span><span class="token string gstring">"checkInsuranceExpired"</span><span class="token punctuation">,</span>Calendar<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
         method<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Result result <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>ctripInsuranceProcess<span class="token punctuation">,</span>payExpiredTime<span class="token punctuation">)</span>
+        Result result <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>InsuranceProcess<span class="token punctuation">,</span>payExpiredTime<span class="token punctuation">)</span>
 
         <span class="token spock-block">then:</span>
         <span class="token function">with</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -884,7 +862,7 @@ BigDecimal<span class="token punctuation">.</span>ZERO  <span class="token opera
         <span class="token keyword">return</span> result
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="七、groovy闭包的用法"><a href="#七、groovy闭包的用法" class="headerlink" title="七、groovy闭包的用法"></a>七、groovy闭包的用法</h3><p>groovy里的闭包类似于Java中的lambda表达式（但比lambda要高级一些，比如它还有委托代理的功能）</p>
 <p>语法如下：</p>
@@ -1494,7 +1472,7 @@ BigDecimal<span class="token punctuation">.</span>ZERO  <span class="token opera
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">155.7k</span>&nbsp;字
+                class="white-color">155.6k</span>&nbsp;字
             
             
             
