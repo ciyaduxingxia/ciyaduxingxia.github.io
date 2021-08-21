@@ -514,7 +514,7 @@
                 <h2 id="redis之分区和集群"><a href="#redis之分区和集群" class="headerlink" title="redis之分区和集群"></a>redis之分区和集群</h2><blockquote>
 <p>前言：如果你的场景是<strong>海量数据+高并发+高可用</strong>，那么仅仅是主从复制和哨兵模式还不够，你需要用的分区的方法来将海量的数据进行存储，而redis提供了redis cluster集群模式实现了分来解决海量数据问题。本文将介绍分区以及redis集群</p>
 </blockquote>
-<h2 id="1-分区"><a href="#1-分区" class="headerlink" title="1.分区"></a>1.分区</h2><h4 id="1-1分区的概念"><a href="#1-1分区的概念" class="headerlink" title="1.1分区的概念"></a>1.1分区的概念</h4><p>分区就是把你的数据分割到多个Redis实例中的一个过程，因此每个实例仅仅包含部分键。</p>
+<h3 id="1-分区"><a href="#1-分区" class="headerlink" title="1.分区"></a>1.分区</h3><h4 id="1-1分区的概念"><a href="#1-1分区的概念" class="headerlink" title="1.1分区的概念"></a>1.1分区的概念</h4><p>分区就是把你的数据分割到多个Redis实例中的一个过程，因此每个实例仅仅包含部分键。</p>
 <p>分区在Redis中主要有两个目的：</p>
 <ul>
 <li>分区利用多台机器的内存构建一个更大数据库。如果不使用分区，数据库大小受限于单个计算机内存。</li>
@@ -638,12 +638,6 @@
 <p>一个写操作是这样一个流程：</p>
 <ul>
 <li>客户端向主节点B发起写的操作</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
 <li>主节点B回应客户端写操作成功</li>
 <li>主节点B向它的从节点B1,B2,B3同步该写操作</li>
 </ul>
