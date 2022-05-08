@@ -553,8 +553,6 @@ I( X ,Y ,Z ) &#x3D; Y ^ ( X | (~Z) )
 假设Mj表示消息的第j个子分组（从0到15）
 常数ti是4294967296*abs( sin(i) ）的整数部分，i 取值从1到64，单位是弧度。（4294967296&#x3D;2^(32)）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
 <p>现定义：</p>
 <pre class="line-numbers language-mathematica" data-language="mathematica"><code class="language-mathematica">FF(a ,b ,c ,d ,Mj ,s ,ti ) 操作为 a &#x3D; b + ( (a + F(b,c,d) + Mj + ti) &lt;&lt; s)
 GG(a ,b ,c ,d ,Mj ,s ,ti ) 操作为 a &#x3D; b + ( (a + G(b,c,d) + Mj + ti) &lt;&lt; s)
@@ -646,7 +644,7 @@ II(b ,c ,d ,a ,M9 ,21 ,0xeb86d391 )<span aria-hidden="true" class="line-numbers-
     *ABCD的临时变量
     */</span>
     <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token class-name">Atemp</span><span class="token punctuation">,</span><span class="token class-name">Btemp</span><span class="token punctuation">,</span><span class="token class-name">Ctemp</span><span class="token punctuation">,</span><span class="token class-name">Dtemp</span><span class="token punctuation">;</span>
-     
+
     <span class="token comment">/*
     *常量ti
     *公式:floor(abs(sin(i+1))×(2pow32)
@@ -672,8 +670,8 @@ II(b ,c ,d ,a ,M9 ,21 ,0xeb86d391 )<span aria-hidden="true" class="line-numbers-
         <span class="token number">12</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span>
         <span class="token number">4</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">23</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">23</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">23</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">23</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span>
         <span class="token number">15</span><span class="token punctuation">,</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">21</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-     
-     
+
+
     <span class="token comment">/*
     *初始化函数
     */</span>
@@ -722,7 +720,7 @@ II(b ,c ,d ,a ,M9 ,21 ,0xeb86d391 )<span aria-hidden="true" class="line-numbers-
         <span class="token class-name">Btemp</span><span class="token operator">=</span>b<span class="token operator">+</span><span class="token class-name">Btemp</span><span class="token punctuation">;</span>
         <span class="token class-name">Ctemp</span><span class="token operator">=</span>c<span class="token operator">+</span><span class="token class-name">Ctemp</span><span class="token punctuation">;</span>
         <span class="token class-name">Dtemp</span><span class="token operator">=</span>d<span class="token operator">+</span><span class="token class-name">Dtemp</span><span class="token punctuation">;</span>
-     
+
     <span class="token punctuation">&#125;</span>
     <span class="token comment">/*
     *填充函数
@@ -754,14 +752,14 @@ II(b ,c ,d ,a ,M9 ,21 ,0xeb86d391 )<span aria-hidden="true" class="line-numbers-
         <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> strByte<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">add</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>strByte<span class="token punctuation">.</span>length<span class="token operator">/</span><span class="token number">16</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        	<span class="token keyword">int</span> num<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//512位为一组</span>
-        	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span><span class="token number">16</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            	num<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>strByte<span class="token punctuation">[</span>i<span class="token operator">*</span><span class="token number">16</span><span class="token operator">+</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        	<span class="token punctuation">&#125;</span>
-        	<span class="token class-name">MainLoop</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> num<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//512位为一组</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span><span class="token number">16</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                num<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>strByte<span class="token punctuation">[</span>i<span class="token operator">*</span><span class="token number">16</span><span class="token operator">+</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token class-name">MainLoop</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
         <span class="token keyword">return</span> <span class="token function">changeHex</span><span class="token punctuation">(</span><span class="token class-name">Atemp</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token function">changeHex</span><span class="token punctuation">(</span><span class="token class-name">Btemp</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token function">changeHex</span><span class="token punctuation">(</span><span class="token class-name">Ctemp</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token function">changeHex</span><span class="token punctuation">(</span><span class="token class-name">Dtemp</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     
+
     <span class="token punctuation">&#125;</span>
     <span class="token comment">/*
     *整数变成16进制字符串
@@ -770,7 +768,7 @@ II(b ,c ,d ,a ,M9 ,21 ,0xeb86d391 )<span aria-hidden="true" class="line-numbers-
         <span class="token class-name">String</span> str<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">;</span>
         <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">4</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
             str<span class="token operator">+=</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"%2s"</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">toHexString</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token operator">>></span>i<span class="token operator">*</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token number">0xff</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- 
+
         <span class="token punctuation">&#125;</span>
         <span class="token keyword">return</span> str<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
@@ -784,15 +782,14 @@ II(b ,c ,d ,a ,M9 ,21 ,0xeb86d391 )<span aria-hidden="true" class="line-numbers-
         <span class="token punctuation">&#125;</span>
         <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-     
+
     <span class="token keyword">private</span> <span class="token function">MD5</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-     
+
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         <span class="token class-name">String</span> str<span class="token operator">=</span>MD5<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getMD5</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 
                 
             </div>
@@ -1318,7 +1315,7 @@ II(b ,c ,d ,a ,M9 ,21 ,0xeb86d391 )<span aria-hidden="true" class="line-numbers-
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2021-2022</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">肖相杰</a>
@@ -1327,7 +1324,7 @@ II(b ,c ,d ,a ,M9 ,21 ,0xeb86d391 )<span aria-hidden="true" class="line-numbers-
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">157.9k</span>&nbsp;字
+                class="white-color">171k</span>&nbsp;字
             
             
             
