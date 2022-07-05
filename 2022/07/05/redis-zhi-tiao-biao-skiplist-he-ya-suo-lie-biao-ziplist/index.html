@@ -1,0 +1,1524 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="redis之跳表skiplist和压缩列表ziplist, ciyaduxingxia,github">
+    <meta name="description" content="北冥有鱼，其名为鲲，鲲之大，不知其几千里也；化而为鸟，其名为鹏.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>redis之跳表skiplist和压缩列表ziplist | 大千世界</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">大千世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>主页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>联系</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">大千世界</div>
+        <div class="logo-desc">
+            
+            北冥有鱼，其名为鲲，鲲之大，不知其几千里也；化而为鸟，其名为鹏.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			主页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			联系
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">redis之跳表skiplist和压缩列表ziplist</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/redis/">
+                                <span class="chip bg-color">redis</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%B7%B3%E8%A1%A8skiplist/">
+                                <span class="chip bg-color">跳表skiplist</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8ziplist/">
+                                <span class="chip bg-color">压缩列表ziplist</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/redis/" class="post-category">
+                                redis
+                            </a>
+                        
+                            <a href="/categories/redis/%E8%B7%B3%E8%A1%A8skiplist/" class="post-category">
+                                跳表skiplist
+                            </a>
+                        
+                            <a href="/categories/redis/%E8%B7%B3%E8%A1%A8skiplist/%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8ziplist/" class="post-category">
+                                压缩列表ziplist
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-07-05
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="ziplist压缩列表"><a href="#ziplist压缩列表" class="headerlink" title="ziplist压缩列表"></a>ziplist压缩列表</h2><p>ziplist主要是为了节约内存，他将元素存储在一块连续的内存空间中，这样在查询数据的时候也可以利用CPU的缓存访问数据，加快查询的效率</p>
+<p>相较于数组而言。我们知道,数组要求每个元素的大小都相同,如果我们要存储不同长度的字符串,那我们就需要用最大长度的字符串大小作为元素的大小(假设是5个字节)。小于5个字节长度的字符串也会开辟5个字节，便会浪费部分存储空间。而ziplist就是根据每个节点的长度来决定占用内存大小，这样每次添加元素时就可以计算下一个节点在内存中的存储位置，从而形成一个压缩列表。<br>下图是ziplist在内存中的布局</p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/1.png" class>
+
+<ul>
+<li>zlbytes: ziplist的长度（单位: 字节)，是一个32位无符号整数</li>
+<li>zltail: ziplist最后一个节点的偏移量，反向遍历ziplist或者pop尾部节点的时候有用。</li>
+<li>zllen: ziplist的节点（entry）个数</li>
+<li>entry: 节点</li>
+<li>zlend: 值为0xFF，用于标记ziplist的结尾</li>
+</ul>
+<p>普通数组的遍历是根据数组里存储的数据类型找到下一个元素的，例如int类型的数组访问下一个元素时每次只需要移动一个sizeof(int)就行（实际上开发者只需让指针p+1就行，在这里引入sizeof(int)只是为了说明区别）。  </p>
+<p>上文说了，ziplist的每个节点的长度是可以不一样的，而我们面对不同长度的节点又不可能直接sizeof(entry)，那么它是怎么访问下一个节点呢？  </p>
+<p>ziplist将一些必要的偏移量信息记录在了每一个节点里，使之能跳到上一个节点或下一个节点。  </p>
+<p>接下来我们看看节点的布局</p>
+<p>节点的布局(entry)</p>
+<p>每个节点由三部分组成：prevlength、encoding、data</p>
+<ul>
+<li>prevlengh: 记录上一个节点的长度，为了方便反向遍历ziplist</li>
+<li>encoding: 当前节点的编码规则，下文会详细说</li>
+<li>data: 当前节点的值，可以是数字或字符串</li>
+</ul>
+<p>为了节省内存，根据上一个节点的长度prevlength 可以将ziplist节点分为两类：</p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/2.png" class>
+
+<ul>
+<li>entry的前8位小于254，则这8位就表示上一个节点的长度</li>
+<li>entry的前8位等于254，则意味着上一个节点的长度无法用8位表示，后面32位才是真实的prevlength。用254 不用255(11111111)作为分界是因为255是zlend的值，它用于判断ziplist是否到达尾部。</li>
+</ul>
+<p>根据当前节点存储的数据类型及长度，可以将ziplist节点分为9类：<br><strong><mark>整数节点分为6类：</mark></strong></p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/3.png" class>
+
+<p>整数节点的encoding的长度为8位，其中高2位用来区分整数节点和字符串节点（高2位为11时是整数节点），低6位用来区分整数节点的类型，定义如下:</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_INT_16B</span> <span class="token expression"><span class="token punctuation">(</span><span class="token number">0xc0</span> <span class="token operator">|</span> <span class="token number">0</span><span class="token operator">&lt;&lt;</span><span class="token number">4</span><span class="token punctuation">)</span></span><span class="token comment">//整数data,占16位（2字节）</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_INT_32B</span> <span class="token expression"><span class="token punctuation">(</span><span class="token number">0xc0</span> <span class="token operator">|</span> <span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">4</span><span class="token punctuation">)</span></span><span class="token comment">//整数data,占32位（4字节）</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_INT_64B</span> <span class="token expression"><span class="token punctuation">(</span><span class="token number">0xc0</span> <span class="token operator">|</span> <span class="token number">2</span><span class="token operator">&lt;&lt;</span><span class="token number">4</span><span class="token punctuation">)</span></span><span class="token comment">//整数data,占64位（8字节）</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_INT_24B</span> <span class="token expression"><span class="token punctuation">(</span><span class="token number">0xc0</span> <span class="token operator">|</span> <span class="token number">3</span><span class="token operator">&lt;&lt;</span><span class="token number">4</span><span class="token punctuation">)</span></span><span class="token comment">//整数data,占24位（3字节）</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_INT_8B</span> <span class="token expression"><span class="token number">0xfe</span> </span><span class="token comment">//整数data,占8位（1字节）</span></span>
+
+<span class="token comment">/* 4 bit integer immediate encoding */</span>
+
+<span class="token comment">//整数值1~13的节点没有data，encoding的低四位用来表示data</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_INT_IMM_MASK</span> <span class="token expression"><span class="token number">0x0f</span></span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_INT_IMM_MIN</span> <span class="token expression"><span class="token number">0xf1</span> </span><span class="token comment">/* 11110001 */</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_INT_IMM_MAX</span> <span class="token expression"><span class="token number">0xfd</span> </span><span class="token comment">/* 11111101 */</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>值得注意的是：最后一种encoding是存储整数0<del>12的节点的encoding，它没有额外的data部分，encoding的高4位表示这个类型，低4位就是它的data。这种类型的节点的encoding大小介于ZIP_INT_24B与ZIP_INT_8B之间（1</del>13），但是为了表示整数0，取出低四位xxxx之后会将其减1作为实际的data值（0~12）。在函数zipLoadInteger中，我们可以看到这种类型节点的取值方法：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>encoding <span class="token operator">>=</span> ZIP_INT_IMM_MIN <span class="token operator">&amp;&amp;</span> encoding <span class="token operator">&lt;=</span> ZIP_INT_IMM_MAX<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+ret <span class="token operator">=</span> <span class="token punctuation">(</span>encoding <span class="token operator">&amp;</span> ZIP_INT_IMM_MASK<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong><mark>字符串节点分为3类：</mark></strong></p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/4.png" class>
+
+<ul>
+<li>当data小于63字节时(2^6)，节点存为上图的第一种类型，高2位为00，低6位表示data的长度。</li>
+<li>当data小于16383字节时(2^14)，节点存为上图的第二种类型，高2位为01，后续14位表示data的长度。</li>
+<li>当data小于4294967296字节时(2^32)，节点存为上图的第三种类型，高2位为10，下一字节起连续32位表示data的长度。</li>
+</ul>
+<p>上图可以看出：<br>不同于整数节点encoding永远是8位，字符串节点的encoding可以有8位、16位、40位三种长度。相同encoding类型的整数节点 data长度是固定的，但是相同encoding类型的字符串节点，data长度取决于encoding后半部分的值。</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_STR_06B</span> <span class="token expression"><span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">)</span></span><span class="token comment">//字符串data,最多有2^6字节(encoding后半部分的length有6位,length决定data有多少字节)</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_STR_14B</span> <span class="token expression"><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">)</span></span><span class="token comment">//字符串data,最多有2^14字节</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ZIP_STR_32B</span> <span class="token expression"><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">)</span></span><span class="token comment">//字符串data,最多有2^32字节</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong><mark>ziplist的增删查改</mark></strong></p>
+<ul>
+<li><p>ziplistNew—创建一个ziplist—复杂度O(1)</p>
+</li>
+<li><p>ziplistFind—从ziplist里找出一个entry—复杂度O(n)</p>
+</li>
+<li><p>ziplistInsert—往ziplist里插入一个entry—-复杂度 平均:O(n), 最坏:O(n²)</p>
+</li>
+<li><p>ziplistDelete—从siplist里删除一个entry—复杂度 平均:O(n), 最坏:O(n²)</p>
+</li>
+</ul>
+<p>为什么插入节点和删除节点两个接口的最坏时间复杂度会是O(n²)呢？这是由于ziplist的“连锁更新”导致的，连锁更新在最坏情况下需要对ziplist执行n次空间重分配操作，而且每次空间重分配的最坏时间复杂度为O(n) —-《Redis设计与实现》。但是出现“连锁更新”的情况并不多见，所以这里基本不会造成性能问题。</p>
+<h2 id="skiplist跳表"><a href="#skiplist跳表" class="headerlink" title="skiplist跳表"></a>skiplist跳表</h2><p>跳表(skip list) 对标的是平衡树(AVL Tree)，红黑树，是一种 插入/删除/搜索 都是 O(log n) 的数据结构。这两个查询效率差不多，</p>
+<ul>
+<li><p>跳表它最大的优势是原理简单、容易实现、效率更高。</p>
+</li>
+<li><p>在并发的情况下，红黑树在插入删除的时候可能需要做数的平衡的操作，即树的左旋和右旋来保证树的平衡，会影响其他部分树的节点，而跳表只会影响局部，不会影响其他的节点。</p>
+</li>
+</ul>
+<p><strong><mark>核心思想：skiplist以空间换时间</mark></strong></p>
+<ul>
+<li><p>跳表查找任意数据的时间复杂度为O(logn)，这个查找的时间复杂度和二分查找是一样的。</p>
+</li>
+<li><p>跳表的空间复杂度为O(n)。</p>
+</li>
+</ul>
+<h3 id="1-跳表的原理"><a href="#1-跳表的原理" class="headerlink" title="1.跳表的原理"></a>1.跳表的原理</h3><p>下图是从William Pugh的论文Skip Lists : A Probabilistic Alternative to Balanced Trees中截取的。</p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/5.png" class>
+
+<p>上图用a,b,c,d,e五种有序链表及其变式说明了跳跃表的motivation。</p>
+<ul>
+<li><p>[a]单链表：查询时间复杂度O(n)  </p>
+</li>
+<li><p>[b]level-2单链表：每隔一个节点为一个level-2节点，每个level-2节点有2个后继指针，分别指向单链表中的下一个节点和下一个level-2节点。查询时间复杂度为O(n/2)  </p>
+</li>
+<li><p>[c]level-3单链表：每隔一个节点为一个level-2节点，每隔4个节点为一个level-3节点，查询时间复杂度O(n/4)  </p>
+</li>
+<li><p>[d]指数式单链表：每2^i个节点的level为i+1，查询时间复杂度为O(log2N)  </p>
+</li>
+<li><p>[e]跳跃表：各个level的节点个数同指数式单链表，但出现的位置随机，查询复杂度是O(logN)！</p>
+</li>
+</ul>
+<h3 id="2-跳表的查询"><a href="#2-跳表的查询" class="headerlink" title="2.跳表的查询"></a>2.跳表的查询</h3><p>对于一个单链表来说，即使链表中的数据是有序的，如果我们想要查找某个数据，也必须从头到尾的遍历链表，很显然这种查找效率是十分低效的，时间复杂度为O(n)。</p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/6.png" class>
+
+<p>那么我们如何提高查找效率呢？我们可以对链表建立一级“索引”，每两个结点提取一个结点到上一级，我们把抽取出来的那一级叫做索引或者索引层，如下图所示，down表示down指针。</p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/7.png" class>
+
+<p>假设我们现在要查找值为17的这个结点。我们可以先在索引层遍历，当遍历索引层中值为12的时候，通过值为12的结点的指针域发现下一个结点值为19，因为链表本身有序，所以值为17的结点肯定在12和19这两个结点之间。然后我们通过索引层结点的down指针，下降到原始链表这一层，继续往后遍历查找。这个时候我们只需要遍历2个结点（值为12和17的结点），就可以找到值等于17的这个结点了。</p>
+<p>那么我们可以由此得到启发，和上面建立第一级索引的方式相似，在第一级索引的基础上，每两个一级索引结点就抽到一个结点到第二级索引中。再来查找值为17的结点，从而进一步提高了查找效率。</p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/8.png" class>
+
+<h3 id="3-跳表的插入"><a href="#3-跳表的插入" class="headerlink" title="3.跳表的插入"></a>3.跳表的插入</h3><p><strong><mark>跳表插入的时间复杂度为：O(logn)，支持高效的动态插入。</mark></strong></p>
+<p>在单链表中，一旦定位好要插入的位置，插入结点的时间复杂度是很低的，就是O(1)。但是为了保证原始链表中数据的有序性，我们需要先找到要插入的位置，这个查找的操作就会比较耗时。</p>
+<p>对于纯粹的单链表，需要遍历每个结点，来找到插入的位置。但是对于跳表来说，查找的时间复杂度为O(logn)，所以这里查找某个数据应该插入的位置的时间复杂度也是O(logn)，如下图所示：</p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/9.png" class>
+
+<h3 id="4-跳表的删除"><a href="#4-跳表的删除" class="headerlink" title="4.跳表的删除"></a>4.跳表的删除</h3><p>跳表的删除操作时间复杂度为：O(logn)，支持动态的删除。</p>
+<p>在跳表中删除某个结点时，如果这个结点在索引中也出现了，我们除了要删除原始链表中的结点，还要删除索引中的。因为单链表中的删除操作需要拿到删除结点的前驱结点，然后再通过指针操作完成删除。所以在查找要删除的结点的时候，一定要获取前驱结点（双向链表除外）。因此跳表的删除操作时间复杂度即为O(logn)。</p>
+<h3 id="5-跳表的动态更新"><a href="#5-跳表的动态更新" class="headerlink" title="5.跳表的动态更新"></a>5.跳表的动态更新</h3><p>当我们不断地往跳表中插入数据时，我们如果不更新索引，就有可能出现某2个索引节点之间的数据非常多的情况，在极端情况下，跳表还会退化成单链表，如下图所示：</p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/10.png" class>
+
+<p>作为一种动态数据结构，我们需要某种手段来维护索引与原始链表大小之间的平衡，也就是说，如果链表中的结点多了，索引结点就相应地增加一些，避免复杂度退化，以及查找、插入和删除操作性能的下降。</p>
+<p>如果你了解红黑树、AVL树这样的平衡二叉树，你就会知道它们是通过左右旋的方式保持左右子树的大小平衡，而跳表是通过随机函数来维护“平衡性”。</p>
+<p>当我们往跳表中插入数据的时候，我们可以通过一个随机函数，来决定这个结点插入到哪几级索引层中，比如随机函数生成了值K，那我们就将这个结点添加到第一级到第K级这个K级索引中。如下图中要插入数据为6，K=2的例子：</p>
+<img src="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/11.png" class>
+
+<p>随机函数的选择是非常有讲究的，从概率上讲，能够保证跳表的索引大小和数据大小平衡性，不至于性能的过度退化。</p>
+<h3 id="6-跳表的性质"><a href="#6-跳表的性质" class="headerlink" title="6.跳表的性质"></a>6.跳表的性质</h3><p>(1) 由很多层结构组成，level是通过一定的概率随机产生的；</p>
+<p>(2) 每一层都是一个有序的链表，默认是升序 ；</p>
+<p>(3) 最底层(Level 1)的链表包含所有元素；</p>
+<p>(4) 如果一个元素出现在Level i 的链表中，则它在Level i 之下的链表也都会出现；</p>
+<p>(5) 每个节点包含两个指针，一个指向同一链表中的下一个元素，一个指向下面一层的元素。</p>
+<h3 id="7-redis中的跳表"><a href="#7-redis中的跳表" class="headerlink" title="7.redis中的跳表"></a>7.redis中的跳表</h3><p>在redis.h中定义了结构体zskiplistNode表示跳跃表结点，它的定义如下：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">zskiplistNode</span> <span class="token punctuation">&#123;</span><span class="token punctuation">;</span>  
+    robj <span class="token operator">*</span>obj<span class="token punctuation">;</span>  <span class="token comment">//obj是该结点的成员对象指针</span>
+    <span class="token keyword">double</span> score<span class="token punctuation">;</span> <span class="token comment">//score是该对象的分值，是一个浮点数，跳跃表中的所有结点，都是根据score从小到大来排序的。</span>
+    <span class="token keyword">struct</span> <span class="token class-name">zskiplistNode</span> <span class="token operator">*</span>backward<span class="token punctuation">;</span>  <span class="token comment">//后退指针，指向的是前面的一个跳表节点</span>
+    <span class="token keyword">struct</span> <span class="token class-name">zskiplistLevel</span> <span class="token punctuation">&#123;</span><span class="token punctuation">;</span>  
+        <span class="token keyword">struct</span> <span class="token class-name">zskiplistNode</span> <span class="token operator">*</span>forward<span class="token punctuation">;</span>  <span class="token comment">//前进指针，指向该节点在本层的后继节点</span>
+        <span class="token keyword">unsigned</span> <span class="token keyword">int</span> span<span class="token punctuation">;</span>  <span class="token comment">//这个层跨越的节点数量</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span> level<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span> zskiplistNode<span class="token punctuation">;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在redis.h中定义了结构体zskiplist表示跳跃表，它的定义如下：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">zskiplist</span> <span class="token punctuation">&#123;</span><span class="token punctuation">;</span>  
+    <span class="token keyword">struct</span> <span class="token class-name">zskiplistNode</span> <span class="token operator">*</span>header<span class="token punctuation">,</span> <span class="token operator">*</span>tail<span class="token punctuation">;</span>  <span class="token comment">//header和tail指针分别指向跳跃表的表头结点和表尾结点</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> length<span class="token punctuation">;</span>  <span class="token comment">//记录结点的数量，在O(1)的时间复杂度内返回跳跃表的长度</span>
+    <span class="token keyword">int</span> level<span class="token punctuation">;</span>  <span class="token comment">//记录跳跃表的层数</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span> zskiplist<span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>通过这<code>*header, *tail</code>两个指针，定位表头结点和表尾结点的复杂度为O(1)。表尾结点是表中最后一个结点。而表头结点实际上是一个伪结点，该结点的成员对象为NULL，分值为0，它的层数固定为32（层的最大值）。</p>
+<p><strong><mark>随机算法</mark></strong></p>
+<p>一个具有k个后继指针的结点称为k层结点。假设k层结点的数量是k+1层结点的P倍，那么其实这个跳跃表可以看成是一棵平衡的P叉树。跳跃表结点的层数，采用随机化算法得到，实现如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">zslRandomLevel</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
+    <span class="token keyword">int</span> level <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token number">0xFFFF</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span>ZSKIPLIST_P <span class="token operator">*</span> <span class="token number">0xFFFF</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
+        level <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>  
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>level<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>这里的ZSKIPLIST_P是0.25。上述代码中，level初始化为1，然后，如果持续满足条件：(random()&amp;0xFFFF)&lt;  (ZSKIPLIST_P * 0xFFFF)的话，则level+=1。最终调整level的值，使其小于ZSKIPLIST_MAXLEVEL。</p>
+<p>random()&amp;0xFFFF形成的数，均匀分布在区间[0,0xFFFF]上，那么这个数小于(ZSKIPLIST_P * 0xFFFF)的概率是多少呢？自然就是ZSKIPLIST_P，也就是0.25了。  </p>
+<p>因此，最终返回level为1的概率是1-0.25=0.75，返回level为2的概率为0.25X0.75，返回level为3的概率为0.25X0.25X0.75……因此，如果返回level为k的概率为x，则返回level为k+1的概率为0.25x，换句话说，如果k层的结点数是x，那么k+1层就是0.25x了。这就是所谓的幂次定律（powerlaw），越大的数出现的概率越小。 </p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">肖相杰</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ciyaduxingxia.github.io/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/">https://ciyaduxingxia.github.io/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">肖相杰</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/redis/">
+                                    <span class="chip bg-color">redis</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%B7%B3%E8%A1%A8skiplist/">
+                                    <span class="chip bg-color">跳表skiplist</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8ziplist/">
+                                    <span class="chip bg-color">压缩列表ziplist</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="redis之跳表skiplist和压缩列表ziplist">
+                        
+                        <span class="card-title">redis之跳表skiplist和压缩列表ziplist</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/redis/" class="post-category">
+                                    redis
+                                </a>
+                            
+                            <a href="/categories/redis/%E8%B7%B3%E8%A1%A8skiplist/" class="post-category">
+                                    跳表skiplist
+                                </a>
+                            
+                            <a href="/categories/redis/%E8%B7%B3%E8%A1%A8skiplist/%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8ziplist/" class="post-category">
+                                    压缩列表ziplist
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%B7%B3%E8%A1%A8skiplist/">
+                        <span class="chip bg-color">跳表skiplist</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8ziplist/">
+                        <span class="chip bg-color">压缩列表ziplist</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/07/05/redis-zhi-io-duo-lu-fu-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="redis之io多路复用">
+                        
+                        <span class="card-title">redis之io多路复用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/redis/" class="post-category">
+                                    redis
+                                </a>
+                            
+                            <a href="/categories/redis/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" class="post-category">
+                                    io多路复用
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                    <a href="/tags/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/">
+                        <span class="chip bg-color">io多路复用</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">肖相杰</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">178.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "5";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                siteTime();
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ciyaduxingxia" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:m18856966773@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1467600745" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1467600745" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

@@ -555,33 +555,41 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2022/05/08/xian-cheng-chi-zhi-xian-cheng-xun-huan-de-yuan-li/">
+                    <a href="/2022/07/05/redis-zhi-tiao-biao-skiplist-he-ya-suo-lie-biao-ziplist/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="线程池之线程循环的原理">
+                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="redis之跳表skiplist和压缩列表ziplist">
                             
-                            <span class="card-title">线程池之线程循环的原理</span>
+                            <span class="card-title">redis之跳表skiplist和压缩列表ziplist</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                先言之前一直有这个疑问：我们平时使用线程都是各种new Thread(),然后直接在run()方法里面执行我们要做的各种操作，使用完后需要做什么管理吗？线程池为什么能维持住核心线程不释放，一直接收任务进行处理呢？
-在进行源码分析之前可以猜测
+                                ziplist压缩列表ziplist主要是为了节约内存，他将元素存储在一块连续的内存空间中，这样在查询数据的时候也可以利用CPU的缓存访问数据，加快查询的效率
+相较于数组而言。我们知道,数组要求每个元素的大小都相同,如果我们要存储不同长度的
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-05
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="post-category">
-                                    线程池
+                                <a href="/categories/redis/" class="post-category">
+                                    redis
+                                </a>
+                                
+                                <a href="/categories/redis/%E8%B7%B3%E8%A1%A8skiplist/" class="post-category">
+                                    跳表skiplist
+                                </a>
+                                
+                                <a href="/categories/redis/%E8%B7%B3%E8%A1%A8skiplist/%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8ziplist/" class="post-category">
+                                    压缩列表ziplist
                                 </a>
                                 
                                 
@@ -592,8 +600,72 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
-                            <span class="chip bg-color">线程池</span>
+                        <a href="/tags/redis/">
+                            <span class="chip bg-color">redis</span>
+                        </a>
+                        
+                        <a href="/tags/%E8%B7%B3%E8%A1%A8skiplist/">
+                            <span class="chip bg-color">跳表skiplist</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8ziplist/">
+                            <span class="chip bg-color">压缩列表ziplist</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/07/05/redis-zhi-io-duo-lu-fu-yong/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="redis之io多路复用">
+                            
+                            <span class="card-title">redis之io多路复用</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                几种 I/O 模型为什么 Redis 中要使用 I/O 多路复用这种技术呢？
+首先，Redis 是跑在单线程中的，所有的操作都是按照顺序线性执行的，但是由于读写操作等待用户输入或输出都是阻塞的，所以 I/O 操作在一般情况下往往不能直接返回
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/redis/" class="post-category">
+                                    redis
+                                </a>
+                                
+                                <a href="/categories/redis/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" class="post-category">
+                                    io多路复用
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/redis/">
+                            <span class="chip bg-color">redis</span>
+                        </a>
+                        
+                        <a href="/tags/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/">
+                            <span class="chip bg-color">io多路复用</span>
                         </a>
                         
                     </div>
@@ -641,6 +713,54 @@
                         
                         <a href="/tags/%E9%94%81/">
                             <span class="chip bg-color">锁</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/05/08/xian-cheng-chi-zhi-xian-cheng-xun-huan-de-yuan-li/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="线程池之线程循环的原理">
+                            
+                            <span class="card-title">线程池之线程循环的原理</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                先言之前一直有这个疑问：我们平时使用线程都是各种new Thread(),然后直接在run()方法里面执行我们要做的各种操作，使用完后需要做什么管理吗？线程池为什么能维持住核心线程不释放，一直接收任务进行处理呢？
+在进行源码分析之前可以猜测
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-08
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="post-category">
+                                    线程池
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+                            <span class="chip bg-color">线程池</span>
                         </a>
                         
                     </div>
@@ -1105,106 +1225,6 @@ Redis 为了避免额外开销，写 AOF 日志的时候不会对些命令语法
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/08/07/jia-mi-suan-fa-zhi-md5-jia-mi/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="加密算法之MD5加密">
-                            
-                            <span class="card-title">加密算法之MD5加密</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                加密算法之MD5加密1. 加密算法基础知识1）对称加密算法
-就是加密和解密使用同一个密钥的加密算法。因为加密方和解密方使用的密钥相同，所以称为称为对称加密，也称为单钥加密方法。
-优点是：加密和解密运算速度快，所以对称加密算法通常在消息发送方
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/MD5/" class="post-category">
-                                    MD5
-                                </a>
-                                
-                                <a href="/categories/MD5/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" class="post-category">
-                                    加密算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/MD5/">
-                            <span class="chip bg-color">MD5</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/08/07/zookeeper-yuan-li/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="zookeeper原理和应用">
-                            
-                            <span class="card-title">zookeeper原理和应用</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                zookeeper原理和应用1.zookeeper是什么Zookeeper 分布式服务框架是Apache Hadoop 的一个子项目，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/zookeeper/" class="post-category">
-                                    zookeeper
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/zookeeper/">
-                            <span class="chip bg-color">zookeeper</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -1221,7 +1241,7 @@ Redis 为了避免额外开销，写 AOF 日志的时候不会对些命令语法
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 4</div>
+            <div class="center-align b-text-gray">1 / 5</div>
         </div>
         <div class="col s6 m4 l4">
             
@@ -1306,7 +1326,7 @@ Redis 为了避免额外开销，写 AOF 日志的时候不会对些命令语法
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171k</span>&nbsp;字
+                class="white-color">178.3k</span>&nbsp;字
             
             
             
