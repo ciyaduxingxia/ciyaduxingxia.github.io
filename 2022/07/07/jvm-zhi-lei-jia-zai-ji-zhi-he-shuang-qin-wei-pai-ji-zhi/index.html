@@ -513,25 +513,26 @@
             <div id="articleContent">
                 <h2 id="1、类加载的全过程"><a href="#1、类加载的全过程" class="headerlink" title="1、类加载的全过程"></a>1、类加载的全过程</h2><img src="/2022/07/07/jvm-zhi-lei-jia-zai-ji-zhi-he-shuang-qin-wei-pai-ji-zhi/1.png" class>
 
-<p>从JVM创建 到 类被加载的步骤：</p>
-<pre><code>①：c++程序先创建java虚拟机
-②：c++程序创建引导类加载器
-③：c++创建JVM启动器 Launcher 实例
-④：在Launcher实例中获取其他类加载器（扩展、应用类加载器）
-⑤：通过双亲委派机制，决定哪个类加载器加载
-⑥：找到合适的类加载器后，通过loadClass的类加载过程： 加载 &gt;&gt; 验证 &gt;&gt; 准备 &gt;&gt; 解析 &gt;&gt; 初始化等步骤把类加载到JVM
-</code></pre>
-<p>类加载步骤详解：</p>
-<pre><code>加载：从硬盘上读取字节码文件，使用到的时候才会加载
-验证：检验字节码文件的正确性
-准备：给类的静态变量分配内存，并赋一个默认值（0，null等）
-解析：将符号引用转换为直接引用。在类加载时属于静态链接的过程，与之对应的还有一个动态链接
-    符号引用：一个 java 文件会编译成一个class文件。class文件中的每个方法、属性等内容都可以被视为一个符号，存储在constant pool静态常量池中， 在准备阶段之前，由于没有在jvm中为其分配堆栈内存，所以没有具体的引用地址，因此只能使用符号引用来代替。
-    直接引用：在准备阶段之后，由于class被加载到方法区中，constant pool静态常量池变为运行时常量池！ 同时该class中的属性和方法都已经分配好内存。有具体指针指向该块内存取域，被称为直接引用。所以在解析阶段会把之前的符号引用都转换成直接引用！
-    静态链接：在类加载过程中，只会把静态方法的符号引用转换为直接引用，而一些非静态的方法在此时不会转换。因为该阶段只是加载，并没有运行，只有在运行时才会把非静态方法的符号引用转换为直接引用。
-    动态链接：在程序运行时，且执行到某个非静态方法时，才会把该方法的符号引用转换为直接引用，这个过程被称为动态链接！
-初始化：对类的静态变量初始化为指定的值，此时会执行静态代码块，修改准备阶段时静态变量的默认值为初始值
-</code></pre>
+<p><strong>从JVM创建 到 类被加载的步骤：</strong></p>
+<blockquote>
+<p>①：c++程序先创建java虚拟机<br>②：c++程序创建引导类加载器<br>③：c++创建JVM启动器 Launcher 实例<br>④：在Launcher实例中获取其他类加载器（扩展、应用类加载器）<br>⑤：通过双亲委派机制，决定哪个类加载器加载<br>⑥：找到合适的类加载器后，通过loadClass的类加载过程： 加载 &gt;&gt; 验证 &gt;&gt; 准备 &gt;&gt; 解析 &gt;&gt; 初始化等步骤把类加载到JVM</p>
+</blockquote>
+<p><strong>类加载步骤详解：</strong></p>
+<blockquote>
+<p>①加载：从硬盘上读取字节码文件，使用到的时候才会加载<br>②验证：检验字节码文件的正确性<br>③准备：给类的静态变量分配内存，并赋一个默认值（0，null等）<br>④解析：将符号引用转换为直接引用。在类加载时属于静态链接的过程，与之对应的还有一个动态链接<br>⑤初始化：对类的静态变量初始化为指定的值，此时会执行静态代码块，修改准备阶段时静态变量的默认值为初始值</p>
+<blockquote>
+<ul>
+<li><p>符号引用：一个 java 文件会编译成一个class文件。class文件中的每个方法、属性等内容都可以被视为一个符号，存储在constant pool静态常量池中， 在准备阶段之前，由于没有在jvm中为其分配堆栈内存，所以没有具体的引用 地址，因此只能使用符号引用来代替。</p>
+</li>
+<li><p>直接引用：在准备阶段之后，由于class被加载到方法区中，constant pool静态常量池变为运行时常量池！ 同时该class中的属性和方法都已经分配好内存。有具体指针指向该块内存取域，被称为直接引用。所以在解析阶段会把之前的符号引用都转换成直接引用！</p>
+</li>
+<li><p>静态链接：在类加载过程中，只会把静态方法的符号引用转换为直接引用，而一些非静态的方法在此时不会转换。因为该阶段只是加载，并没有运行，只有在运行时才会把非静态方法的符号引用转换为直接引用。</p>
+</li>
+<li><p>动态链接：在程序运行时，且执行到某个非静态方法时，才会把该方法的符号引用转换为直接引用，这个过程被称为动态链接！</p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
 <img src="/2022/07/07/jvm-zhi-lei-jia-zai-ji-zhi-he-shuang-qin-wei-pai-ji-zhi/2.png" class>
 
 <blockquote>
@@ -954,18 +955,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/07/07/jvm-zhi-lei-jia-zai-ji-zhi-he-shuang-qin-wei-pai-ji-zhi/">
+                <a href="/2022/07/09/java-ji-he-zhi-hashmap/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="jvm之类加载机制和双亲委派机制">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="java集合之hashmap">
                         
-                        <span class="card-title">jvm之类加载机制和双亲委派机制</span>
+                        <span class="card-title">java集合之hashmap</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -975,43 +975,26 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/jvm/" class="post-category">
-                                    jvm
-                                </a>
-                            
-                            <a href="/categories/jvm/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="post-category">
-                                    类加载机制
-                                </a>
-                            
-                            <a href="/categories/jvm/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/" class="post-category">
-                                    双亲委派机制
+                            <a href="/categories/Hashmap/" class="post-category">
+                                    Hashmap
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/jvm/">
-                        <span class="chip bg-color">jvm</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">
-                        <span class="chip bg-color">类加载机制</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/">
-                        <span class="chip bg-color">双亲委派机制</span>
+                    <a href="/tags/Hashmap/">
+                        <span class="chip bg-color">Hashmap</span>
                     </a>
                     
                 </div>
@@ -1271,7 +1254,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">188.7k</span>&nbsp;字
+                class="white-color">205.6k</span>&nbsp;字
             
             
             
